@@ -1,0 +1,44 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 60vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.icon {
+	width: 120px;
+	height: auto;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: #191919;
+}
+
+.description {
+  margin: 0;
+  font-size: 16px;
+  color: #5e5e5e;
+}
+
+.backBtn {
+  margin-top: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #6a0b2f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
