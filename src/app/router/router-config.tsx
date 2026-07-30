@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute><MentorDashboardPage /></ProtectedRoute>,
       },
       {
-        path: "login",
+        path: ROUTES.login.slice(1),
         element: <LoginPage />,
       },
       {

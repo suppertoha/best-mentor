@@ -1,0 +1,31 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+.logoutBtn {
+  align-self: flex-start;
+  padding: 12px 24px;
+  border: 1px solid $border-light;
+  border-radius: 12px;
+  background: $bg-white;
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $accent;
+    background: $bg-page;
+  }
+}

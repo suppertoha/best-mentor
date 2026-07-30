@@ -6,7 +6,9 @@ interface ChildrenProps {
   children: ReactNode;
 }
 export const ProtectedRoute = ({ children }: ChildrenProps) => {
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  if (!isAuth) return <Navigate to="/login" replace />;
+  const token = useAppSelector((state) => state.auth.token);
+
+  if (!token) return <Navigate to="/login" replace />;
+
   return <>{children}</>;
 };
