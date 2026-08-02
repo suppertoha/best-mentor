@@ -1,25 +1,60 @@
 import { type FormEvent, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { loginUser } from "../../model/authThunks";
+import { useNavigate } from "react-router-dom";
+import { isAxiosError } from "axios";
+import { useAppDispatch } from "@/app/store/hooks";
+import { setToken } from "@/entities/user";
+import { api } from "@/shared/api";
+import { ROUTES } from "@/shared/config";
+import { TOKEN_STORAGE_KEY } from "@/shared/config/token";
+import type { LoginResponse } from "../../model/types";
 import styles from "./LoginForm.module.scss";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state) => state.auth.isLoading);
-  const error = useAppSelector((state) => state.auth.error);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(loginUser({ email, password }));
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const { data } = await api.post<LoginResponse>("/auth/login", {
+        email,
+        password,
+      });
+
+      localStorage.setItem(TOKEN_STORAGE_KEY, data.accessToken);
+      dispatch(setToken(data.accessToken));
+      navigate(ROUTES.sections, { replace: true });
+    } catch (err) {
+      if (isAxiosError(err)) {
+        const message =
+          typeof err.response?.data === "object" &&
+          err.response.data !== null &&
+          "message" in err.response.data &&
+          typeof err.response.data.message === "string"
+            ? err.response.data.message
+            : err.message;
+        setError(message);
+      } else {
+        setError("Ошибка входа");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="email">
-          Email student@example.com
+          Email admin@fe-academy.local
         </label>
         <input
           id="email"
@@ -34,7 +69,7 @@ export const LoginForm = () => {
       </div>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="password">
-          Пароль password123
+          Пароль admin123
         </label>
         <input
           id="password"
@@ -58,3 +93,5 @@ export const LoginForm = () => {
     </form>
   );
 };
+
+

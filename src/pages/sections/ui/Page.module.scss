@@ -1,0 +1,64 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+.logoutBtn {
+  padding: 12px 24px;
+  border: 1px solid $border-light;
+  border-radius: 12px;
+  background: $bg-white;
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $accent;
+    background: $bg-page;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border: 1px solid $border-light;
+  border-radius: 12px;
+  background: $bg-white;
+}
+
+.status,
+.error {
+  padding: 40px 20px;
+}
+
+.error {
+  color: #c62828;
+}
