@@ -1,0 +1,88 @@
+.root {
+  interpolate-size: allow-keywords;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+  background: $bg-white;
+  user-select: none;
+  overflow: hidden;
+
+  &::details-content {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      height 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      content-visibility 0.3s ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+
+  &[open]::details-content {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px 24px;
+  list-style: none;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    color: $accent;
+  }
+
+  .root[open] & svg {
+    transform: rotate(-180deg);
+  }
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: $text-primary;
+}
+
+.block {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 24px 16px;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  color: $text-secondary;
+}
+
+.chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapterTitle {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: $bg-page;
+  font-size: 15px;
+  font-weight: 500;
+  color: $text-primary;
+}

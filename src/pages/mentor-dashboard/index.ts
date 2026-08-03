@@ -1,1 +1,1 @@
-export { MentorDashboardPage } from "./ui/Page";
+export { MentorDashboardPage } from "./ui/MentorDashboard";

@@ -6,9 +6,9 @@
 
 .content {
   flex: 1;
-  margin-top: 40px;
+  padding-top: 24px;
 
   @include media($sm) {
-    gap: 20px;
+    padding-top: 20px;
   }
 }

@@ -3,7 +3,7 @@ import { useAppDispatch } from "@/app/store/hooks";
 import { clearToken } from "@/entities/user";
 import { ROUTES } from "@/shared/config";
 import { TOKEN_STORAGE_KEY } from "@/shared/config/token";
-import styles from "./Page.module.scss";
+import styles from "./MentorDashboard.module.scss";
 
 export const MentorDashboardPage = () => {
   const dispatch = useAppDispatch();

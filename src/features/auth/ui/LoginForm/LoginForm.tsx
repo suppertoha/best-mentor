@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isAxiosError } from "axios";
 import { useAppDispatch } from "@/app/store/hooks";
 import { setToken } from "@/entities/user";
@@ -54,7 +54,7 @@ export const LoginForm = () => {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="email">
-          Email admin@fe-academy.local
+          Email
         </label>
         <input
           id="email"
@@ -69,7 +69,7 @@ export const LoginForm = () => {
       </div>
       <div className={styles.field}>
         <label className={styles.label} htmlFor="password">
-          Пароль admin123
+          Пароль
         </label>
         <input
           id="password"
@@ -90,6 +90,9 @@ export const LoginForm = () => {
           {error}
         </p>
       )}
+      <p className={styles.link}>
+        Нет аккаунта? <Link to={ROUTES.register}>Зарегистрироваться</Link>
+      </p>
     </form>
   );
 };

@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import notFoundImage from "@/shared/assets/images/not_found.png";
-import styles from "./Page.module.scss";
+import { ROUTES } from "@/shared/config";
+import styles from "./NotFound.module.scss";
 
 export const NotFoundPage = () => {
-
   return (
     <section className={styles.page}>
       <img className={styles.icon} src={notFoundImage} alt="" aria-hidden />
@@ -10,12 +11,9 @@ export const NotFoundPage = () => {
       <p className={styles.description}>
         Возможно, ссылка устарела или страница была удалена
       </p>
-      <button
-        type="button"
-        className={styles.backBtn}
-      >
+      <Link to={ROUTES.main} className={styles.backBtn}>
         На главную
-      </button>
+      </Link>
     </section>
   );
 };

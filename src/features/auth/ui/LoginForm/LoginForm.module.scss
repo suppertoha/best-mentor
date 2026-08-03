@@ -64,3 +64,19 @@
   font-size: 14px;
   color: #c62828;
 }
+
+.link {
+  margin: 0;
+  font-size: 14px;
+  color: $text-secondary;
+  text-align: center;
+
+  a {
+    color: $accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

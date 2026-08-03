@@ -1,0 +1,1 @@
+export { setupApiAuth } from "./setupApiAuth";

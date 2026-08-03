@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import { Header } from "@/widgets/header";
 import styles from "./BaseLayout.module.scss";
 
 export const BaseLayout = () => (
   <div className={styles.layout}>
-    {/* header */}
+    <Header />
     <main className={styles.content}>
       <div className="container">
         <Outlet />

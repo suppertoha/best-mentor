@@ -1,0 +1,36 @@
+.header {
+  border-bottom: 1px solid $border-light;
+  background: $bg-white;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.logoutBtn {
+  padding: 10px 20px;
+  border: 1px solid $border-light;
+  border-radius: 12px;
+  background: $bg-white;
+  color: $text-primary;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: $accent;
+    background: $bg-page;
+  }
+}
