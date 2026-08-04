@@ -77,6 +77,100 @@
   list-style: none;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.editBtn,
+.deleteBtn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.editBtn {
+  border: 1px solid $border-light;
+  background: $bg-white;
+  color: $text-primary;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+.deleteBtn {
+  border: 1px solid #f5c2c7;
+  background: #fff5f5;
+  color: #c62828;
+
+  &:hover {
+    background: #ffe3e3;
+  }
+}
+
+.addChapterBtn {
+  padding: 8px 14px;
+  border: 1px solid $accent;
+  border-radius: 8px;
+  background: $bg-white;
+  color: $accent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background: $bg-page;
+  }
+}
+
+.chapterRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chapterActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 12px 4px;
+}
+
+.chapterEditBtn,
+.chapterDeleteBtn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chapterEditBtn {
+  border: 1px solid $border-light;
+  background: $bg-white;
+  color: $text-primary;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+}
+
+.chapterDeleteBtn {
+  border: 1px solid #f5c2c7;
+  background: #fff5f5;
+  color: #c62828;
+
+  &:hover {
+    background: #ffe3e3;
+  }
+}
+
 .chapterTitle {
   display: block;
   padding: 10px 12px;

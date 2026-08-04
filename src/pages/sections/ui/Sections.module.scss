@@ -5,11 +5,33 @@
   padding: 0 0 40px;
 }
 
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .heading {
   margin: 0;
   font-size: 24px;
   font-weight: 500;
   color: $text-primary;
+}
+
+.addBtn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  background: $accent;
+  color: $bg-white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background: $accent-dark;
+  }
 }
 
 .list {
