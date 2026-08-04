@@ -1,10 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { BaseLayout } from "@/app/layouts";
 import { ROUTES } from "@/shared/config";
-import { SectionsPage } from "@/pages/sections";
-import { LoginPage } from "@/pages/login";
-import { RegisterPage } from "@/pages/register";
-import { NotFoundPage } from "@/pages/not-found";
+import { Sections } from "@/pages/sections";
+import { Login } from "@/pages/login";
+import { Register } from "@/pages/register";
+import { NotFound } from "@/pages/not-found";
+import { Chapter } from "@/pages/chapter";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AuthRoute } from "./AuthRoute";
 
@@ -18,11 +19,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTES.login.slice(1),
-        element: <LoginPage />,
+        element: <Login />,
       },
       {
         path: ROUTES.register.slice(1),
-        element: <RegisterPage />,
+        element: <Register />,
       },
     ],
   },
@@ -34,7 +35,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.sections.slice(1),
-            element: <SectionsPage />,
+            element: <Sections />,
+          },
+          {
+            path: ROUTES.chapter.slice(1),
+            element: <Chapter />,
           },
         ],
       },
@@ -42,7 +47,7 @@ export const router = createBrowserRouter([
   },
   {
     path: ROUTES.notFound.slice(1),
-    element: <NotFoundPage />,
+    element: <NotFound />,
   },
   {
     path: "*",

@@ -3,7 +3,7 @@ import notFoundImage from "@/shared/assets/images/not_found.png";
 import { ROUTES } from "@/shared/config";
 import styles from "./NotFound.module.scss";
 
-export const NotFoundPage = () => {
+export const NotFound = () => {
   return (
     <section className={styles.page}>
       <img className={styles.icon} src={notFoundImage} alt="" aria-hidden />

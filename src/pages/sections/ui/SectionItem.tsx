@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import ArrowBottom from "@/shared/assets/icons/arrow-bottom.svg?react";
+import { getChapterPath } from "@/shared/config";
 import type { Section } from "../model/types";
 import styles from "./SectionItem.module.scss";
 
@@ -23,7 +25,9 @@ export const SectionItem = ({ section }: SectionItemProps) => {
           <ul className={styles.chapters}>
             {chapters.map((chapter) => (
               <li key={chapter.id}>
-                <span className={styles.chapterTitle}>{chapter.title}</span>
+                <Link to={getChapterPath(chapter.slug)} className={styles.chapterTitle}>
+                  {chapter.title}
+                </Link>
               </li>
             ))}
           </ul>

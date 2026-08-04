@@ -5,7 +5,7 @@ import type { Section } from "../model/types";
 import { SectionItem } from "./SectionItem";
 import styles from "./Sections.module.scss";
 
-export const SectionsPage = () => {
+export const Sections = () => {
   const [sections, setSections] = useState<Section[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);

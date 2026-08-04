@@ -48,7 +48,7 @@
 
 .title {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
   color: $text-primary;
 }
@@ -85,4 +85,10 @@
   font-size: 15px;
   font-weight: 500;
   color: $text-primary;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $border-light;
+  }
 }

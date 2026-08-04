@@ -2,10 +2,10 @@ import { type FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { isAxiosError } from "axios";
 import { useAppDispatch } from "@/app/store/hooks";
-import { setToken } from "@/entities/user";
+import { setToken, setUser } from "@/entities/user";
 import { api } from "@/shared/api";
 import { ROUTES } from "@/shared/config";
-import { TOKEN_STORAGE_KEY } from "@/shared/config/token";
+import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "@/shared/config/token";
 import type { RegisterResponse } from "../../model/types";
 import styles from "../LoginForm/LoginForm.module.scss";
 
@@ -32,6 +32,12 @@ export const RegisterForm = () => {
       if (data.accessToken) {
         localStorage.setItem(TOKEN_STORAGE_KEY, data.accessToken);
         dispatch(setToken(data.accessToken));
+
+        if (data.user) {
+          localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(data.user));
+          dispatch(setUser(data.user));
+        }
+
         navigate(ROUTES.sections, { replace: true });
         return;
       }

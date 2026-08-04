@@ -1,1 +1,1 @@
-export { LoginPage } from "./ui/Login";
+export { Login } from "./ui/Login";
