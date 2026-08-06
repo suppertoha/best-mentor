@@ -1,111 +1,86 @@
-import { type FormEvent, useState } from "react";
-import { isAxiosError } from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "@/shared/api";
+import { showErrorToast } from "@/shared/lib/toast";
+import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { buildSectionSlug } from "../../lib/buildSectionSlug";
 import type { CreateSectionDto } from "../../model/types";
+import {
+  createSectionSchema,
+  type CreateSectionFormValues,
+} from "../../model/schema";
 import styles from "./CreateSectionForm.module.scss";
+
+const fields = [
+  {
+    name: "title",
+    id: "section-title",
+    label: "Название",
+    kind: "input",
+    type: "text",
+    placeholder: "HTML",
+  },
+  {
+    name: "description",
+    id: "section-description",
+    label: "Описание",
+    kind: "textarea",
+    placeholder: "Основы разметки веб-страниц",
+  },
+  {
+    name: "slug",
+    id: "section-slug",
+    label: "Slug (необязательно)",
+    kind: "input",
+    type: "text",
+    placeholder: "html",
+  },
+] satisfies ReadonlyArray<FormFieldConfig<CreateSectionFormValues>>;
 
 interface CreateSectionFormProps {
   onSuccess: () => void;
 }
 
 export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [slug, setSlug] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { control, handleSubmit, reset } = useForm<CreateSectionFormValues>({
+    resolver: zodResolver(createSectionSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      slug: "",
+    },
+  });
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (values: CreateSectionFormValues) => {
     setIsLoading(true);
-    setError(null);
 
     const payload: CreateSectionDto = {
-      title: title.trim(),
-      description: description.trim(),
-      slug: buildSectionSlug(title, slug),
+      title: values.title.trim(),
+      description: values.description.trim(),
+      slug: buildSectionSlug(values.title, values.slug),
     };
 
     try {
       await api.post("/sections", payload);
-      setTitle("");
-      setDescription("");
-      setSlug("");
+      reset();
       onSuccess();
     } catch (err) {
-      if (isAxiosError(err)) {
-        const message =
-          typeof err.response?.data === "object" &&
-          err.response.data !== null &&
-          "message" in err.response.data &&
-          typeof err.response.data.message === "string"
-            ? err.response.data.message
-            : err.message;
-        setError(message);
-      } else {
-        setError("Не удалось создать раздел");
-      }
+      showErrorToast(err, "Не удалось создать раздел");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="section-title">
-          Название
-        </label>
-        <input
-          id="section-title"
-          className={styles.input}
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          placeholder="HTML"
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="section-description">
-          Описание
-        </label>
-        <textarea
-          id="section-description"
-          className={styles.textarea}
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-          placeholder="Основы разметки веб-страниц"
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="section-slug">
-          Slug (необязательно)
-        </label>
-        <input
-          id="section-slug"
-          className={styles.input}
-          type="text"
-          value={slug}
-          onChange={(event) => setSlug(event.target.value)}
-          placeholder="html"
-        />
-        <p className={styles.hint}>Если пусто — сгенерируется из названия</p>
-      </div>
-
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <FormFields fields={fields} control={control} />
+      <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
       <button className={styles.submit} type="submit" disabled={isLoading}>
         {isLoading ? "Сохранение..." : "Создать раздел"}
       </button>
-
-      {error && (
-        <p className={styles.error} role="alert">
-          {error}
-        </p>
-      )}
     </form>
   );
 };

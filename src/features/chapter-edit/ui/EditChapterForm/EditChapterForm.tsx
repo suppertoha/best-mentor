@@ -1,7 +1,15 @@
-import { type FormEvent, useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { isAxiosError } from "axios";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { buildChapterSlug } from "@/features/chapter-create/lib/buildChapterSlug";
+import {
+  editChapterSchema,
+  type EditChapterFormValues,
+} from "@/features/chapter-create/model/schema";
 import { api } from "@/shared/api";
+import { showErrorToast } from "@/shared/lib/toast";
+import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import type { EditableChapter, UpdateChapterDto } from "../../model/types";
 import styles from "./EditChapterForm.module.scss";
 
@@ -18,37 +26,66 @@ interface EditChapterFormProps {
 }
 
 export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) => {
-  const [title, setTitle] = useState(chapter.title);
-  const [content, setContent] = useState("");
-  const [slug, setSlug] = useState(chapter.slug);
+  const fields = useMemo(
+    () =>
+      [
+        {
+          name: "title",
+          id: `edit-chapter-title-${chapter.id}`,
+          label: "Название",
+          kind: "input",
+          type: "text",
+        },
+        {
+          name: "content",
+          id: `edit-chapter-content-${chapter.id}`,
+          label: "Содержание",
+          kind: "textarea",
+        },
+        {
+          name: "slug",
+          id: `edit-chapter-slug-${chapter.id}`,
+          label: "Slug",
+          kind: "input",
+          type: "text",
+        },
+      ] satisfies ReadonlyArray<FormFieldConfig<EditChapterFormValues>>,
+    [chapter.id]
+  );
+
+  const { control, handleSubmit, reset } = useForm<EditChapterFormValues>({
+    resolver: zodResolver(editChapterSchema),
+    defaultValues: {
+      title: chapter.title,
+      content: "",
+      slug: chapter.slug,
+    },
+  });
+
   const [isLoading, setIsLoading] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchChapter = async () => {
       setIsFetching(true);
-      setError(null);
 
       try {
         const { data } = await api.get<ChapterDetailResponse>(`/chapters/${chapter.slug}`, {
           signal: controller.signal,
         });
-        setTitle(data.title);
-        setContent(data.content);
-        setSlug(data.slug);
+        reset({
+          title: data.title,
+          content: data.content,
+          slug: data.slug,
+        });
       } catch (err) {
         if (isAxiosError(err) && err.code === "ERR_CANCELED") {
           return;
         }
 
-        if (isAxiosError(err)) {
-          setError(err.message);
-        } else {
-          setError("Не удалось загрузить главу");
-        }
+        showErrorToast(err, "Не удалось загрузить главу");
       } finally {
         if (!controller.signal.aborted) {
           setIsFetching(false);
@@ -56,40 +93,27 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
       }
     };
 
-    void fetchChapter();
+    fetchChapter();
 
     return () => {
       controller.abort();
     };
-  }, [chapter.slug]);
+  }, [chapter.slug, reset]);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = async (values: EditChapterFormValues) => {
     setIsLoading(true);
-    setError(null);
 
     const payload: UpdateChapterDto = {
-      title: title.trim(),
-      content: content.trim(),
-      slug: buildChapterSlug(title, slug),
+      title: values.title.trim(),
+      content: values.content.trim(),
+      slug: buildChapterSlug(values.title, values.slug),
     };
 
     try {
       await api.patch(`/chapters/${chapter.id}`, payload);
       onSuccess();
     } catch (err) {
-      if (isAxiosError(err)) {
-        const message =
-          typeof err.response?.data === "object" &&
-          err.response.data !== null &&
-          "message" in err.response.data &&
-          typeof err.response.data.message === "string"
-            ? err.response.data.message
-            : err.message;
-        setError(message);
-      } else {
-        setError("Не удалось обновить главу");
-      }
+      showErrorToast(err, "Не удалось обновить главу");
     } finally {
       setIsLoading(false);
     }
@@ -100,57 +124,11 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor={`edit-chapter-title-${chapter.id}`}>
-          Название
-        </label>
-        <input
-          id={`edit-chapter-title-${chapter.id}`}
-          className={styles.input}
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor={`edit-chapter-content-${chapter.id}`}>
-          Содержание
-        </label>
-        <textarea
-          id={`edit-chapter-content-${chapter.id}`}
-          className={styles.textarea}
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor={`edit-chapter-slug-${chapter.id}`}>
-          Slug
-        </label>
-        <input
-          id={`edit-chapter-slug-${chapter.id}`}
-          className={styles.input}
-          type="text"
-          value={slug}
-          onChange={(event) => setSlug(event.target.value)}
-          required
-        />
-      </div>
-
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <FormFields fields={fields} control={control} />
       <button className={styles.submit} type="submit" disabled={isLoading}>
         {isLoading ? "Сохранение..." : "Сохранить"}
       </button>
-
-      {error && (
-        <p className={styles.error} role="alert">
-          {error}
-        </p>
-      )}
     </form>
   );
 };

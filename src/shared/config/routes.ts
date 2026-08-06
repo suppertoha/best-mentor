@@ -4,6 +4,7 @@ export const ROUTES = {
   chapter: "/chapters/:slug",
   login: "/login",
   register: "/register",
+  profile: "/profile",
   notFound: "/not-found",
 } as const;
 

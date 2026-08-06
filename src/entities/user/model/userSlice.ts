@@ -1,49 +1,27 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { TOKEN_STORAGE_KEY, USER_STORAGE_KEY } from "@/shared/config/token";
 
 export interface AuthUser {
   id: number;
   email: string;
-  role: string;
+  role: "STUDENT" | "ADMIN";
+  firstName: string | null;
+  lastName: string | null;
+  bio: string | null;
+  githubUrl: string | null;
+  telegramUsername: string | null;
+  websiteUrl: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 
 interface UserState {
-  token: string | null;
+  token: undefined | null | string;
   user: AuthUser | null;
 }
 
-const getInitialToken = (): string | null => {
-  try {
-    return localStorage.getItem(TOKEN_STORAGE_KEY);
-  } catch {
-    return null;
-  }
-};
-
-const getInitialUser = (): AuthUser | null => {
-  try {
-    const raw = localStorage.getItem(USER_STORAGE_KEY);
-    if (!raw) return null;
-
-    const parsed = JSON.parse(raw) as AuthUser;
-    if (
-      typeof parsed?.id === "number" &&
-      typeof parsed?.email === "string" &&
-      typeof parsed?.role === "string"
-    ) {
-      return parsed;
-    }
-
-    return null;
-  } catch {
-    return null;
-  }
-};
-
 const initialState: UserState = {
-  token: getInitialToken(),
-  user: getInitialUser(),
+  token: undefined,
+  user: null,
 };
 
 const userSlice = createSlice({

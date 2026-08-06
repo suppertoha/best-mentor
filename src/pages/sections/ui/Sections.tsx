@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { isAxiosError } from "axios";
 import { useAppSelector } from "@/app/store/hooks";
+import { showErrorToast } from "@/shared/lib/toast";
 import { isAdmin } from "@/entities/user";
 import { CreateChapterForm } from "@/features/chapter-create";
 import { EditChapterForm } from "@/features/chapter-edit";
@@ -33,11 +34,8 @@ export const Sections = () => {
         return;
       }
 
-      if (isAxiosError(err)) {
-        setError(err.message);
-      } else {
-        setError("Не удалось загрузить разделы");
-      }
+      showErrorToast(err, "Не удалось загрузить разделы");
+      setError("Не удалось загрузить разделы");
     } finally {
       if (!signal?.aborted) {
         setIsLoading(false);
@@ -83,18 +81,7 @@ export const Sections = () => {
       await api.delete(`/sections/${section.id}`);
       void fetchSections();
     } catch (err) {
-      if (isAxiosError(err)) {
-        const message =
-          typeof err.response?.data === "object" &&
-          err.response.data !== null &&
-          "message" in err.response.data &&
-          typeof err.response.data.message === "string"
-            ? err.response.data.message
-            : err.message;
-        window.alert(message);
-      } else {
-        window.alert("Не удалось удалить раздел");
-      }
+      showErrorToast(err, "Не удалось удалить раздел");
     }
   };
 
@@ -106,18 +93,7 @@ export const Sections = () => {
       await api.delete(`/chapters/${chapter.id}`);
       void fetchSections();
     } catch (err) {
-      if (isAxiosError(err)) {
-        const message =
-          typeof err.response?.data === "object" &&
-          err.response.data !== null &&
-          "message" in err.response.data &&
-          typeof err.response.data.message === "string"
-            ? err.response.data.message
-            : err.message;
-        window.alert(message);
-      } else {
-        window.alert("Не удалось удалить главу");
-      }
+      showErrorToast(err, "Не удалось удалить главу");
     }
   };
 

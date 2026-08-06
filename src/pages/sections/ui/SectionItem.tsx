@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import ArrowBottom from "@/shared/assets/icons/arrow-bottom.svg?react";
+import PencilIcon from "@/shared/assets/icons/pencil.svg?react";
+import TrashIcon from "@/shared/assets/icons/trash.svg?react";
 import { getChapterPath } from "@/shared/config";
 import type { Chapter, Section } from "../model/types";
 import styles from "./SectionItem.module.scss";
@@ -29,37 +31,45 @@ export const SectionItem = ({
     <details className={styles.root}>
       <summary className={styles.head}>
         <p className={styles.title}>{section.title}</p>
-        <ArrowBottom />
+
+        <div
+          className={styles.headActions}
+          onClick={(event) => event.stopPropagation()}
+          onKeyDown={(event) => event.stopPropagation()}
+        >
+          {showAdminActions && (
+            <>
+              <button
+                className={styles.editBtn}
+                type="button"
+                aria-label="Редактировать раздел"
+                onClick={() => onEdit?.(section)}
+              >
+                <PencilIcon />
+              </button>
+              <button
+                className={styles.deleteBtn}
+                type="button"
+                aria-label="Удалить раздел"
+                onClick={() => onDelete?.(section)}
+              >
+                <TrashIcon />
+              </button>
+              <button
+                className={styles.addChapterBtn}
+                type="button"
+                onClick={() => onAddChapter?.(section)}
+              >
+                Добавить главу
+              </button>
+            </>
+          )}
+          <ArrowBottom className={styles.arrow} />
+        </div>
       </summary>
 
       <div className={styles.block}>
         <p className={styles.text}>{section.description}</p>
-
-        {showAdminActions && (
-          <div className={styles.actions}>
-            <button
-              className={styles.editBtn}
-              type="button"
-              onClick={() => onEdit?.(section)}
-            >
-              Редактировать
-            </button>
-            <button
-              className={styles.deleteBtn}
-              type="button"
-              onClick={() => onDelete?.(section)}
-            >
-              Удалить
-            </button>
-            <button
-              className={styles.addChapterBtn}
-              type="button"
-              onClick={() => onAddChapter?.(section)}
-            >
-              Добавить главу
-            </button>
-          </div>
-        )}
 
         {chapters.length > 0 && (
           <ul className={styles.chapters}>
@@ -73,16 +83,18 @@ export const SectionItem = ({
                     <button
                       className={styles.chapterEditBtn}
                       type="button"
+                      aria-label={`Редактировать главу «${chapter.title}»`}
                       onClick={() => onEditChapter?.(chapter)}
                     >
-                      Редактировать
+                      <PencilIcon />
                     </button>
                     <button
                       className={styles.chapterDeleteBtn}
                       type="button"
+                      aria-label={`Удалить главу «${chapter.title}»`}
                       onClick={() => onDeleteChapter?.(chapter)}
                     >
-                      Удалить
+                      <TrashIcon />
                     </button>
                   </div>
                 )}

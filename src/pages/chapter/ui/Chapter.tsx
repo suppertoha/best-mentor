@@ -3,6 +3,7 @@ import { isAxiosError } from "axios";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { api } from "@/shared/api";
 import { ROUTES } from "@/shared/config";
+import { showErrorToast } from "@/shared/lib/toast";
 import type { ChapterDetail } from "../model/types";
 import styles from "./Chapter.module.scss";
 
@@ -27,11 +28,8 @@ export const Chapter = () => {
         return;
       }
 
-      if (isAxiosError(err)) {
-        setError(err.message);
-      } else {
-        setError("Не удалось загрузить главу");
-      }
+      showErrorToast(err, "Не удалось загрузить главу");
+      setError("Не удалось загрузить главу");
     } finally {
       if (!signal.aborted) {
         setIsLoading(false);

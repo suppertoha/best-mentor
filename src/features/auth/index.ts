@@ -1,5 +1,4 @@
 export type {
-  AuthUser,
   LoginDto,
   LoginResponse,
   RegisterDto,

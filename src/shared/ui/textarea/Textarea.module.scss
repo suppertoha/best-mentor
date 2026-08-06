@@ -1,0 +1,44 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+.textarea {
+  min-height: 96px;
+  padding: 10px 12px;
+  border: 1px solid $border-light;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $text-primary;
+  background: $bg-white;
+  resize: vertical;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+  }
+}
+
+.textareaError {
+  border-color: #c62828;
+}
+
+.error {
+  margin: 0;
+  font-size: 14px;
+  color: #c62828;
+}

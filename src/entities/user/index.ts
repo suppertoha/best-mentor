@@ -6,3 +6,4 @@ export {
   type AuthUser,
 } from "./model/userSlice";
 export { isAdmin } from "./lib/isAdmin";
+export { getUserInitials } from "./lib/getUserInitials";

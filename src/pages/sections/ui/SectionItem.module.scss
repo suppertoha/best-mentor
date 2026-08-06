@@ -27,22 +27,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   cursor: pointer;
   padding: 16px 24px;
   list-style: none;
 
-  svg {
-    flex-shrink: 0;
-    transition: transform 0.3s;
-    color: $accent;
-  }
-
-  .root[open] & svg {
-    transform: rotate(-180deg);
-  }
-
   &::-webkit-details-marker {
     display: none;
+  }
+}
+
+.headActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.arrow {
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  color: $accent;
+
+  .root[open] & {
+    transform: rotate(-180deg);
   }
 }
 
@@ -51,6 +60,7 @@
   font-weight: 600;
   margin: 0;
   color: $text-primary;
+  min-width: 0;
 }
 
 .block {
@@ -77,19 +87,24 @@
   list-style: none;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
 .editBtn,
 .deleteBtn {
-  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
   cursor: pointer;
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
 }
 
 .editBtn {
@@ -122,6 +137,7 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover {
     background: $bg-page;
@@ -138,16 +154,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0 12px 4px;
 }
 
 .chapterEditBtn,
 .chapterDeleteBtn {
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
   cursor: pointer;
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
 }
 
 .chapterEditBtn {

@@ -4,41 +4,6 @@
   gap: 16px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.label {
-  font-size: 14px;
-  font-weight: 500;
-  color: $text-primary;
-}
-
-.input,
-.textarea {
-  padding: 10px 12px;
-  border: 1px solid $border-light;
-  border-radius: 8px;
-  font-size: 16px;
-  color: $text-primary;
-  background: $bg-white;
-  transition: border-color 0.2s;
-
-  &:focus {
-    outline: none;
-    border-color: $accent;
-  }
-}
-
-.textarea {
-  min-height: 120px;
-  resize: vertical;
-  font-family: inherit;
-  line-height: 1.5;
-}
-
 .status {
   margin: 0;
   font-size: 14px;

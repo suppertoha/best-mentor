@@ -1,9 +1,42 @@
-import { type FormEvent, useState } from "react";
-import { isAxiosError } from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "@/shared/api";
+import { showErrorToast } from "@/shared/lib/toast";
+import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { buildChapterSlug } from "../../lib/buildChapterSlug";
 import type { CreateChapterDto } from "../../model/types";
+import {
+  createChapterSchema,
+  type CreateChapterFormValues,
+} from "../../model/schema";
 import styles from "./CreateChapterForm.module.scss";
+
+const fields = [
+  {
+    name: "title",
+    id: "chapter-title",
+    label: "Название",
+    kind: "input",
+    type: "text",
+    placeholder: "Введение",
+  },
+  {
+    name: "content",
+    id: "chapter-content",
+    label: "Содержание",
+    kind: "textarea",
+    placeholder: "Текст главы",
+  },
+  {
+    name: "slug",
+    id: "chapter-slug",
+    label: "Slug (необязательно)",
+    kind: "input",
+    type: "text",
+    placeholder: "html-introduction",
+  },
+] satisfies ReadonlyArray<FormFieldConfig<CreateChapterFormValues>>;
 
 interface CreateChapterFormProps {
   sectionId: number;
@@ -11,102 +44,44 @@ interface CreateChapterFormProps {
 }
 
 export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormProps) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [slug, setSlug] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { control, handleSubmit, reset } = useForm<CreateChapterFormValues>({
+    resolver: zodResolver(createChapterSchema),
+    defaultValues: {
+      title: "",
+      content: "",
+      slug: "",
+    },
+  });
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (values: CreateChapterFormValues) => {
     setIsLoading(true);
-    setError(null);
 
     const payload: CreateChapterDto = {
-      title: title.trim(),
-      content: content.trim(),
-      slug: buildChapterSlug(title, slug),
+      title: values.title.trim(),
+      content: values.content.trim(),
+      slug: buildChapterSlug(values.title, values.slug),
     };
 
     try {
       await api.post(`/sections/${sectionId}/chapters`, payload);
-      setTitle("");
-      setContent("");
-      setSlug("");
+      reset();
       onSuccess();
     } catch (err) {
-      if (isAxiosError(err)) {
-        const message =
-          typeof err.response?.data === "object" &&
-          err.response.data !== null &&
-          "message" in err.response.data &&
-          typeof err.response.data.message === "string"
-            ? err.response.data.message
-            : err.message;
-        setError(message);
-      } else {
-        setError("Не удалось создать главу");
-      }
+      showErrorToast(err, "Не удалось создать главу");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="chapter-title">
-          Название
-        </label>
-        <input
-          id="chapter-title"
-          className={styles.input}
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-          placeholder="Введение"
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="chapter-content">
-          Содержание
-        </label>
-        <textarea
-          id="chapter-content"
-          className={styles.textarea}
-          value={content}
-          onChange={(event) => setContent(event.target.value)}
-          placeholder="Текст главы"
-          required
-        />
-      </div>
-
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="chapter-slug">
-          Slug (необязательно)
-        </label>
-        <input
-          id="chapter-slug"
-          className={styles.input}
-          type="text"
-          value={slug}
-          onChange={(event) => setSlug(event.target.value)}
-          placeholder="html-introduction"
-        />
-        <p className={styles.hint}>Если пусто — сгенерируется из названия</p>
-      </div>
-
+    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <FormFields fields={fields} control={control} />
+      <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
       <button className={styles.submit} type="submit" disabled={isLoading}>
         {isLoading ? "Сохранение..." : "Создать главу"}
       </button>
-
-      {error && (
-        <p className={styles.error} role="alert">
-          {error}
-        </p>
-      )}
     </form>
   );
 };

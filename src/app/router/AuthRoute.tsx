@@ -5,7 +5,9 @@ import { ROUTES } from "@/shared/config";
 export const AuthRoute = () => {
   const token = useAppSelector((state) => state.user.token);
 
-  if (token) return <Navigate to={ROUTES.sections} replace />;
+  if (token === undefined) return <p>Загрузка...</p>;
 
+  if (token) return <Navigate to={ROUTES.sections} />;
+	
   return <Outlet />;
 };
