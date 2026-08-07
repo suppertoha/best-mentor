@@ -1,0 +1,32 @@
+.handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid $border-light;
+  border-radius: 8px;
+  background: $bg-white;
+  color: $text-muted;
+  cursor: grab;
+  touch-action: none;
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    overflow: visible;
+  }
+
+  &:hover {
+    border-color: $accent;
+    color: $accent;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}

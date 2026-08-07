@@ -1,1 +1,1 @@
-export { Sections } from "./ui/Sections";
+export { Sections } from "./ui";

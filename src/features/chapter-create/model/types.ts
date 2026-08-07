@@ -1,6 +1,1 @@
-export interface CreateChapterDto {
-  title: string;
-  content: string;
-  slug?: string;
-  sortOrder?: number;
-}
+export type { CreateChapterDto } from "@/shared/api";

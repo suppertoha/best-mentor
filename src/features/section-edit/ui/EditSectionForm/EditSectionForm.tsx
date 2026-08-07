@@ -6,9 +6,10 @@ import {
   editSectionSchema,
   type EditSectionFormValues,
 } from "@/features/section-create/model/schema";
-import { api } from "@/shared/api";
-import { showErrorToast } from "@/shared/lib/toast";
+import { sectionsService } from "@/shared/api";
+import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
+import { Button } from "@/shared/ui";
 import type { EditableSection, UpdateSectionDto } from "../../model/types";
 import styles from "./EditSectionForm.module.scss";
 
@@ -74,10 +75,11 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
     };
 
     try {
-      await api.patch(`/sections/${section.id}`, payload);
+      await sectionsService.update(section.id, payload);
+      showSuccessToast("Раздел обновлён");
       onSuccess();
-    } catch (err) {
-      showErrorToast(err, "Не удалось обновить раздел");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -86,9 +88,15 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Сохранение..." : "Сохранить"}
-      </button>
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Сохранение..."
+      >
+        Сохранить
+      </Button>
     </form>
   );
 };

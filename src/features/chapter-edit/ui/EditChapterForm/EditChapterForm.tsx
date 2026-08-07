@@ -7,18 +7,12 @@ import {
   editChapterSchema,
   type EditChapterFormValues,
 } from "@/features/chapter-create/model/schema";
-import { api } from "@/shared/api";
-import { showErrorToast } from "@/shared/lib/toast";
+import { chaptersService } from "@/shared/api";
+import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
+import { Button } from "@/shared/ui";
 import type { EditableChapter, UpdateChapterDto } from "../../model/types";
 import styles from "./EditChapterForm.module.scss";
-
-interface ChapterDetailResponse {
-  id: number;
-  title: string;
-  slug: string;
-  content: string;
-}
 
 interface EditChapterFormProps {
   chapter: EditableChapter;
@@ -72,9 +66,7 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
       setIsFetching(true);
 
       try {
-        const { data } = await api.get<ChapterDetailResponse>(`/chapters/${chapter.slug}`, {
-          signal: controller.signal,
-        });
+        const data = await chaptersService.getBySlug(chapter.slug, controller.signal);
         reset({
           title: data.title,
           content: data.content,
@@ -84,8 +76,6 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
         if (isAxiosError(err) && err.code === "ERR_CANCELED") {
           return;
         }
-
-        showErrorToast(err, "Не удалось загрузить главу");
       } finally {
         if (!controller.signal.aborted) {
           setIsFetching(false);
@@ -110,10 +100,11 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
     };
 
     try {
-      await api.patch(`/chapters/${chapter.id}`, payload);
+      await chaptersService.update(chapter.id, payload);
+      showSuccessToast("Глава обновлена");
       onSuccess();
-    } catch (err) {
-      showErrorToast(err, "Не удалось обновить главу");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -126,9 +117,15 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Сохранение..." : "Сохранить"}
-      </button>
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Сохранение..."
+      >
+        Сохранить
+      </Button>
     </form>
   );
 };

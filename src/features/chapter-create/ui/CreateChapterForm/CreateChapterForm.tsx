@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "@/shared/api";
-import { showErrorToast } from "@/shared/lib/toast";
+import { chaptersService } from "@/shared/api";
+import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
+import { Button } from "@/shared/ui";
 import { buildChapterSlug } from "../../lib/buildChapterSlug";
 import type { CreateChapterDto } from "../../model/types";
 import {
@@ -65,11 +66,12 @@ export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormPro
     };
 
     try {
-      await api.post(`/sections/${sectionId}/chapters`, payload);
+      await chaptersService.create(sectionId, payload);
+      showSuccessToast("Глава создана");
       reset();
       onSuccess();
-    } catch (err) {
-      showErrorToast(err, "Не удалось создать главу");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -79,9 +81,15 @@ export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormPro
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
       <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Сохранение..." : "Создать главу"}
-      </button>
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Сохранение..."
+      >
+        Создать главу
+      </Button>
     </form>
   );
 };

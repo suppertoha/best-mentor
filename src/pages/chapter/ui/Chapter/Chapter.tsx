@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { isAxiosError } from "axios";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { api } from "@/shared/api";
+import { chaptersService } from "@/shared/api";
 import { ROUTES } from "@/shared/config";
-import { showErrorToast } from "@/shared/lib/toast";
-import type { ChapterDetail } from "../model/types";
+import type { ChapterDetail } from "../../model/types";
 import styles from "./Chapter.module.scss";
 
 export const Chapter = () => {
@@ -16,7 +15,7 @@ export const Chapter = () => {
 
   const fetchChapter = async (chapterSlug: string, signal: AbortSignal) => {
     try {
-      const { data } = await api.get<ChapterDetail>(`/chapters/${chapterSlug}`, { signal });
+      const data = await chaptersService.getBySlug(chapterSlug, signal);
       setChapter(data);
     } catch (err) {
       if (isAxiosError(err) && err.code === "ERR_CANCELED") {
@@ -28,7 +27,6 @@ export const Chapter = () => {
         return;
       }
 
-      showErrorToast(err, "Не удалось загрузить главу");
       setError("Не удалось загрузить главу");
     } finally {
       if (!signal.aborted) {

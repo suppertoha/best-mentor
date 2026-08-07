@@ -37,6 +37,18 @@
   }
 }
 
+.headMain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.sectionDragHandle {
+  flex-shrink: 0;
+}
+
 .headActions {
   display: flex;
   align-items: center;
@@ -127,33 +139,46 @@
     background: #ffe3e3;
   }
 }
-
-.addChapterBtn {
-  padding: 8px 14px;
-  border: 1px solid $accent;
-  border-radius: 8px;
-  background: $bg-white;
-  color: $accent;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &:hover {
-    background: $bg-page;
-  }
-}
-
 .chapterRow {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
+.chapterMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.chapterDragHandle {
+  flex-shrink: 0;
+}
+
+.chapterTitle {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: $bg-page;
+  font-size: 15px;
+  font-weight: 500;
+  color: $text-primary;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $border-light;
+  }
+}
+
 .chapterActions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding-left: 40px;
 }
 
 .chapterEditBtn,
@@ -197,18 +222,6 @@
   }
 }
 
-.chapterTitle {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 8px;
-  background: $bg-page;
-  font-size: 15px;
-  font-weight: 500;
-  color: $text-primary;
-  text-decoration: none;
-  transition: background 0.2s;
-
-  &:hover {
-    background: $border-light;
-  }
+.sortableItem {
+  list-style: none;
 }

@@ -3,12 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch } from "@/app/store/hooks";
-import { api } from "@/shared/api";
+import { authService } from "@/shared/api";
 import { ROUTES } from "@/shared/config";
-import { authenticateWithToken } from "@/shared/lib/auth";
-import { showErrorToast } from "@/shared/lib/toast";
+import { loginWithToken } from "@/app/hooks";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
-import type { LoginResponse } from "../../model/types";
+import { Button } from "@/shared/ui";
 import { loginSchema, type LoginFormValues } from "../../model/schema";
 import styles from "./LoginForm.module.scss";
 
@@ -47,11 +46,11 @@ export const LoginForm = () => {
     setIsLoading(true);
 
     try {
-      const { data } = await api.post<LoginResponse>("/auth/login", values);
-      await authenticateWithToken(dispatch, data.accessToken);
+      const { accessToken } = await authService.login(values);
+      await loginWithToken(dispatch, accessToken);
       navigate(ROUTES.sections, { replace: true });
-    } catch (err) {
-      showErrorToast(err, "Ошибка входа");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -60,9 +59,15 @@ export const LoginForm = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Загрузка..." : "Войти"}
-      </button>
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Загрузка..."
+      >
+        Войти
+      </Button>
       <p className={styles.link}>
         Нет аккаунта? <Link to={ROUTES.register}>Зарегистрироваться</Link>
       </p>

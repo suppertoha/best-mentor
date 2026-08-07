@@ -1,5 +1,6 @@
 import { type ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { Button } from "../button";
 import styles from "./Modal.module.scss";
 
 interface ModalProps {
@@ -38,14 +39,15 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
       >
         <div className={styles.header}>
           {title ? <h2 className={styles.title}>{title}</h2> : <span />}
-          <button
+          <Button
+            variant="ghost"
             className={styles.closeBtn}
             type="button"
             onClick={onClose}
             aria-label="Закрыть"
           >
             ×
-          </button>
+          </Button>
         </div>
         <div className={styles.body}>{children}</div>
       </div>

@@ -3,29 +3,6 @@
   flex-direction: column;
   gap: 16px;
 }
-
-.submit {
-  margin-top: 4px;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 12px;
-  background: $accent;
-  color: $bg-white;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s, opacity 0.2s;
-
-  &:hover:not(:disabled) {
-    background: $accent-dark;
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
 .error {
   margin: 0;
   font-size: 14px;

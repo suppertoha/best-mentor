@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
-import { setUser, type AuthUser } from "@/entities/user";
-import { api } from "@/shared/api";
-import { showErrorToast } from "@/shared/lib/toast";
+import { setUser } from "@/entities/user";
+import { profileService } from "@/shared/api";
+import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
+import { Button } from "@/shared/ui";
 import {
   emptyProfileValues,
   profileSchema,
@@ -75,7 +76,6 @@ export const ProfileForm = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) {
@@ -85,15 +85,14 @@ export const ProfileForm = () => {
 
   const onSubmit = async (values: ProfileFormValues) => {
     setIsLoading(true);
-    setSuccess(null);
 
     try {
-      const { data } = await api.patch<AuthUser>("/profile", toUpdateProfilePayload(values));
+      const data = await profileService.update(toUpdateProfilePayload(values));
       dispatch(setUser(data));
       reset(toProfileFormValues(data));
-      setSuccess("Профиль сохранён");
-    } catch (err) {
-      showErrorToast(err, "Не удалось сохранить профиль");
+      showSuccessToast("Профиль сохранён");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -107,14 +106,15 @@ export const ProfileForm = () => {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <p className={styles.email}>{user.email}</p>
       <FormFields fields={fields} control={control} />
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Сохранение..." : "Сохранить"}
-      </button>
-      {success && (
-        <p className={styles.success} role="status">
-          {success}
-        </p>
-      )}
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Сохранение..."
+      >
+        Сохранить
+      </Button>
     </form>
   );
 };

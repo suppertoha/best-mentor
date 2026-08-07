@@ -1,9 +1,3 @@
-export {
-  userReducer,
-  setToken,
-  clearToken,
-  setUser,
-  type AuthUser,
-} from "./model/userSlice";
-export { isAdmin } from "./lib/isAdmin";
-export { getUserInitials } from "./lib/getUserInitials";
+export * from "./model/userSlice";
+export * from "./lib/isAdmin";
+export * from "./lib/getUserInitials";

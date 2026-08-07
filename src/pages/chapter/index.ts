@@ -1,1 +1,1 @@
-export { Chapter } from "./ui/Chapter";
+export { Chapter } from "./ui";

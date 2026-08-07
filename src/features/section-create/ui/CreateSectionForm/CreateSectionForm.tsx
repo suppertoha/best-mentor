@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { api } from "@/shared/api";
-import { showErrorToast } from "@/shared/lib/toast";
+import { sectionsService } from "@/shared/api";
+import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
+import { Button } from "@/shared/ui";
 import { buildSectionSlug } from "../../lib/buildSectionSlug";
 import type { CreateSectionDto } from "../../model/types";
 import {
@@ -64,11 +65,12 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
     };
 
     try {
-      await api.post("/sections", payload);
+      await sectionsService.create(payload);
+      showSuccessToast("Раздел создан");
       reset();
       onSuccess();
-    } catch (err) {
-      showErrorToast(err, "Не удалось создать раздел");
+    } catch {
+      // handled by API interceptor
     } finally {
       setIsLoading(false);
     }
@@ -78,9 +80,15 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
       <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
-      <button className={styles.submit} type="submit" disabled={isLoading}>
-        {isLoading ? "Сохранение..." : "Создать раздел"}
-      </button>
+      <Button
+        type="submit"
+        fullWidth
+        isLoading={isLoading}
+        showLoader
+        loadingText="Сохранение..."
+      >
+        Создать раздел
+      </Button>
     </form>
   );
 };

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { clearToken, getUserInitials, isAdmin } from "@/entities/user";
 import { ROUTES } from "@/shared/config";
 import { TOKEN_STORAGE_KEY } from "@/shared/config/token";
+import { Button } from "@/shared/ui";
 import styles from "./Header.module.scss";
 
 export const Header = () => {
@@ -57,7 +58,8 @@ export const Header = () => {
         <div className={styles.actions}>
           {isAdmin(user) && <span className={styles.roleBadge}>Admin</span>}
           <div className={styles.menu} ref={menuRef}>
-            <button
+            <Button
+              variant="ghost"
               className={styles.avatar}
               type="button"
               aria-label="Меню пользователя"
@@ -66,15 +68,25 @@ export const Header = () => {
               onClick={() => setIsMenuOpen((prev) => !prev)}
             >
               {getUserInitials(user)}
-            </button>
+            </Button>
             {isMenuOpen && (
               <div className={styles.dropdown} role="menu">
-                <button className={styles.menuItem} type="button" onClick={handleProfileClick}>
+                <Button
+                  variant="ghost"
+                  className={styles.menuItem}
+                  type="button"
+                  onClick={handleProfileClick}
+                >
                   Профиль
-                </button>
-                <button className={styles.menuItem} type="button" onClick={handleLogout}>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className={styles.menuItem}
+                  type="button"
+                  onClick={handleLogout}
+                >
                   Выйти
-                </button>
+                </Button>
               </div>
             )}
           </div>
