@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "html-introduction",
+    "title": "Введение",
+    "file": "01-vvedenie.md",
+    "sortOrder": 0
+  },
+  {
+    "slug": "html-tags-and-structure",
+    "title": "Теги и структура",
+    "file": "02-tegi-i-struktura.md",
+    "sortOrder": 1
+  },
+  {
+    "slug": "html-forms",
+    "title": "Формы",
+    "file": "03-formy.md",
+    "sortOrder": 2
+  },
+  {
+    "slug": "html-semantic-markup",
+    "title": "Семантическая разметка",
+    "file": "04-semanticheskaya-razmetka.md",
+    "sortOrder": 3
+  },
+  {
+    "slug": "html-tables",
+    "title": "Таблицы",
+    "file": "05-tablitsy.md",
+    "sortOrder": 4
+  },
+  {
+    "slug": "html-images",
+    "title": "Изображения",
+    "file": "06-izobrazheniya.md",
+    "sortOrder": 5
+  },
+  {
+    "slug": "html-audio-video",
+    "title": "Аудио и видео",
+    "file": "07-audio-i-video.md",
+    "sortOrder": 6
+  },
+  {
+    "slug": "html-links-anchors",
+    "title": "Ссылки и якоря",
+    "file": "08-ssylki-i-yakorya.md",
+    "sortOrder": 7
+  },
+  {
+    "slug": "html-lists",
+    "title": "Списки",
+    "file": "09-spiski.md",
+    "sortOrder": 8
+  },
+  {
+    "slug": "html-head-metadata",
+    "title": "Метаданные head",
+    "file": "10-metadannye-head.md",
+    "sortOrder": 9
+  },
+  {
+    "slug": "html-encoding",
+    "title": "Кодировка",
+    "file": "11-kodirovka.md",
+    "sortOrder": 10
+  },
+  {
+    "slug": "html-iframe",
+    "title": "iframe",
+    "file": "12-iframe.md",
+    "sortOrder": 11
+  },
+  {
+    "slug": "html-global-attributes",
+    "title": "Глобальные атрибуты",
+    "file": "13-globalnye-atributy.md",
+    "sortOrder": 12
+  },
+  {
+    "slug": "html-data-attributes",
+    "title": "data-атрибуты",
+    "file": "14-data-atributy.md",
+    "sortOrder": 13
+  },
+  {
+    "slug": "html-accessibility",
+    "title": "Доступность a11y",
+    "file": "15-dostupnost-a11y.md",
+    "sortOrder": 14
+  },
+  {
+    "slug": "html5-api-overview",
+    "title": "HTML5 API обзор",
+    "file": "16-html5-api-obzor.md",
+    "sortOrder": 15
+  },
+  {
+    "slug": "html-canvas",
+    "title": "Canvas",
+    "file": "17-canvas.md",
+    "sortOrder": 16
+  },
+  {
+    "slug": "html-svg",
+    "title": "SVG",
+    "file": "18-svg.md",
+    "sortOrder": 17
+  },
+  {
+    "slug": "html-seo",
+    "title": "SEO",
+    "file": "19-seo.md",
+    "sortOrder": 18
+  },
+  {
+    "slug": "html-schema-org",
+    "title": "Schema.org",
+    "file": "20-schema-org.md",
+    "sortOrder": 19
+  },
+  {
+    "slug": "html-validation",
+    "title": "Валидация HTML",
+    "file": "21-validatsiya-html.md",
+    "sortOrder": 20
+  },
+  {
+    "slug": "html-doctype",
+    "title": "DOCTYPE",
+    "file": "22-doctype.md",
+    "sortOrder": 21
+  }
+]

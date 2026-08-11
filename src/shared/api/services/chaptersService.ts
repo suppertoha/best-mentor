@@ -1,5 +1,6 @@
 import { api } from "../client";
 import type {
+  Chapter,
   ChapterDetail,
   CreateChapterDto,
   ReorderDto,
@@ -17,7 +18,7 @@ export const chaptersService = {
   },
 
   async create(sectionId: number, payload: CreateChapterDto) {
-    const { data } = await api.post(`/sections/${sectionId}/chapters`, payload, {
+    const { data } = await api.post<Chapter>(`/sections/${sectionId}/chapters`, payload, {
       errorMessage: "Не удалось создать главу",
     });
     return data;

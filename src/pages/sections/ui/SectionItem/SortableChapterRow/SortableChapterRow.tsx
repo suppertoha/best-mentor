@@ -6,6 +6,7 @@ import { Button } from "@/shared/ui";
 import { useSortableItem } from "../../../lib/useSortableItem";
 import type { Chapter } from "../../../model/types";
 import { DragHandle } from "../DragHandle";
+import { ChapterStatusBadges } from "../ChapterStatusBadges";
 import styles from "../SectionItem.module.scss";
 
 interface SortableChapterRowProps {
@@ -28,6 +29,7 @@ export const SortableChapterRow = ({ chapter, onEdit, onDelete }: SortableChapte
         <Link to={getChapterPath(chapter.slug)} className={styles.chapterTitle}>
           {chapter.title}
         </Link>
+        <ChapterStatusBadges chapter={chapter} />
       </div>
       <div className={styles.chapterActions}>
         <Button

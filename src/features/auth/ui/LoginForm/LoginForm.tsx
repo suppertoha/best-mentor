@@ -8,7 +8,7 @@ import { ROUTES } from "@/shared/config";
 import { loginWithToken } from "@/app/hooks";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { Button } from "@/shared/ui";
-import { loginSchema, type LoginFormValues } from "../../model/schema";
+import { loginSchema, type LoginFormValues } from "@/features/auth/model/schema";
 import styles from "./LoginForm.module.scss";
 
 const fields = [

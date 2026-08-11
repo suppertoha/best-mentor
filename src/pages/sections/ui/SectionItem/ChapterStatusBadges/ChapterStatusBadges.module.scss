@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quizBadge,
+.completedBadge {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.quizBadge {
+  background: rgba(108, 99, 255, 0.12);
+  color: $accent;
+}
+
+.completedBadge {
+  background: #e8f5e9;
+  color: #2e7d32;
+}

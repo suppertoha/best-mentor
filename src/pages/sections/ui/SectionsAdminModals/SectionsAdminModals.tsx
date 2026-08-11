@@ -74,7 +74,7 @@ export const SectionsAdminModals = ({
     <Modal
       isOpen={editingChapter !== null}
       onClose={onCloseEditChapter}
-      title="Редактировать главу"
+      title="Название и slug"
     >
       {editingChapter && (
         <EditChapterForm

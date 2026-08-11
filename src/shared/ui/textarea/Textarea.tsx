@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
 import styles from "./Textarea.module.scss";
-import type { TextareaProps } from "./types";
+import type { TextareaProps } from "./types.ts";
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ id, label, error, className, ...rest }, ref) => {

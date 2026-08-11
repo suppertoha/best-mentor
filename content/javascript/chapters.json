@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "js-introduction",
+    "title": "Введение",
+    "file": "01-vvedenie.md",
+    "sortOrder": 0
+  },
+  {
+    "slug": "js-variables-and-types",
+    "title": "Переменные и типы",
+    "file": "02-peremennye-i-tipy.md",
+    "sortOrder": 1
+  },
+  {
+    "slug": "js-functions-and-dom",
+    "title": "Функции и DOM",
+    "file": "03-funkcii-i-dom.md",
+    "sortOrder": 2
+  },
+  {
+    "slug": "js-operators",
+    "title": "Операторы",
+    "file": "04-operatory.md",
+    "sortOrder": 3
+  },
+  {
+    "slug": "js-conditionals",
+    "title": "Условия",
+    "file": "05-usloviya.md",
+    "sortOrder": 4
+  },
+  {
+    "slug": "js-loops",
+    "title": "Циклы",
+    "file": "06-cikly.md",
+    "sortOrder": 5
+  },
+  {
+    "slug": "js-arrays",
+    "title": "Массивы",
+    "file": "07-massivy.md",
+    "sortOrder": 6
+  },
+  {
+    "slug": "js-objects",
+    "title": "Объекты",
+    "file": "08-obekty.md",
+    "sortOrder": 7
+  },
+  {
+    "slug": "js-destructuring",
+    "title": "Деструктуризация",
+    "file": "09-destrukturizaciya.md",
+    "sortOrder": 8
+  },
+  {
+    "slug": "js-spread-rest",
+    "title": "Spread/rest",
+    "file": "10-spread-rest.md",
+    "sortOrder": 9
+  },
+  {
+    "slug": "js-arrow-functions",
+    "title": "Стрелочные функции",
+    "file": "11-strelochnye-funkcii.md",
+    "sortOrder": 10
+  },
+  {
+    "slug": "js-closures",
+    "title": "Замыкания",
+    "file": "12-zamykanya.md",
+    "sortOrder": 11
+  },
+  {
+    "slug": "js-this",
+    "title": "this",
+    "file": "13-this.md",
+    "sortOrder": 12
+  },
+  {
+    "slug": "js-es6-classes",
+    "title": "Классы ES6",
+    "file": "14-klassy-es6.md",
+    "sortOrder": 13
+  },
+  {
+    "slug": "js-modules",
+    "title": "Модули",
+    "file": "15-moduli.md",
+    "sortOrder": 14
+  },
+  {
+    "slug": "js-promises",
+    "title": "Promises",
+    "file": "16-promises.md",
+    "sortOrder": 15
+  },
+  {
+    "slug": "js-async-await",
+    "title": "async/await",
+    "file": "17-async-await.md",
+    "sortOrder": 16
+  },
+  {
+    "slug": "js-fetch-api",
+    "title": "Fetch API",
+    "file": "18-fetch-api.md",
+    "sortOrder": 17
+  },
+  {
+    "slug": "js-error-handling",
+    "title": "Обработка ошибок",
+    "file": "19-obrabotka-oshibok.md",
+    "sortOrder": 18
+  },
+  {
+    "slug": "js-events",
+    "title": "Events",
+    "file": "20-events.md",
+    "sortOrder": 19
+  },
+  {
+    "slug": "js-event-loop",
+    "title": "Event loop",
+    "file": "21-event-loop.md",
+    "sortOrder": 20
+  },
+  {
+    "slug": "js-local-storage",
+    "title": "localStorage",
+    "file": "22-local-storage.md",
+    "sortOrder": 21
+  }
+]

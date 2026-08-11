@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { chaptersService } from "@/shared/api";
+import { getChapterPath } from "@/shared/config";
 import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { Button } from "@/shared/ui";
@@ -23,13 +25,6 @@ const fields = [
     placeholder: "Введение",
   },
   {
-    name: "content",
-    id: "chapter-content",
-    label: "Содержание",
-    kind: "textarea",
-    placeholder: "Текст главы",
-  },
-  {
     name: "slug",
     id: "chapter-slug",
     label: "Slug (необязательно)",
@@ -45,11 +40,11 @@ interface CreateChapterFormProps {
 }
 
 export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormProps) => {
+  const navigate = useNavigate();
   const { control, handleSubmit, reset } = useForm<CreateChapterFormValues>({
     resolver: zodResolver(createChapterSchema),
     defaultValues: {
       title: "",
-      content: "",
       slug: "",
     },
   });
@@ -59,17 +54,21 @@ export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormPro
   const onSubmit = async (values: CreateChapterFormValues) => {
     setIsLoading(true);
 
+    const title = values.title.trim();
+    const slug = buildChapterSlug(title, values.slug);
+
     const payload: CreateChapterDto = {
-      title: values.title.trim(),
-      content: values.content.trim(),
-      slug: buildChapterSlug(values.title, values.slug),
+      title,
+      content: `# ${title}\n\n`,
+      slug,
     };
 
     try {
-      await chaptersService.create(sectionId, payload);
+      const data = await chaptersService.create(sectionId, payload);
       showSuccessToast("Глава создана");
       reset();
       onSuccess();
+      navigate(getChapterPath(data.slug ?? slug), { state: { edit: true } });
     } catch {
       // handled by API interceptor
     } finally {
@@ -80,13 +79,15 @@ export const CreateChapterForm = ({ sectionId, onSuccess }: CreateChapterFormPro
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
+      <p className={styles.hint}>
+        Содержание редактируется на странице главы. Если slug пустой — сгенерируется из названия
+      </p>
       <Button
         type="submit"
         fullWidth
         isLoading={isLoading}
         showLoader
-        loadingText="Сохранение..."
+        loadingText="Создание..."
       >
         Создать главу
       </Button>

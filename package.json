@@ -9,7 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "optimize:svg": "svgo src/shared/assets/icons/*.svg src/shared/assets/images/*.svg --config svgo.config.cjs --multipass",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "seed": "node scripts/seed-chapters.mjs",
+    "seed:html": "node scripts/seed-chapters.mjs html",
+    "seed:css": "node scripts/seed-chapters.mjs css",
+    "seed:javascript": "node scripts/seed-chapters.mjs javascript",
+    "seed:react": "node scripts/ensure-section.mjs react && node scripts/seed-chapters.mjs react",
+    "seed:cleanup": "node scripts/cleanup-chapters.mjs",
+    "generate:content": "node scripts/generate-content.mjs",
+    "seed:all": "npm run seed:cleanup && npm run seed:html && npm run seed:css && npm run seed:javascript && npm run seed:react"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
@@ -17,6 +25,7 @@
     "@dnd-kit/utilities": "3.2.2",
     "@hookform/resolvers": "5.7.1",
     "@reduxjs/toolkit": "2.12.0",
+    "@uiw/react-md-editor": "4.1.1",
     "axios": "1.18.1",
     "clsx": "2.1.1",
     "date-fns": "4.4.0",
@@ -24,8 +33,11 @@
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "react-hook-form": "7.83.0",
+    "react-markdown": "10.1.0",
     "react-redux": "9.3.0",
     "react-router-dom": "7.18.1",
+    "rehype-prism-plus": "2.0.2",
+    "remark-gfm": "4.0.1",
     "sass": "1.102.0",
     "sonner": "2.0.7",
     "zod": "4.4.3"

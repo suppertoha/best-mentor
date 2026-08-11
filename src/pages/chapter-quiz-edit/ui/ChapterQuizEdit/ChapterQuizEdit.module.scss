@@ -1,0 +1,62 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 0 40px;
+}
+
+.backLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hero {
+  background: $bg-white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+  padding: 40px 32px;
+
+  @include media($sm) {
+    padding: 32px 20px;
+  }
+}
+
+.section {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: $text-secondary;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $text-primary;
+
+  @include media($sm) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  margin: 0 0 32px;
+  font-size: 16px;
+  color: $text-secondary;
+}
+
+.status,
+.error {
+  padding: 40px 20px;
+}
+
+.error {
+  color: #c62828;
+}

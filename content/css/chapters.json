@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "css-introduction",
+    "title": "Введение",
+    "file": "01-vvedenie.md",
+    "sortOrder": 0
+  },
+  {
+    "slug": "css-selectors",
+    "title": "Селекторы и свойства",
+    "file": "02-selektory.md",
+    "sortOrder": 1
+  },
+  {
+    "slug": "css-flexbox",
+    "title": "Flexbox",
+    "file": "03-flexbox.md",
+    "sortOrder": 2
+  },
+  {
+    "slug": "css-box-model",
+    "title": "Box model",
+    "file": "04-box-model.md",
+    "sortOrder": 3
+  },
+  {
+    "slug": "css-display-and-visibility",
+    "title": "Display и visibility",
+    "file": "05-display-i-visibility.md",
+    "sortOrder": 4
+  },
+  {
+    "slug": "css-positioning",
+    "title": "Позиционирование",
+    "file": "06-pozicionirovanie.md",
+    "sortOrder": 5
+  },
+  {
+    "slug": "css-grid",
+    "title": "CSS Grid",
+    "file": "07-css-grid.md",
+    "sortOrder": 6
+  },
+  {
+    "slug": "css-units",
+    "title": "Единицы измерения",
+    "file": "08-edinicy-izmereniya.md",
+    "sortOrder": 7
+  },
+  {
+    "slug": "css-colors-and-gradients",
+    "title": "Цвета и градиенты",
+    "file": "09-cveta-i-gradienty.md",
+    "sortOrder": 8
+  },
+  {
+    "slug": "css-typography",
+    "title": "Типографика",
+    "file": "10-tipografika.md",
+    "sortOrder": 9
+  },
+  {
+    "slug": "css-backgrounds",
+    "title": "Фоны",
+    "file": "11-fony.md",
+    "sortOrder": 10
+  },
+  {
+    "slug": "css-shadows-and-filters",
+    "title": "Тени и фильтры",
+    "file": "12-teni-i-filtry.md",
+    "sortOrder": 11
+  },
+  {
+    "slug": "css-transitions",
+    "title": "Transitions",
+    "file": "13-transitions.md",
+    "sortOrder": 12
+  },
+  {
+    "slug": "css-animations",
+    "title": "Анимации",
+    "file": "14-animacii.md",
+    "sortOrder": 13
+  },
+  {
+    "slug": "css-pseudo-classes",
+    "title": "Псевдоклассы",
+    "file": "15-pseudoklassy.md",
+    "sortOrder": 14
+  },
+  {
+    "slug": "css-pseudo-elements",
+    "title": "Псевдоэлементы",
+    "file": "16-pseudoelements.md",
+    "sortOrder": 15
+  },
+  {
+    "slug": "css-specificity",
+    "title": "Специфичность",
+    "file": "17-specifichnost.md",
+    "sortOrder": 16
+  },
+  {
+    "slug": "css-custom-properties",
+    "title": "CSS-переменные",
+    "file": "18-css-peremennye.md",
+    "sortOrder": 17
+  },
+  {
+    "slug": "css-media-queries",
+    "title": "Медиазапросы",
+    "file": "19-mediazaprosy.md",
+    "sortOrder": 18
+  },
+  {
+    "slug": "css-responsive-layout",
+    "title": "Адаптивная вёрстка",
+    "file": "20-adaptivnaya-verstka.md",
+    "sortOrder": 19
+  },
+  {
+    "slug": "css-mobile-first",
+    "title": "Mobile-first",
+    "file": "21-mobile-first.md",
+    "sortOrder": 20
+  },
+  {
+    "slug": "css-bem",
+    "title": "BEM",
+    "file": "22-bem.md",
+    "sortOrder": 21
+  }
+]

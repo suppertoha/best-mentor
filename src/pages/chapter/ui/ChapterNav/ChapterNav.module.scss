@@ -1,0 +1,47 @@
+.root {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid $border-light;
+}
+
+.link {
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.linkNext {
+  justify-self: end;
+  text-align: right;
+}
+
+.counter {
+  font-size: 13px;
+  color: $text-secondary;
+  white-space: nowrap;
+}
+
+@include media($sm) {
+  .root {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .linkNext {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .counter {
+    order: -1;
+  }
+}

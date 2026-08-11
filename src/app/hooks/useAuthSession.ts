@@ -35,5 +35,5 @@ export const useAuthSession = () => {
         localStorage.removeItem(TOKEN_STORAGE_KEY);
         dispatch(clearToken());
       });
-  }, [dispatch]);
+  }, []);
 };

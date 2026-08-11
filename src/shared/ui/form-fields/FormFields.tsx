@@ -16,6 +16,7 @@ export type FormFieldConfig<T extends FieldValues> = {
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
   autoComplete?: string;
+  rows?: number;
 };
 
 interface FormFieldsProps<T extends FieldValues> {
@@ -28,7 +29,7 @@ export const FormFields = <T extends FieldValues>({
   control,
 }: FormFieldsProps<T>) => (
   <>
-    {fields.map(({ name, kind, type, ...inputProps }) => (
+    {fields.map(({ name, kind, type, rows, ...inputProps }) => (
       <Controller
         key={String(name)}
         name={name}
@@ -38,6 +39,7 @@ export const FormFields = <T extends FieldValues>({
             <Textarea
               {...field}
               {...inputProps}
+              rows={rows}
               error={fieldState.error?.message}
             />
           ) : (

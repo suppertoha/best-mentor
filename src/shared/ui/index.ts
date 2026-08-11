@@ -1,3 +1,4 @@
+export { MarkdownContent } from "./markdown-content";
 export { Modal } from "./modal";
 export { Input } from "./input";
 export { Textarea } from "./textarea";

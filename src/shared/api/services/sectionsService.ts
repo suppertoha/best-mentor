@@ -15,6 +15,14 @@ export const sectionsService = {
     return data;
   },
 
+  async getBySlug(slug: string, signal?: AbortSignal) {
+    const { data } = await api.get<Section>(`/sections/${slug}`, {
+      signal,
+      errorMessage: "Не удалось загрузить раздел",
+    });
+    return data;
+  },
+
   async create(payload: CreateSectionDto) {
     const { data } = await api.post<Section>("/sections", payload, {
       errorMessage: "Не удалось создать раздел",

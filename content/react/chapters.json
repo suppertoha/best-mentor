@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "react-vvedenie",
+    "title": "Введение в React",
+    "file": "01-vvedenie.md",
+    "sortOrder": 0
+  },
+  {
+    "slug": "react-jsx",
+    "title": "JSX",
+    "file": "02-jsx.md",
+    "sortOrder": 1
+  },
+  {
+    "slug": "react-komponenty-i-props",
+    "title": "Компоненты и props",
+    "file": "03-komponenty-i-props.md",
+    "sortOrder": 2
+  },
+  {
+    "slug": "react-use-state",
+    "title": "useState",
+    "file": "04-use-state.md",
+    "sortOrder": 3
+  },
+  {
+    "slug": "react-sobytiya",
+    "title": "События",
+    "file": "05-sobytiya.md",
+    "sortOrder": 4
+  },
+  {
+    "slug": "react-uslovnyy-render",
+    "title": "Условный рендер",
+    "file": "06-uslovnyy-render.md",
+    "sortOrder": 5
+  },
+  {
+    "slug": "react-spiski-i-keys",
+    "title": "Списки и keys",
+    "file": "07-spiski-i-keys.md",
+    "sortOrder": 6
+  },
+  {
+    "slug": "react-formy-controlled",
+    "title": "Формы controlled",
+    "file": "08-formy-controlled.md",
+    "sortOrder": 7
+  },
+  {
+    "slug": "react-use-effect",
+    "title": "useEffect",
+    "file": "09-use-effect.md",
+    "sortOrder": 8
+  },
+  {
+    "slug": "react-use-ref",
+    "title": "useRef",
+    "file": "10-use-ref.md",
+    "sortOrder": 9
+  },
+  {
+    "slug": "react-use-memo-use-callback",
+    "title": "useMemo / useCallback",
+    "file": "11-use-memo-use-callback.md",
+    "sortOrder": 10
+  },
+  {
+    "slug": "react-context-api",
+    "title": "Context API",
+    "file": "12-context-api.md",
+    "sortOrder": 11
+  },
+  {
+    "slug": "react-router",
+    "title": "React Router",
+    "file": "13-react-router.md",
+    "sortOrder": 12
+  },
+  {
+    "slug": "react-podnyatie-sostoyaniya",
+    "title": "Поднятие состояния",
+    "file": "14-podnyatie-sostoyaniya.md",
+    "sortOrder": 13
+  },
+  {
+    "slug": "react-kompoziciya",
+    "title": "Композиция",
+    "file": "15-kompoziciya.md",
+    "sortOrder": 14
+  },
+  {
+    "slug": "react-custom-hooks",
+    "title": "Custom hooks",
+    "file": "16-custom-hooks.md",
+    "sortOrder": 15
+  },
+  {
+    "slug": "react-typescript",
+    "title": "React + TypeScript",
+    "file": "17-typescript.md",
+    "sortOrder": 16
+  },
+  {
+    "slug": "react-redux",
+    "title": "Redux",
+    "file": "18-redux.md",
+    "sortOrder": 17
+  },
+  {
+    "slug": "react-memo-optimizaciya",
+    "title": "React.memo оптимизация",
+    "file": "19-react-memo-optimizaciya.md",
+    "sortOrder": 18
+  },
+  {
+    "slug": "react-lazy-suspense",
+    "title": "lazy / Suspense",
+    "file": "20-lazy-suspense.md",
+    "sortOrder": 19
+  },
+  {
+    "slug": "react-error-boundaries",
+    "title": "Error Boundaries",
+    "file": "21-error-boundaries.md",
+    "sortOrder": 20
+  },
+  {
+    "slug": "react-portaly",
+    "title": "Порталы",
+    "file": "22-portaly.md",
+    "sortOrder": 21
+  }
+]

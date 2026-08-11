@@ -12,7 +12,7 @@ import { isAdmin } from "@/entities/user";
 import { chaptersService, sectionsService } from "@/shared/api";
 import { Button } from "@/shared/ui";
 import { useDndSensors } from "../../lib/useSortableItem";
-import { sortBySortOrder } from "../../lib/sortBySortOrder";
+import { sortBySortOrder } from "@/shared/lib";
 import type { Chapter, Section } from "../../model/types";
 import { SectionItem } from "../SectionItem";
 import { SectionsAdminModals } from "../SectionsAdminModals";

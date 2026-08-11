@@ -3,6 +3,8 @@ export interface Chapter {
   title: string;
   slug: string;
   sortOrder: number;
+  hasQuiz: boolean;
+  isCompleted: boolean;
 }
 
 export interface ChapterSection {
@@ -18,6 +20,8 @@ export interface ChapterDetail {
   slug: string;
   content: string;
   sortOrder: number;
+  hasQuiz: boolean;
+  isCompleted: boolean;
   createdAt: string;
   updatedAt: string;
   section: ChapterSection;

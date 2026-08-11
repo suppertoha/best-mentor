@@ -6,6 +6,7 @@ import { Login } from "@/pages/login";
 import { Register } from "@/pages/register";
 import { NotFound } from "@/pages/not-found";
 import { Chapter } from "@/pages/chapter";
+import { ChapterQuizEdit } from "@/pages/chapter-quiz-edit";
 import { Profile } from "@/pages/profile";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AuthRoute } from "./AuthRoute";
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.sections.slice(1),
             element: <Sections />,
+          },
+          {
+            path: ROUTES.chapterQuizEdit.slice(1),
+            element: <ChapterQuizEdit />,
           },
           {
             path: ROUTES.chapter.slice(1),

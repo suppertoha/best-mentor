@@ -11,10 +11,11 @@ import TrashIcon from "@/shared/assets/icons/trash.svg?react";
 import { getChapterPath } from "@/shared/config";
 import { Button } from "@/shared/ui";
 import { useDndSensors, useSortableItem, type SortableHandleProps } from "../../lib/useSortableItem";
-import { sortBySortOrder } from "../../lib/sortBySortOrder";
+import { sortBySortOrder } from "@/shared/lib";
 import type { Chapter, Section } from "../../model/types";
 import { DragHandle } from "./DragHandle";
 import { SortableChapterRow } from "./SortableChapterRow";
+import { ChapterStatusBadges } from "./ChapterStatusBadges";
 import styles from "./SectionItem.module.scss";
 
 interface SectionItemProps {
@@ -142,9 +143,12 @@ const SectionItemView = ({
               <ul className={styles.chapters}>
                 {chapters.map((chapter) => (
                   <li key={chapter.id} className={styles.chapterRow}>
-                    <Link to={getChapterPath(chapter.slug)} className={styles.chapterTitle}>
-                      {chapter.title}
-                    </Link>
+                    <div className={styles.chapterMain}>
+                      <Link to={getChapterPath(chapter.slug)} className={styles.chapterTitle}>
+                        {chapter.title}
+                      </Link>
+                      <ChapterStatusBadges chapter={chapter} />
+                    </div>
                   </li>
                 ))}
               </ul>
