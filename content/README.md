@@ -26,6 +26,13 @@ npm run seed:react
 npm run seed:all
 ```
 
+## Тесты к главам
+
+```bash
+npm run quizzes:build      # content/<section>/quizzes.json из scripts/content-data/quizzes/
+npm run seed:quizzes:all   # залить тесты на API для всех разделов
+```
+
 Требуется `.env`: `SEED_ADMIN_EMAIL`, `SEED_ADMIN_PASSWORD`.
 
 ## Новый раздел

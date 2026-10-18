@@ -1,0 +1,846 @@
+{
+  "css-introduction": {
+    "questions": [
+      {
+        "text": "Что такое CSS?",
+        "options": [
+          {
+            "text": "Язык стилей для оформления HTML",
+            "isCorrect": true
+          },
+          {
+            "text": "Язык программирования для логики на сервере",
+            "isCorrect": false
+          },
+          {
+            "text": "База данных",
+            "isCorrect": false
+          },
+          {
+            "text": "Протокол передачи файлов",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как чаще всего подключают CSS к HTML?",
+        "options": [
+          {
+            "text": "Через <link rel=\"stylesheet\">",
+            "isCorrect": true
+          },
+          {
+            "text": "Через <script>",
+            "isCorrect": false
+          },
+          {
+            "text": "Через <meta>",
+            "isCorrect": false
+          },
+          {
+            "text": "Через <canvas>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-selectors": {
+    "questions": [
+      {
+        "text": "Какой селектор выберет элемент с class=\"btn\"?",
+        "options": [
+          {
+            "text": ".btn",
+            "isCorrect": true
+          },
+          {
+            "text": "#btn",
+            "isCorrect": false
+          },
+          {
+            "text": "btn",
+            "isCorrect": false
+          },
+          {
+            "text": "*btn",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает селектор p a?",
+        "options": [
+          {
+            "text": "Выбирает ссылку внутри абзаца",
+            "isCorrect": true
+          },
+          {
+            "text": "Выбирает все абзацы и ссылки отдельно",
+            "isCorrect": false
+          },
+          {
+            "text": "Выбирает только прямого ребёнка",
+            "isCorrect": false
+          },
+          {
+            "text": "Выбирает id a",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-flexbox": {
+    "questions": [
+      {
+        "text": "Какое свойство включает flex-контейнер?",
+        "options": [
+          {
+            "text": "display: flex",
+            "isCorrect": true
+          },
+          {
+            "text": "position: flex",
+            "isCorrect": false
+          },
+          {
+            "text": "flex: container",
+            "isCorrect": false
+          },
+          {
+            "text": "layout: flex",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает justify-content?",
+        "options": [
+          {
+            "text": "Выравнивает элементы по главной оси",
+            "isCorrect": true
+          },
+          {
+            "text": "Меняет цвет фона",
+            "isCorrect": false
+          },
+          {
+            "text": "Задаёт шрифт",
+            "isCorrect": false
+          },
+          {
+            "text": "Скрывает overflow",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-box-model": {
+    "questions": [
+      {
+        "text": "Из чего состоит box model?",
+        "options": [
+          {
+            "text": "content, padding, border, margin",
+            "isCorrect": true
+          },
+          {
+            "text": "width, height, color, font",
+            "isCorrect": false
+          },
+          {
+            "text": "header, body, footer",
+            "isCorrect": false
+          },
+          {
+            "text": "flex, grid, block",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что добавляет padding?",
+        "options": [
+          {
+            "text": "Внутренний отступ между контентом и границей",
+            "isCorrect": true
+          },
+          {
+            "text": "Внешний отступ между соседними блоками",
+            "isCorrect": false
+          },
+          {
+            "text": "Толщину линии текста",
+            "isCorrect": false
+          },
+          {
+            "text": "Тень элемента",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-display-and-visibility": {
+    "questions": [
+      {
+        "text": "Чем display: none отличается от visibility: hidden?",
+        "options": [
+          {
+            "text": "none убирает элемент из потока, hidden оставляет место",
+            "isCorrect": true
+          },
+          {
+            "text": "Ничем",
+            "isCorrect": false
+          },
+          {
+            "text": "hidden удаляет из DOM",
+            "isCorrect": false
+          },
+          {
+            "text": "none делает элемент прозрачным, но кликабельным",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-positioning": {
+    "questions": [
+      {
+        "text": "Какое значение position вырывает элемент из обычного потока относительно viewport?",
+        "options": [
+          {
+            "text": "fixed",
+            "isCorrect": true
+          },
+          {
+            "text": "static",
+            "isCorrect": false
+          },
+          {
+            "text": "relative",
+            "isCorrect": false
+          },
+          {
+            "text": "sticky без скролла",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Относительно чего позиционируется position: absolute без positioned-предка?",
+        "options": [
+          {
+            "text": "Относительно ближайшего positioned-предка или initial containing block",
+            "isCorrect": true
+          },
+          {
+            "text": "Всегда относительно <body>",
+            "isCorrect": false
+          },
+          {
+            "text": "Относительно соседнего элемента",
+            "isCorrect": false
+          },
+          {
+            "text": "Относительно window только при fixed",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-grid": {
+    "questions": [
+      {
+        "text": "Какое свойство включает CSS Grid?",
+        "options": [
+          {
+            "text": "display: grid",
+            "isCorrect": true
+          },
+          {
+            "text": "display: flex",
+            "isCorrect": false
+          },
+          {
+            "text": "grid: on",
+            "isCorrect": false
+          },
+          {
+            "text": "layout: grid",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что задаёт grid-template-columns?",
+        "options": [
+          {
+            "text": "Количество и размеры колонок сетки",
+            "isCorrect": true
+          },
+          {
+            "text": "Цвет ячеек",
+            "isCorrect": false
+          },
+          {
+            "text": "Отступы между строками текста",
+            "isCorrect": false
+          },
+          {
+            "text": "Порядок flex-элементов",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-units": {
+    "questions": [
+      {
+        "text": "Чем rem отличается от em?",
+        "options": [
+          {
+            "text": "rem считается от размера шрифта корня, em — от родителя",
+            "isCorrect": true
+          },
+          {
+            "text": "rem только для ширины",
+            "isCorrect": false
+          },
+          {
+            "text": "em всегда равен px",
+            "isCorrect": false
+          },
+          {
+            "text": "rem не работает в media queries",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какая единица удобна для адаптивного шрифта относительно viewport?",
+        "options": [
+          {
+            "text": "vw",
+            "isCorrect": true
+          },
+          {
+            "text": "px",
+            "isCorrect": false
+          },
+          {
+            "text": "cm",
+            "isCorrect": false
+          },
+          {
+            "text": "pt",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-colors-and-gradients": {
+    "questions": [
+      {
+        "text": "Какой формат цвета поддерживает прозрачность?",
+        "options": [
+          {
+            "text": "rgba()",
+            "isCorrect": true
+          },
+          {
+            "text": "#RRGGBB без alpha",
+            "isCorrect": false
+          },
+          {
+            "text": "color-name",
+            "isCorrect": false
+          },
+          {
+            "text": "rgb() без четвёртого параметра",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-typography": {
+    "questions": [
+      {
+        "text": "Какое свойство задаёт семейство шрифтов?",
+        "options": [
+          {
+            "text": "font-family",
+            "isCorrect": true
+          },
+          {
+            "text": "font-style",
+            "isCorrect": false
+          },
+          {
+            "text": "text-decoration",
+            "isCorrect": false
+          },
+          {
+            "text": "line-height",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает line-height?",
+        "options": [
+          {
+            "text": "Задаёт высоту строки текста",
+            "isCorrect": true
+          },
+          {
+            "text": "Меняет жирность шрифта",
+            "isCorrect": false
+          },
+          {
+            "text": "Добавляет подчёркивание",
+            "isCorrect": false
+          },
+          {
+            "text": "Выравнивает блок по центру",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-backgrounds": {
+    "questions": [
+      {
+        "text": "Какое свойство задаёт фоновое изображение?",
+        "options": [
+          {
+            "text": "background-image",
+            "isCorrect": true
+          },
+          {
+            "text": "src",
+            "isCorrect": false
+          },
+          {
+            "text": "image",
+            "isCorrect": false
+          },
+          {
+            "text": "bg-url",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает background-size: cover?",
+        "options": [
+          {
+            "text": "Масштабирует картинку, чтобы покрыть всю область",
+            "isCorrect": true
+          },
+          {
+            "text": "Повторяет изображение плиткой",
+            "isCorrect": false
+          },
+          {
+            "text": "Обрезает только по ширине",
+            "isCorrect": false
+          },
+          {
+            "text": "Скрывает фон",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-shadows-and-filters": {
+    "questions": [
+      {
+        "text": "Какое свойство добавляет тень блоку?",
+        "options": [
+          {
+            "text": "box-shadow",
+            "isCorrect": true
+          },
+          {
+            "text": "text-shadow только для текста блока",
+            "isCorrect": false
+          },
+          {
+            "text": "filter: shadow",
+            "isCorrect": false
+          },
+          {
+            "text": "drop-shadow на display",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-transitions": {
+    "questions": [
+      {
+        "text": "Что анимирует transition?",
+        "options": [
+          {
+            "text": "Плавное изменение CSS-свойств во времени",
+            "isCorrect": true
+          },
+          {
+            "text": "Только transform",
+            "isCorrect": false
+          },
+          {
+            "text": "Только цвет текста",
+            "isCorrect": false
+          },
+          {
+            "text": "Только размер шрифта без duration",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какое свойство задаёт длительность перехода?",
+        "options": [
+          {
+            "text": "transition-duration",
+            "isCorrect": true
+          },
+          {
+            "text": "animation-time",
+            "isCorrect": false
+          },
+          {
+            "text": "delay-only",
+            "isCorrect": false
+          },
+          {
+            "text": "speed",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-animations": {
+    "questions": [
+      {
+        "text": "Чем @keyframes отличается от transition?",
+        "options": [
+          {
+            "text": "Позволяет описать несколько шагов анимации по времени",
+            "isCorrect": true
+          },
+          {
+            "text": "Работает только с hover",
+            "isCorrect": false
+          },
+          {
+            "text": "Не требует animation-name",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменяет media queries",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-pseudo-classes": {
+    "questions": [
+      {
+        "text": "Какой псевдокласс стилизует ссылку при наведении?",
+        "options": [
+          {
+            "text": ":hover",
+            "isCorrect": true
+          },
+          {
+            "text": "::hover",
+            "isCorrect": false
+          },
+          {
+            "text": ":active-only",
+            "isCorrect": false
+          },
+          {
+            "text": ":focus-visible-hover",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Для чего используют :focus?",
+        "options": [
+          {
+            "text": "Стилизовать элемент в фокусе с клавиатуры или мыши",
+            "isCorrect": true
+          },
+          {
+            "text": "Только для disabled полей",
+            "isCorrect": false
+          },
+          {
+            "text": "Только для первого ребёнка",
+            "isCorrect": false
+          },
+          {
+            "text": "Только для ссылок visited",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-pseudo-elements": {
+    "questions": [
+      {
+        "text": "Какой синтаксис у псевдоэлемента?",
+        "options": [
+          {
+            "text": "::before",
+            "isCorrect": true
+          },
+          {
+            "text": ":before как псевдокласс в старом CSS без content",
+            "isCorrect": false
+          },
+          {
+            "text": ":pseudo",
+            "isCorrect": false
+          },
+          {
+            "text": "::element",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что обязательно нужно для ::before и ::after?",
+        "options": [
+          {
+            "text": "Свойство content",
+            "isCorrect": true
+          },
+          {
+            "text": "position: absolute всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "display: block только",
+            "isCorrect": false
+          },
+          {
+            "text": "z-index: 1",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-specificity": {
+    "questions": [
+      {
+        "text": "Что имеет больший вес: #id или .class?",
+        "options": [
+          {
+            "text": "#id",
+            "isCorrect": true
+          },
+          {
+            "text": ".class",
+            "isCorrect": false
+          },
+          {
+            "text": "они равны",
+            "isCorrect": false
+          },
+          {
+            "text": "зависит от порядка в файле только",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-custom-properties": {
+    "questions": [
+      {
+        "text": "Как объявить CSS-переменную?",
+        "options": [
+          {
+            "text": "--main-color: #6c63ff;",
+            "isCorrect": true
+          },
+          {
+            "text": "$main-color: #6c63ff;",
+            "isCorrect": false
+          },
+          {
+            "text": "var-main-color: #6c63ff;",
+            "isCorrect": false
+          },
+          {
+            "text": "@main-color: #6c63ff;",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как использовать CSS-переменную?",
+        "options": [
+          {
+            "text": "color: var(--main-color);",
+            "isCorrect": true
+          },
+          {
+            "text": "color: --main-color;",
+            "isCorrect": false
+          },
+          {
+            "text": "color: $main-color;",
+            "isCorrect": false
+          },
+          {
+            "text": "color: use(--main-color);",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-media-queries": {
+    "questions": [
+      {
+        "text": "Для чего нужны media queries?",
+        "options": [
+          {
+            "text": "Применять стили в зависимости от ширины экрана и других условий",
+            "isCorrect": true
+          },
+          {
+            "text": "Подключать JavaScript",
+            "isCorrect": false
+          },
+          {
+            "text": "Валидировать HTML",
+            "isCorrect": false
+          },
+          {
+            "text": "Сжимать изображения на сервере",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-responsive-layout": {
+    "questions": [
+      {
+        "text": "Что такое адаптивная вёрстка?",
+        "options": [
+          {
+            "text": "Интерфейс подстраивается под разные размеры экранов",
+            "isCorrect": true
+          },
+          {
+            "text": "Только мобильная версия отдельным сайтом",
+            "isCorrect": false
+          },
+          {
+            "text": "Фиксированная ширина 1200px",
+            "isCorrect": false
+          },
+          {
+            "text": "Только desktop-first",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-mobile-first": {
+    "questions": [
+      {
+        "text": "Что означает подход mobile-first?",
+        "options": [
+          {
+            "text": "Сначала стили для маленьких экранов, потом расширяем через min-width",
+            "isCorrect": true
+          },
+          {
+            "text": "Сначала desktop, потом max-width",
+            "isCorrect": false
+          },
+          {
+            "text": "Только мобильное приложение",
+            "isCorrect": false
+          },
+          {
+            "text": "Отключение CSS на desktop",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "css-bem": {
+    "questions": [
+      {
+        "text": "Как в BEM называется модификатор блока button с темой primary?",
+        "options": [
+          {
+            "text": "button--primary",
+            "isCorrect": true
+          },
+          {
+            "text": "button-primary",
+            "isCorrect": false
+          },
+          {
+            "text": "button.primary",
+            "isCorrect": false
+          },
+          {
+            "text": "button__primary",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что обозначает __ в BEM?",
+        "options": [
+          {
+            "text": "Элемент блока",
+            "isCorrect": true
+          },
+          {
+            "text": "Модификатор",
+            "isCorrect": false
+          },
+          {
+            "text": "Состояние hover",
+            "isCorrect": false
+          },
+          {
+            "text": "Глобальная переменная",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+}

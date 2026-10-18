@@ -1,0 +1,909 @@
+{
+  "html-introduction": {
+    "questions": [
+      {
+        "text": "Что расшифровывается как HTML?",
+        "options": [
+          {
+            "text": "HyperText Markup Language",
+            "isCorrect": true
+          },
+          {
+            "text": "Hyper Transfer Markup Language",
+            "isCorrect": false
+          },
+          {
+            "text": "HighText Machine Language",
+            "isCorrect": false
+          },
+          {
+            "text": "Home Tool Markup Language",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "За что отвечает HTML в веб-странице?",
+        "options": [
+          {
+            "text": "За структуру и разметку контента",
+            "isCorrect": true
+          },
+          {
+            "text": "За анимации и переходы",
+            "isCorrect": false
+          },
+          {
+            "text": "За запросы к серверу",
+            "isCorrect": false
+          },
+          {
+            "text": "За хранение данных в БД",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-tags-and-structure": {
+    "questions": [
+      {
+        "text": "Какой тег задаёт основную структуру HTML-документа?",
+        "options": [
+          {
+            "text": "<html>",
+            "isCorrect": true
+          },
+          {
+            "text": "<body>",
+            "isCorrect": false
+          },
+          {
+            "text": "<head>",
+            "isCorrect": false
+          },
+          {
+            "text": "<main>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Где обычно размещают метаданные страницы?",
+        "options": [
+          {
+            "text": "В <head>",
+            "isCorrect": true
+          },
+          {
+            "text": "В <footer>",
+            "isCorrect": false
+          },
+          {
+            "text": "В <main>",
+            "isCorrect": false
+          },
+          {
+            "text": "В <article>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-forms": {
+    "questions": [
+      {
+        "text": "Какой атрибут делает поле формы обязательным для заполнения?",
+        "options": [
+          {
+            "text": "required",
+            "isCorrect": true
+          },
+          {
+            "text": "optional",
+            "isCorrect": false
+          },
+          {
+            "text": "mandatory",
+            "isCorrect": false
+          },
+          {
+            "text": "validate",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какой элемент используют для многострочного ввода текста?",
+        "options": [
+          {
+            "text": "<textarea>",
+            "isCorrect": true
+          },
+          {
+            "text": "<input type=\"text\">",
+            "isCorrect": false
+          },
+          {
+            "text": "<select>",
+            "isCorrect": false
+          },
+          {
+            "text": "<label>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-semantic-markup": {
+    "questions": [
+      {
+        "text": "Какой тег лучше использовать для основного содержимого страницы?",
+        "options": [
+          {
+            "text": "<main>",
+            "isCorrect": true
+          },
+          {
+            "text": "<div id=\"main\">",
+            "isCorrect": false
+          },
+          {
+            "text": "<span>",
+            "isCorrect": false
+          },
+          {
+            "text": "<b>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Для чего используют тег <nav>?",
+        "options": [
+          {
+            "text": "Для блока навигационных ссылок",
+            "isCorrect": true
+          },
+          {
+            "text": "Для боковой рекламы",
+            "isCorrect": false
+          },
+          {
+            "text": "Для подписи к картинке",
+            "isCorrect": false
+          },
+          {
+            "text": "Для скрытого текста",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-tables": {
+    "questions": [
+      {
+        "text": "Какой тег обозначает строку таблицы?",
+        "options": [
+          {
+            "text": "<tr>",
+            "isCorrect": true
+          },
+          {
+            "text": "<td>",
+            "isCorrect": false
+          },
+          {
+            "text": "<th>",
+            "isCorrect": false
+          },
+          {
+            "text": "<table>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какой тег используют для заголовочной ячейки таблицы?",
+        "options": [
+          {
+            "text": "<th>",
+            "isCorrect": true
+          },
+          {
+            "text": "<td>",
+            "isCorrect": false
+          },
+          {
+            "text": "<tr>",
+            "isCorrect": false
+          },
+          {
+            "text": "<thead>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-images": {
+    "questions": [
+      {
+        "text": "Какой атрибут у <img> обязателен для доступности?",
+        "options": [
+          {
+            "text": "alt",
+            "isCorrect": true
+          },
+          {
+            "text": "src",
+            "isCorrect": false
+          },
+          {
+            "text": "title",
+            "isCorrect": false
+          },
+          {
+            "text": "width",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает атрибут src у изображения?",
+        "options": [
+          {
+            "text": "Указывает путь к файлу картинки",
+            "isCorrect": true
+          },
+          {
+            "text": "Задаёт подпись под изображением",
+            "isCorrect": false
+          },
+          {
+            "text": "Включает ленивую загрузку",
+            "isCorrect": false
+          },
+          {
+            "text": "Меняет формат файла",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-audio-video": {
+    "questions": [
+      {
+        "text": "Какой тег вставляет видео в HTML5?",
+        "options": [
+          {
+            "text": "<video>",
+            "isCorrect": true
+          },
+          {
+            "text": "<media>",
+            "isCorrect": false
+          },
+          {
+            "text": "<movie>",
+            "isCorrect": false
+          },
+          {
+            "text": "<source>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Для чего внутри <video> используют <source>?",
+        "options": [
+          {
+            "text": "Чтобы указать несколько форматов одного видео",
+            "isCorrect": true
+          },
+          {
+            "text": "Чтобы добавить субтитры",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы задать постер",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы включить автозапуск",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-links-anchors": {
+    "questions": [
+      {
+        "text": "Какой атрибут задаёт адрес ссылки в <a>?",
+        "options": [
+          {
+            "text": "href",
+            "isCorrect": true
+          },
+          {
+            "text": "src",
+            "isCorrect": false
+          },
+          {
+            "text": "link",
+            "isCorrect": false
+          },
+          {
+            "text": "url",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как сделать ссылку на якорь внутри страницы?",
+        "options": [
+          {
+            "text": "href=\"#id-элемента\"",
+            "isCorrect": true
+          },
+          {
+            "text": "anchor=\"id\"",
+            "isCorrect": false
+          },
+          {
+            "text": "goto=\"#id\"",
+            "isCorrect": false
+          },
+          {
+            "text": "target=\"#id\"",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-lists": {
+    "questions": [
+      {
+        "text": "Какой тег создаёт маркированный список?",
+        "options": [
+          {
+            "text": "<ul>",
+            "isCorrect": true
+          },
+          {
+            "text": "<ol>",
+            "isCorrect": false
+          },
+          {
+            "text": "<li>",
+            "isCorrect": false
+          },
+          {
+            "text": "<list>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какой тег является элементом списка?",
+        "options": [
+          {
+            "text": "<li>",
+            "isCorrect": true
+          },
+          {
+            "text": "<ul>",
+            "isCorrect": false
+          },
+          {
+            "text": "<dl>",
+            "isCorrect": false
+          },
+          {
+            "text": "<item>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-head-metadata": {
+    "questions": [
+      {
+        "text": "Какой тег задаёт заголовок вкладки браузера?",
+        "options": [
+          {
+            "text": "<title>",
+            "isCorrect": true
+          },
+          {
+            "text": "<meta>",
+            "isCorrect": false
+          },
+          {
+            "text": "<header>",
+            "isCorrect": false
+          },
+          {
+            "text": "<h1>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Где подключают внешний CSS-файл?",
+        "options": [
+          {
+            "text": "В <head> через <link>",
+            "isCorrect": true
+          },
+          {
+            "text": "В <footer>",
+            "isCorrect": false
+          },
+          {
+            "text": "В <body> через <style src>",
+            "isCorrect": false
+          },
+          {
+            "text": "В <script>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-encoding": {
+    "questions": [
+      {
+        "text": "Какая кодировка чаще всего используется для современных сайтов?",
+        "options": [
+          {
+            "text": "UTF-8",
+            "isCorrect": true
+          },
+          {
+            "text": "ASCII",
+            "isCorrect": false
+          },
+          {
+            "text": "Windows-1251",
+            "isCorrect": false
+          },
+          {
+            "text": "UTF-16",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Где обычно указывают charset страницы?",
+        "options": [
+          {
+            "text": "В <meta charset=\"UTF-8\">",
+            "isCorrect": true
+          },
+          {
+            "text": "В атрибуте lang у <html>",
+            "isCorrect": false
+          },
+          {
+            "text": "В HTTP-заголовке CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "В <title>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-iframe": {
+    "questions": [
+      {
+        "text": "Для чего используют <iframe>?",
+        "options": [
+          {
+            "text": "Для встраивания другой HTML-страницы внутрь текущей",
+            "isCorrect": true
+          },
+          {
+            "text": "Для вставки SVG",
+            "isCorrect": false
+          },
+          {
+            "text": "Для создания модального окна",
+            "isCorrect": false
+          },
+          {
+            "text": "Для подключения шрифтов",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-global-attributes": {
+    "questions": [
+      {
+        "text": "Какой глобальный атрибут задаёт уникальный идентификатор элемента?",
+        "options": [
+          {
+            "text": "id",
+            "isCorrect": true
+          },
+          {
+            "text": "class",
+            "isCorrect": false
+          },
+          {
+            "text": "name",
+            "isCorrect": false
+          },
+          {
+            "text": "key",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Чем class отличается от id?",
+        "options": [
+          {
+            "text": "class можно повторять у многих элементов, id — уникален на странице",
+            "isCorrect": true
+          },
+          {
+            "text": "class уникален, id можно повторять",
+            "isCorrect": false
+          },
+          {
+            "text": "class только для форм",
+            "isCorrect": false
+          },
+          {
+            "text": "id только для ссылок",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-data-attributes": {
+    "questions": [
+      {
+        "text": "Как правильно записать data-атрибут?",
+        "options": [
+          {
+            "text": "data-user-id=\"42\"",
+            "isCorrect": true
+          },
+          {
+            "text": "user-data=\"42\"",
+            "isCorrect": false
+          },
+          {
+            "text": "data:userId=\"42\"",
+            "isCorrect": false
+          },
+          {
+            "text": "attr-data-user=\"42\"",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Для чего удобны data-* атрибуты?",
+        "options": [
+          {
+            "text": "Хранить произвольные данные для JS, не ломая вёрстку",
+            "isCorrect": true
+          },
+          {
+            "text": "Подключать CSS-файлы",
+            "isCorrect": false
+          },
+          {
+            "text": "Задавать SEO-описание",
+            "isCorrect": false
+          },
+          {
+            "text": "Валидировать формы на сервере",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-accessibility": {
+    "questions": [
+      {
+        "text": "Что означает a11y?",
+        "options": [
+          {
+            "text": "Accessibility — доступность интерфейса",
+            "isCorrect": true
+          },
+          {
+            "text": "Animation 11 years",
+            "isCorrect": false
+          },
+          {
+            "text": "Advanced HTML 11",
+            "isCorrect": false
+          },
+          {
+            "text": "API level 11",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Зачем связывать <label> с полем ввода?",
+        "options": [
+          {
+            "text": "Чтобы клик по подписи фокусировал поле и скринридер понимал связь",
+            "isCorrect": true
+          },
+          {
+            "text": "Чтобы ускорить загрузку страницы",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы скрыть поле",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы отправить форму дважды",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html5-api-overview": {
+    "questions": [
+      {
+        "text": "Что из перечисленного относится к HTML5 API в браузере?",
+        "options": [
+          {
+            "text": "localStorage",
+            "isCorrect": true
+          },
+          {
+            "text": "jQuery",
+            "isCorrect": false
+          },
+          {
+            "text": "Webpack",
+            "isCorrect": false
+          },
+          {
+            "text": "Sass",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Где выполняется код HTML5 API вроде Geolocation?",
+        "options": [
+          {
+            "text": "В браузере на стороне клиента",
+            "isCorrect": true
+          },
+          {
+            "text": "Только на сервере Node.js",
+            "isCorrect": false
+          },
+          {
+            "text": "В базе данных",
+            "isCorrect": false
+          },
+          {
+            "text": "В CSS-препроцессоре",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-canvas": {
+    "questions": [
+      {
+        "text": "Для чего используют элемент <canvas>?",
+        "options": [
+          {
+            "text": "Для рисования графики через JavaScript",
+            "isCorrect": true
+          },
+          {
+            "text": "Для вставки видео",
+            "isCorrect": false
+          },
+          {
+            "text": "Для таблиц",
+            "isCorrect": false
+          },
+          {
+            "text": "Для семантической разметки",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-svg": {
+    "questions": [
+      {
+        "text": "Чем SVG удобен для иконок на сайте?",
+        "options": [
+          {
+            "text": "Масштабируется без потери качества",
+            "isCorrect": true
+          },
+          {
+            "text": "Всегда меньше по размеру, чем PNG",
+            "isCorrect": false
+          },
+          {
+            "text": "Не поддерживается в браузерах",
+            "isCorrect": false
+          },
+          {
+            "text": "Рисуется только на сервере",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-seo": {
+    "questions": [
+      {
+        "text": "Какой тег важен для SEO-заголовка страницы?",
+        "options": [
+          {
+            "text": "<title>",
+            "isCorrect": true
+          },
+          {
+            "text": "<b>",
+            "isCorrect": false
+          },
+          {
+            "text": "<span>",
+            "isCorrect": false
+          },
+          {
+            "text": "<i>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Зачем использовать один осмысленный <h1> на странице?",
+        "options": [
+          {
+            "text": "Помогает поисковикам понять главную тему документа",
+            "isCorrect": true
+          },
+          {
+            "text": "Ускоряет CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Обязательно по спецификации HTML4",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменяет meta description",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-schema-org": {
+    "questions": [
+      {
+        "text": "Для чего используют разметку Schema.org?",
+        "options": [
+          {
+            "text": "Дать поисковым системам структурированные данные о контенте",
+            "isCorrect": true
+          },
+          {
+            "text": "Подключить React",
+            "isCorrect": false
+          },
+          {
+            "text": "Сжать изображения",
+            "isCorrect": false
+          },
+          {
+            "text": "Валидировать CSS",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-validation": {
+    "questions": [
+      {
+        "text": "Зачем валидировать HTML?",
+        "options": [
+          {
+            "text": "Найти ошибки разметки и улучшить совместимость",
+            "isCorrect": true
+          },
+          {
+            "text": "Ускорить JavaScript",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменить линтер ESLint",
+            "isCorrect": false
+          },
+          {
+            "text": "Сгенерировать API",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "html-doctype": {
+    "questions": [
+      {
+        "text": "Что объявляет <!DOCTYPE html> в начале документа?",
+        "options": [
+          {
+            "text": "Режим HTML5 для браузера",
+            "isCorrect": true
+          },
+          {
+            "text": "Кодировку UTF-8",
+            "isCorrect": false
+          },
+          {
+            "text": "Язык страницы",
+            "isCorrect": false
+          },
+          {
+            "text": "Версию CSS",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Где должен находиться DOCTYPE?",
+        "options": [
+          {
+            "text": "Самой первой строкой HTML-документа",
+            "isCorrect": true
+          },
+          {
+            "text": "Внутри <head>",
+            "isCorrect": false
+          },
+          {
+            "text": "После <body>",
+            "isCorrect": false
+          },
+          {
+            "text": "В конце файла",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+}

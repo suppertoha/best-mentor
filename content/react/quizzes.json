@@ -1,0 +1,846 @@
+{
+  "react-vvedenie": {
+    "questions": [
+      {
+        "text": "Что такое React?",
+        "options": [
+          {
+            "text": "Библиотека для построения пользовательских интерфейсов",
+            "isCorrect": true
+          },
+          {
+            "text": "База данных",
+            "isCorrect": false
+          },
+          {
+            "text": "Язык разметки",
+            "isCorrect": false
+          },
+          {
+            "text": "Серверный фреймворк для API",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Из чего состоит UI в React?",
+        "options": [
+          {
+            "text": "Из компонентов",
+            "isCorrect": true
+          },
+          {
+            "text": "Из HTML-шаблонов PHP",
+            "isCorrect": false
+          },
+          {
+            "text": "Только из CSS-модулей",
+            "isCorrect": false
+          },
+          {
+            "text": "Из SQL-таблиц",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-jsx": {
+    "questions": [
+      {
+        "text": "Что такое JSX?",
+        "options": [
+          {
+            "text": "Синтаксис, похожий на HTML, внутри JavaScript",
+            "isCorrect": true
+          },
+          {
+            "text": "Отдельный язык компиляции в браузер",
+            "isCorrect": false
+          },
+          {
+            "text": "CSS-фреймворк",
+            "isCorrect": false
+          },
+          {
+            "text": "База данных",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Сколько корневых элементов должен возвращать компонент в современном React?",
+        "options": [
+          {
+            "text": "Один (или Fragment)",
+            "isCorrect": true
+          },
+          {
+            "text": "Ровно три",
+            "isCorrect": false
+          },
+          {
+            "text": "Любое количество без обёртки",
+            "isCorrect": false
+          },
+          {
+            "text": "Только <div>",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-komponenty-i-props": {
+    "questions": [
+      {
+        "text": "Для чего нужны props?",
+        "options": [
+          {
+            "text": "Передать данные от родителя в дочерний компонент",
+            "isCorrect": true
+          },
+          {
+            "text": "Хранить глобальный state Redux",
+            "isCorrect": false
+          },
+          {
+            "text": "Подключить CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Сделать HTTP-запрос без useEffect",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Можно ли изменять props внутри дочернего компонента?",
+        "options": [
+          {
+            "text": "Нет, props только для чтения",
+            "isCorrect": true
+          },
+          {
+            "text": "Да, через props.value = 1",
+            "isCorrect": false
+          },
+          {
+            "text": "Да, через setProps",
+            "isCorrect": false
+          },
+          {
+            "text": "Только в class components",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-use-state": {
+    "questions": [
+      {
+        "text": "Что возвращает useState(initial)?",
+        "options": [
+          {
+            "text": "Массив [value, setValue]",
+            "isCorrect": true
+          },
+          {
+            "text": "Только value",
+            "isCorrect": false
+          },
+          {
+            "text": "Объект { state, setState }",
+            "isCorrect": false
+          },
+          {
+            "text": "Promise",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Когда компонент перерисуется после setState?",
+        "options": [
+          {
+            "text": "После обновления state React запланирует новый render",
+            "isCorrect": true
+          },
+          {
+            "text": "Синхронно до return",
+            "isCorrect": false
+          },
+          {
+            "text": "Только при F5",
+            "isCorrect": false
+          },
+          {
+            "text": "Никогда",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-sobytiya": {
+    "questions": [
+      {
+        "text": "Как передать обработчик клика в React?",
+        "options": [
+          {
+            "text": "onClick={handleClick}",
+            "isCorrect": true
+          },
+          {
+            "text": "click={handleClick}",
+            "isCorrect": false
+          },
+          {
+            "text": "on-click=\"handleClick\"",
+            "isCorrect": false
+          },
+          {
+            "text": "handlerClick",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Почему пишут onClick={() => fn(id)}, а не onClick={fn(id)}?",
+        "options": [
+          {
+            "text": "Чтобы вызвать функцию позже по событию, а не сразу при render",
+            "isCorrect": true
+          },
+          {
+            "text": "Потому что React требует стрелку всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы ускорить CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Это синтаксис HTML",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-uslovnyy-render": {
+    "questions": [
+      {
+        "text": "Как условно показать блок в JSX?",
+        "options": [
+          {
+            "text": "{isOpen && <Panel />}",
+            "isCorrect": true
+          },
+          {
+            "text": "<if condition>",
+            "isCorrect": false
+          },
+          {
+            "text": "{if isOpen}<Panel />",
+            "isCorrect": false
+          },
+          {
+            "text": "v-if",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-spiski-i-keys": {
+    "questions": [
+      {
+        "text": "Зачем key в списке элементов?",
+        "options": [
+          {
+            "text": "Помочь React отличать элементы при обновлении",
+            "isCorrect": true
+          },
+          {
+            "text": "Для SEO",
+            "isCorrect": false
+          },
+          {
+            "text": "Для CSS-класса",
+            "isCorrect": false
+          },
+          {
+            "text": "Чтобы сортировать массив",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Почему плохо использовать index как key при изменяемом списке?",
+        "options": [
+          {
+            "text": "Может сломаться состояние элементов при вставке/удалении",
+            "isCorrect": true
+          },
+          {
+            "text": "React не рендерит список",
+            "isCorrect": false
+          },
+          {
+            "text": "key обязан быть числом 0",
+            "isCorrect": false
+          },
+          {
+            "text": "index запрещён спецификацией",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-formy-controlled": {
+    "questions": [
+      {
+        "text": "Что такое controlled input?",
+        "options": [
+          {
+            "text": "Значение поля хранится в state и задаётся через value",
+            "isCorrect": true
+          },
+          {
+            "text": "Поле без value",
+            "isCorrect": false
+          },
+          {
+            "text": "Только input type=hidden",
+            "isCorrect": false
+          },
+          {
+            "text": "Форма без onSubmit",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как обновить текст в controlled input?",
+        "options": [
+          {
+            "text": "onChange → setState(event.target.value)",
+            "isCorrect": true
+          },
+          {
+            "text": "input.value = ... напрямую без state",
+            "isCorrect": false
+          },
+          {
+            "text": "document.querySelector",
+            "isCorrect": false
+          },
+          {
+            "text": "reload страницы",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-use-effect": {
+    "questions": [
+      {
+        "text": "Для чего нужен useEffect?",
+        "options": [
+          {
+            "text": "Побочные эффекты: запросы, подписки, работа с DOM",
+            "isCorrect": true
+          },
+          {
+            "text": "Создание JSX",
+            "isCorrect": false
+          },
+          {
+            "text": "Объявление props",
+            "isCorrect": false
+          },
+          {
+            "text": "Стилизация SCSS",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает пустой массив зависимостей []?",
+        "options": [
+          {
+            "text": "Эффект выполнится один раз после монтирования",
+            "isCorrect": true
+          },
+          {
+            "text": "Каждый render",
+            "isCorrect": false
+          },
+          {
+            "text": "Никогда",
+            "isCorrect": false
+          },
+          {
+            "text": "Только при unmount без cleanup",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-use-ref": {
+    "questions": [
+      {
+        "text": "Для чего используют useRef?",
+        "options": [
+          {
+            "text": "Хранить ссылку на DOM-элемент или мутабельное значение без перерисовки",
+            "isCorrect": true
+          },
+          {
+            "text": "Заменить useState всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Подключить Redux",
+            "isCorrect": false
+          },
+          {
+            "text": "Валидировать формы",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-use-memo-use-callback": {
+    "questions": [
+      {
+        "text": "Зачем useMemo?",
+        "options": [
+          {
+            "text": "Кэшировать результат вычисления между рендерами",
+            "isCorrect": true
+          },
+          {
+            "text": "Мемоизировать компонент целиком всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменить useEffect",
+            "isCorrect": false
+          },
+          {
+            "text": "Хранить ref",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Зачем useCallback?",
+        "options": [
+          {
+            "text": "Вернуть стабильную ссылку на функцию между рендерами",
+            "isCorrect": true
+          },
+          {
+            "text": "Ускорить CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Создать Promise",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменить useState",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-context-api": {
+    "questions": [
+      {
+        "text": "Для чего Context API?",
+        "options": [
+          {
+            "text": "Передать данные глубоко вниз без prop drilling",
+            "isCorrect": true
+          },
+          {
+            "text": "Заменить React Router",
+            "isCorrect": false
+          },
+          {
+            "text": "Хранить CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Компилировать TypeScript",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-router": {
+    "questions": [
+      {
+        "text": "Какой компонент React Router рендерит дочерние маршруты?",
+        "options": [
+          {
+            "text": "<Outlet />",
+            "isCorrect": true
+          },
+          {
+            "text": "<Route only>",
+            "isCorrect": false
+          },
+          {
+            "text": "<Link>",
+            "isCorrect": false
+          },
+          {
+            "text": "<Navigate only>",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Чем Link отличается от <a href>?",
+        "options": [
+          {
+            "text": "Делает клиентскую навигацию без полной перезагрузки SPA",
+            "isCorrect": true
+          },
+          {
+            "text": "Открывает новую вкладку всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Работает только на сервере",
+            "isCorrect": false
+          },
+          {
+            "text": "Ничем",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-podnyatie-sostoyaniya": {
+    "questions": [
+      {
+        "text": "Что значит «поднять state вверх»?",
+        "options": [
+          {
+            "text": "Хранить общий state в ближайшем общем родителе",
+            "isCorrect": true
+          },
+          {
+            "text": "Переместить state в localStorage всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Использовать только Redux",
+            "isCorrect": false
+          },
+          {
+            "text": "Удалить props",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-kompoziciya": {
+    "questions": [
+      {
+        "text": "Что такое композиция компонентов?",
+        "options": [
+          {
+            "text": "Сборка UI из маленьких переиспользуемых компонентов",
+            "isCorrect": true
+          },
+          {
+            "text": "Наследование class extends UI",
+            "isCorrect": false
+          },
+          {
+            "text": "Копипаста HTML",
+            "isCorrect": false
+          },
+          {
+            "text": "Один гигантский компонент",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что такое children в React?",
+        "options": [
+          {
+            "text": "Содержимое, переданное между открывающим и закрывающим тегом компонента",
+            "isCorrect": true
+          },
+          {
+            "text": "Массив props только",
+            "isCorrect": false
+          },
+          {
+            "text": "Список key",
+            "isCorrect": false
+          },
+          {
+            "text": "Глобальный store",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-custom-hooks": {
+    "questions": [
+      {
+        "text": "Как должно начинаться имя пользовательского хука?",
+        "options": [
+          {
+            "text": "С use, например useAuth",
+            "isCorrect": true
+          },
+          {
+            "text": "С get",
+            "isCorrect": false
+          },
+          {
+            "text": "С on",
+            "isCorrect": false
+          },
+          {
+            "text": "С handle",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Зачем выносить логику в custom hook?",
+        "options": [
+          {
+            "text": "Переиспользовать stateful-логику между компонентами",
+            "isCorrect": true
+          },
+          {
+            "text": "Ускорить CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменить TypeScript",
+            "isCorrect": false
+          },
+          {
+            "text": "Убрать JSX",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-typescript": {
+    "questions": [
+      {
+        "text": "Как типизировать props интерфейсом?",
+        "options": [
+          {
+            "text": "interface Props { title: string }",
+            "isCorrect": true
+          },
+          {
+            "text": "props: any всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "type Props = string",
+            "isCorrect": false
+          },
+          {
+            "text": "Props extends Component",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-redux": {
+    "questions": [
+      {
+        "text": "Где в Redux хранится глобальное состояние?",
+        "options": [
+          {
+            "text": "В store",
+            "isCorrect": true
+          },
+          {
+            "text": "В props родителя",
+            "isCorrect": false
+          },
+          {
+            "text": "В localStorage только",
+            "isCorrect": false
+          },
+          {
+            "text": "В CSS-переменных",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как компонент читает данные из Redux?",
+        "options": [
+          {
+            "text": "useSelector",
+            "isCorrect": true
+          },
+          {
+            "text": "useFetch",
+            "isCorrect": false
+          },
+          {
+            "text": "useRef",
+            "isCorrect": false
+          },
+          {
+            "text": "getElementById",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-memo-optimizaciya": {
+    "questions": [
+      {
+        "text": "Что делает React.memo?",
+        "options": [
+          {
+            "text": "Пропускает лишний render, если props не изменились",
+            "isCorrect": true
+          },
+          {
+            "text": "Мемоизирует API-запрос",
+            "isCorrect": false
+          },
+          {
+            "text": "Создаёт context",
+            "isCorrect": false
+          },
+          {
+            "text": "Заменяет useState",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-lazy-suspense": {
+    "questions": [
+      {
+        "text": "Для чего React.lazy?",
+        "options": [
+          {
+            "text": "Ленивая загрузка компонента по требованию",
+            "isCorrect": true
+          },
+          {
+            "text": "Ленивая загрузка CSS в head",
+            "isCorrect": false
+          },
+          {
+            "text": "Отложенный setState",
+            "isCorrect": false
+          },
+          {
+            "text": "Кэш localStorage",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что показывает <Suspense fallback={...}>?",
+        "options": [
+          {
+            "text": "Запасной UI пока lazy-компонент грузится",
+            "isCorrect": true
+          },
+          {
+            "text": "Ошибку API",
+            "isCorrect": false
+          },
+          {
+            "text": "404 страницу",
+            "isCorrect": false
+          },
+          {
+            "text": "Только spinner в Redux",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-error-boundaries": {
+    "questions": [
+      {
+        "text": "Что ловит Error Boundary?",
+        "options": [
+          {
+            "text": "Ошибки рендера в дочерних компонентах",
+            "isCorrect": true
+          },
+          {
+            "text": "Ошибки в event handlers автоматически",
+            "isCorrect": false
+          },
+          {
+            "text": "Ошибки сети fetch",
+            "isCorrect": false
+          },
+          {
+            "text": "Ошибки CSS",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "react-portaly": {
+    "questions": [
+      {
+        "text": "Для чего createPortal?",
+        "options": [
+          {
+            "text": "Рендерить React-узел в другой DOM-контейнер, например в body",
+            "isCorrect": true
+          },
+          {
+            "text": "Создать новый роут",
+            "isCorrect": false
+          },
+          {
+            "text": "Подключить Redux",
+            "isCorrect": false
+          },
+          {
+            "text": "Скомпилировать JSX",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+}

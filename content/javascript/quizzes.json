@@ -1,0 +1,909 @@
+{
+  "js-introduction": {
+    "questions": [
+      {
+        "text": "Где по умолчанию выполняется JavaScript в браузере?",
+        "options": [
+          {
+            "text": "На стороне клиента в браузере",
+            "isCorrect": true
+          },
+          {
+            "text": "Только на сервере",
+            "isCorrect": false
+          },
+          {
+            "text": "В базе данных",
+            "isCorrect": false
+          },
+          {
+            "text": "В CSS-файле",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как подключить внешний JS-файл?",
+        "options": [
+          {
+            "text": "<script src=\"app.js\"></script>",
+            "isCorrect": true
+          },
+          {
+            "text": "<link href=\"app.js\">",
+            "isCorrect": false
+          },
+          {
+            "text": "<js src=\"app.js\">",
+            "isCorrect": false
+          },
+          {
+            "text": "<import src=\"app.js\">",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-variables-and-types": {
+    "questions": [
+      {
+        "text": "Чем let отличается от const?",
+        "options": [
+          {
+            "text": "const нельзя переназначить, let можно",
+            "isCorrect": true
+          },
+          {
+            "text": "const только для чисел",
+            "isCorrect": false
+          },
+          {
+            "text": "let только в функциях",
+            "isCorrect": false
+          },
+          {
+            "text": "ничем",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "К какому типу относится typeof null в JavaScript?",
+        "options": [
+          {
+            "text": "\"object\"",
+            "isCorrect": true
+          },
+          {
+            "text": "\"null\"",
+            "isCorrect": false
+          },
+          {
+            "text": "\"undefined\"",
+            "isCorrect": false
+          },
+          {
+            "text": "\"number\"",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-functions-and-dom": {
+    "questions": [
+      {
+        "text": "Что такое DOM?",
+        "options": [
+          {
+            "text": "Объектное представление HTML-документа в браузере",
+            "isCorrect": true
+          },
+          {
+            "text": "База данных",
+            "isCorrect": false
+          },
+          {
+            "text": "Серверный фреймворк",
+            "isCorrect": false
+          },
+          {
+            "text": "Файловая система",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как получить элемент по id?",
+        "options": [
+          {
+            "text": "document.getElementById('id')",
+            "isCorrect": true
+          },
+          {
+            "text": "document.query('#id')",
+            "isCorrect": false
+          },
+          {
+            "text": "window.getId('id')",
+            "isCorrect": false
+          },
+          {
+            "text": "html.find('#id')",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-operators": {
+    "questions": [
+      {
+        "text": "Что вернёт typeof 42?",
+        "options": [
+          {
+            "text": "\"number\"",
+            "isCorrect": true
+          },
+          {
+            "text": "\"integer\"",
+            "isCorrect": false
+          },
+          {
+            "text": "\"float\"",
+            "isCorrect": false
+          },
+          {
+            "text": "\"NaN\"",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Чем === отличается от ==?",
+        "options": [
+          {
+            "text": "=== сравнивает без приведения типов",
+            "isCorrect": true
+          },
+          {
+            "text": "== строже",
+            "isCorrect": false
+          },
+          {
+            "text": "=== всегда false для строк",
+            "isCorrect": false
+          },
+          {
+            "text": "ничем",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-conditionals": {
+    "questions": [
+      {
+        "text": "Какой оператор проверяет несколько вариантов значения?",
+        "options": [
+          {
+            "text": "switch",
+            "isCorrect": true
+          },
+          {
+            "text": "for",
+            "isCorrect": false
+          },
+          {
+            "text": "map",
+            "isCorrect": false
+          },
+          {
+            "text": "reduce",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какое значение считается falsy?",
+        "options": [
+          {
+            "text": "0",
+            "isCorrect": true
+          },
+          {
+            "text": "[]",
+            "isCorrect": false
+          },
+          {
+            "text": "{}",
+            "isCorrect": false
+          },
+          {
+            "text": "\"0\"",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-loops": {
+    "questions": [
+      {
+        "text": "Какой цикл перебирает элементы массива?",
+        "options": [
+          {
+            "text": "for...of",
+            "isCorrect": true
+          },
+          {
+            "text": "for...in для массива как лучшая практика",
+            "isCorrect": false
+          },
+          {
+            "text": "while только для объектов",
+            "isCorrect": false
+          },
+          {
+            "text": "switch",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает break внутри цикла?",
+        "options": [
+          {
+            "text": "Прерывает выполнение цикла",
+            "isCorrect": true
+          },
+          {
+            "text": "Пропускает одну итерацию",
+            "isCorrect": false
+          },
+          {
+            "text": "Создаёт новый массив",
+            "isCorrect": false
+          },
+          {
+            "text": "Возвращает значение функции",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-arrays": {
+    "questions": [
+      {
+        "text": "Что возвращает arr.map(fn)?",
+        "options": [
+          {
+            "text": "Новый массив с преобразованными элементами",
+            "isCorrect": true
+          },
+          {
+            "text": "Исходный массив изменённый",
+            "isCorrect": false
+          },
+          {
+            "text": "Число",
+            "isCorrect": false
+          },
+          {
+            "text": "Boolean",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает arr.filter(fn)?",
+        "options": [
+          {
+            "text": "Возвращает новый массив только с элементами, прошедшими проверку",
+            "isCorrect": true
+          },
+          {
+            "text": "Сортирует массив",
+            "isCorrect": false
+          },
+          {
+            "text": "Суммирует элементы",
+            "isCorrect": false
+          },
+          {
+            "text": "Удаляет дубликаты автоматически",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-objects": {
+    "questions": [
+      {
+        "text": "Как получить значение свойства obj.name эквивалентно?",
+        "options": [
+          {
+            "text": "obj['name']",
+            "isCorrect": true
+          },
+          {
+            "text": "obj(name)",
+            "isCorrect": false
+          },
+          {
+            "text": "obj->name",
+            "isCorrect": false
+          },
+          {
+            "text": "get obj.name",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что такое метод объекта?",
+        "options": [
+          {
+            "text": "Функция, хранящаяся в свойстве объекта",
+            "isCorrect": true
+          },
+          {
+            "text": "Отдельный класс CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "Тип массива",
+            "isCorrect": false
+          },
+          {
+            "text": "HTTP-заголовок",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-destructuring": {
+    "questions": [
+      {
+        "text": "Что делает const { a, b } = obj?",
+        "options": [
+          {
+            "text": "Извлекает свойства a и b из объекта",
+            "isCorrect": true
+          },
+          {
+            "text": "Создаёт копию массива",
+            "isCorrect": false
+          },
+          {
+            "text": "Удаляет свойства",
+            "isCorrect": false
+          },
+          {
+            "text": "Сортирует ключи",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-spread-rest": {
+    "questions": [
+      {
+        "text": "Для чего используют ...arr в массиве?",
+        "options": [
+          {
+            "text": "Распаковать элементы другого массива",
+            "isCorrect": true
+          },
+          {
+            "text": "Слить объекты без копирования всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "Объявить rest-only параметр",
+            "isCorrect": false
+          },
+          {
+            "text": "Импортировать модуль",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает rest в параметрах function fn(...args)?",
+        "options": [
+          {
+            "text": "Собирает оставшиеся аргументы в массив",
+            "isCorrect": true
+          },
+          {
+            "text": "Копирует первый аргумент",
+            "isCorrect": false
+          },
+          {
+            "text": "Удаляет последний аргумент",
+            "isCorrect": false
+          },
+          {
+            "text": "Превращает массив в объект",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-arrow-functions": {
+    "questions": [
+      {
+        "text": "Чем стрелочная функция отличается по this?",
+        "options": [
+          {
+            "text": "Не имеет своего this, берёт из внешнего лексического окружения",
+            "isCorrect": true
+          },
+          {
+            "text": "Всегда this = window",
+            "isCorrect": false
+          },
+          {
+            "text": "this всегда undefined",
+            "isCorrect": false
+          },
+          {
+            "text": "this можно менять call/apply только в class",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-closures": {
+    "questions": [
+      {
+        "text": "Что такое замыкание?",
+        "options": [
+          {
+            "text": "Функция, которая помнит переменные из внешней области видимости",
+            "isCorrect": true
+          },
+          {
+            "text": "Глобальная переменная window",
+            "isCorrect": false
+          },
+          {
+            "text": "Метод массива map",
+            "isCorrect": false
+          },
+          {
+            "text": "Событие click",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-this": {
+    "questions": [
+      {
+        "text": "Каким будет this в обычном методе obj.method()?",
+        "options": [
+          {
+            "text": "Сам объект obj",
+            "isCorrect": true
+          },
+          {
+            "text": "Всегда window",
+            "isCorrect": false
+          },
+          {
+            "text": "Всегда undefined",
+            "isCorrect": false
+          },
+          {
+            "text": "Первый аргумент функции",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-es6-classes": {
+    "questions": [
+      {
+        "text": "Что вызывает constructor в классе?",
+        "options": [
+          {
+            "text": "Создание нового экземпляра через new",
+            "isCorrect": true
+          },
+          {
+            "text": "Наследование без new",
+            "isCorrect": false
+          },
+          {
+            "text": "Импорт модуля",
+            "isCorrect": false
+          },
+          {
+            "text": "Экспорт default",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Какое ключевое слово наследует класс?",
+        "options": [
+          {
+            "text": "extends",
+            "isCorrect": true
+          },
+          {
+            "text": "inherits",
+            "isCorrect": false
+          },
+          {
+            "text": "superclass",
+            "isCorrect": false
+          },
+          {
+            "text": "prototype",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-modules": {
+    "questions": [
+      {
+        "text": "Как экспортировать значение по умолчанию?",
+        "options": [
+          {
+            "text": "export default value",
+            "isCorrect": true
+          },
+          {
+            "text": "export main value",
+            "isCorrect": false
+          },
+          {
+            "text": "module.exports only в браузере без bundler",
+            "isCorrect": false
+          },
+          {
+            "text": "import default value",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как импортировать именованный экспорт?",
+        "options": [
+          {
+            "text": "import { foo } from './module.js'",
+            "isCorrect": true
+          },
+          {
+            "text": "import foo from { foo }",
+            "isCorrect": false
+          },
+          {
+            "text": "require foo",
+            "isCorrect": false
+          },
+          {
+            "text": "include foo",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-promises": {
+    "questions": [
+      {
+        "text": "В каком состоянии Promise после успешного resolve?",
+        "options": [
+          {
+            "text": "fulfilled",
+            "isCorrect": true
+          },
+          {
+            "text": "pending forever",
+            "isCorrect": false
+          },
+          {
+            "text": "rejected",
+            "isCorrect": false
+          },
+          {
+            "text": "cancelled",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает .then()?",
+        "options": [
+          {
+            "text": "Обрабатывает успешный результат Promise",
+            "isCorrect": true
+          },
+          {
+            "text": "Создаёт новый Promise rejected",
+            "isCorrect": false
+          },
+          {
+            "text": "Отменяет fetch",
+            "isCorrect": false
+          },
+          {
+            "text": "Синхронно блокирует поток",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-async-await": {
+    "questions": [
+      {
+        "text": "Где можно использовать await?",
+        "options": [
+          {
+            "text": "Внутри async-функции",
+            "isCorrect": true
+          },
+          {
+            "text": "В обычной функции без async",
+            "isCorrect": false
+          },
+          {
+            "text": "В CSS",
+            "isCorrect": false
+          },
+          {
+            "text": "В HTML-атрибуте",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что вернёт async function, если нет return?",
+        "options": [
+          {
+            "text": "Promise, который резолвится в undefined",
+            "isCorrect": true
+          },
+          {
+            "text": "Синхронный undefined без Promise",
+            "isCorrect": false
+          },
+          {
+            "text": "Ошибку всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "null",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-fetch-api": {
+    "questions": [
+      {
+        "text": "Что возвращает fetch(url)?",
+        "options": [
+          {
+            "text": "Promise с Response",
+            "isCorrect": true
+          },
+          {
+            "text": "Готовый JSON",
+            "isCorrect": false
+          },
+          {
+            "text": "XMLHttpRequest",
+            "isCorrect": false
+          },
+          {
+            "text": "Строку HTML",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как получить JSON из response?",
+        "options": [
+          {
+            "text": "await response.json()",
+            "isCorrect": true
+          },
+          {
+            "text": "response.text() только для JSON",
+            "isCorrect": false
+          },
+          {
+            "text": "JSON.parse(response)",
+            "isCorrect": false
+          },
+          {
+            "text": "response.data",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-error-handling": {
+    "questions": [
+      {
+        "text": "Как поймать ошибку в async/await?",
+        "options": [
+          {
+            "text": "try / catch",
+            "isCorrect": true
+          },
+          {
+            "text": "if / else",
+            "isCorrect": false
+          },
+          {
+            "text": "switch",
+            "isCorrect": false
+          },
+          {
+            "text": "finally без try",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-events": {
+    "questions": [
+      {
+        "text": "Как подписаться на клик по кнопке?",
+        "options": [
+          {
+            "text": "button.addEventListener('click', handler)",
+            "isCorrect": true
+          },
+          {
+            "text": "button.onclick = only deprecated always",
+            "isCorrect": false
+          },
+          {
+            "text": "button.click(handler)",
+            "isCorrect": false
+          },
+          {
+            "text": "listen(button, 'click')",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что делает event.preventDefault()?",
+        "options": [
+          {
+            "text": "Отменяет стандартное поведение браузера",
+            "isCorrect": true
+          },
+          {
+            "text": "Удаляет обработчик",
+            "isCorrect": false
+          },
+          {
+            "text": "Останавливает всплытие только",
+            "isCorrect": false
+          },
+          {
+            "text": "Создаёт новое событие",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-event-loop": {
+    "questions": [
+      {
+        "text": "Куда попадают колбэки setTimeout?",
+        "options": [
+          {
+            "text": "В очередь задач после текущего стека",
+            "isCorrect": true
+          },
+          {
+            "text": "Выполняются синхронно сразу",
+            "isCorrect": false
+          },
+          {
+            "text": "В microtask queue всегда",
+            "isCorrect": false
+          },
+          {
+            "text": "В CSS engine",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Что выполняется раньше: microtask или macrotask?",
+        "options": [
+          {
+            "text": "Microtask (например then) раньше следующей macrotask",
+            "isCorrect": true
+          },
+          {
+            "text": "Macrotask всегда раньше",
+            "isCorrect": false
+          },
+          {
+            "text": "Одновременно",
+            "isCorrect": false
+          },
+          {
+            "text": "Зависит только от setTimeout 0",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  },
+  "js-local-storage": {
+    "questions": [
+      {
+        "text": "Чем localStorage отличается от sessionStorage?",
+        "options": [
+          {
+            "text": "localStorage сохраняется после закрытия вкладки",
+            "isCorrect": true
+          },
+          {
+            "text": "sessionStorage больше по объёму",
+            "isCorrect": false
+          },
+          {
+            "text": "localStorage только для чисел",
+            "isCorrect": false
+          },
+          {
+            "text": "ничем",
+            "isCorrect": false
+          }
+        ]
+      },
+      {
+        "text": "Как сохранить строку в localStorage?",
+        "options": [
+          {
+            "text": "localStorage.setItem('key', 'value')",
+            "isCorrect": true
+          },
+          {
+            "text": "localStorage.key = value only object",
+            "isCorrect": false
+          },
+          {
+            "text": "storage.save()",
+            "isCorrect": false
+          },
+          {
+            "text": "document.store()",
+            "isCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+}
