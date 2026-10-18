@@ -15,6 +15,13 @@
     "seed:css": "node scripts/seed-chapters.mjs css",
     "seed:javascript": "node scripts/seed-chapters.mjs javascript",
     "seed:react": "node scripts/ensure-section.mjs react && node scripts/seed-chapters.mjs react",
+    "quizzes:build": "node scripts/build-quizzes-json.mjs",
+    "seed:quizzes": "node scripts/seed-quizzes.mjs",
+    "seed:quizzes:html": "node scripts/seed-quizzes.mjs html",
+    "seed:quizzes:css": "node scripts/seed-quizzes.mjs css",
+    "seed:quizzes:javascript": "node scripts/seed-quizzes.mjs javascript",
+    "seed:quizzes:react": "node scripts/seed-quizzes.mjs react",
+    "seed:quizzes:all": "npm run quizzes:build && npm run seed:quizzes:html && npm run seed:quizzes:css && npm run seed:quizzes:javascript && npm run seed:quizzes:react",
     "seed:cleanup": "node scripts/cleanup-chapters.mjs",
     "generate:content": "node scripts/generate-content.mjs",
     "seed:all": "npm run seed:cleanup && npm run seed:html && npm run seed:css && npm run seed:javascript && npm run seed:react"
@@ -25,6 +32,7 @@
     "@dnd-kit/utilities": "3.2.2",
     "@hookform/resolvers": "5.7.1",
     "@reduxjs/toolkit": "2.12.0",
+    "@tanstack/react-query": "^5.104.2",
     "@uiw/react-md-editor": "4.1.1",
     "axios": "1.18.1",
     "clsx": "2.1.1",
@@ -43,6 +51,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.104.2",
     "@types/dompurify": "3.0.5",
     "@types/node": "24.13.2",
     "@types/react": "19.2.17",
