@@ -24,6 +24,17 @@
   gap: 12px;
 }
 
+.adminLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .roleBadge {
   padding: 6px 12px;
   border-radius: 8px;

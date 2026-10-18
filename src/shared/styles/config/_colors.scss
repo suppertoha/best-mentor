@@ -1,11 +1,26 @@
-$accent: #6a0bff;
-$accent-dark: #5509cc;
+// Semantic aliases — source of truth: theme/_tokens.scss (:root --color-*)
+$accent: var(--color-accent);
+$accent-dark: var(--color-accent-hover);
+$accent-subtle: var(--color-accent-subtle);
+$accent-subtle-strong: var(--color-accent-subtle-strong);
 
-$text-primary: #191919;
-$text-secondary: #474747;
-$text-muted: #a3a3a3;
+$code-bg: var(--color-code-bg);
+$code-text: var(--color-code-text);
 
-$bg-white: #ffffff;
-$bg-page: #f4f4f4;
+$text-primary: var(--color-text-primary);
+$text-secondary: var(--color-text-secondary);
+$text-muted: var(--color-text-muted);
 
-$border-light: #e8e8e8;
+$bg-white: var(--color-bg-surface);
+$bg-page: var(--color-bg-page);
+$bg-muted: var(--color-bg-muted);
+
+$border-light: var(--color-border);
+
+$danger: var(--color-danger);
+$danger-bg: var(--color-danger-bg);
+$danger-border: var(--color-danger-border);
+$danger-bg-hover: var(--color-danger-bg-hover);
+
+$success: var(--color-success);
+$success-bg: var(--color-success-bg);

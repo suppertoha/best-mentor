@@ -34,11 +34,11 @@
 }
 
 .textareaError {
-  border-color: #c62828;
+  border-color: $danger;
 }
 
 .error {
   margin: 0;
   font-size: 14px;
-  color: #c62828;
+  color: $danger;
 }

@@ -1,0 +1,31 @@
+:root {
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-subtle: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --color-accent-subtle-strong: color-mix(in srgb, var(--color-accent) 12%, transparent);
+
+  --color-code-bg: #1e1e1e;
+  --color-code-text: #c9d1d9;
+
+  --color-text-primary: #191919;
+  --color-text-secondary: #474747;
+  --color-text-muted: #a3a3a3;
+
+  --color-bg-page: #f4f4f4;
+  --color-bg-surface: #ffffff;
+  --color-bg-muted: #f3f4f6;
+
+  --color-border: #e8e8e8;
+  --color-border-input: #d1d5db;
+
+  --color-danger: #dc2626;
+  --color-danger-bg: #fff5f5;
+  --color-danger-border: #f5c2c7;
+  --color-danger-bg-hover: #ffe3e3;
+
+  --color-success: #2e7d32;
+  --color-success-bg: #e8f5e9;
+
+  --shadow-focus-accent: 0 0 0 2px color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --shadow-focus-danger: 0 0 0 2px color-mix(in srgb, var(--color-danger) 12%, transparent);
+}
