@@ -13,6 +13,7 @@ interface SectionsAdminModalsProps {
   onCloseEditSection: () => void;
   onSectionUpdated: () => void;
   creatingChapterSectionId: number | null;
+  creatingChapterSectionChapters?: Chapter[];
   onCloseCreateChapter: () => void;
   onChapterCreated: () => void;
   editingChapter: Chapter | null;
@@ -28,6 +29,7 @@ export const SectionsAdminModals = ({
   onCloseEditSection,
   onSectionUpdated,
   creatingChapterSectionId,
+  creatingChapterSectionChapters = [],
   onCloseCreateChapter,
   onChapterCreated,
   editingChapter,
@@ -66,6 +68,7 @@ export const SectionsAdminModals = ({
         <CreateChapterForm
           key={creatingChapterSectionId}
           sectionId={creatingChapterSectionId}
+          existingChapters={creatingChapterSectionChapters}
           onSuccess={onChapterCreated}
         />
       )}
