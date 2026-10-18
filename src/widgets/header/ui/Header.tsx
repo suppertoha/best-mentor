@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { clearToken, getUserInitials, isAdmin } from "@/entities/user";
 import { ROUTES } from "@/shared/config";
@@ -56,6 +56,11 @@ export const Header = () => {
       <div className={`container ${styles.inner}`}>
         <h1 className={styles.title}>Best Mentor</h1>
         <div className={styles.actions}>
+          {isAdmin(user) && (
+            <Link to={ROUTES.admin} className={styles.adminLink}>
+              Админка
+            </Link>
+          )}
           {isAdmin(user) && <span className={styles.roleBadge}>Admin</span>}
           <div className={styles.menu} ref={menuRef}>
             <Button

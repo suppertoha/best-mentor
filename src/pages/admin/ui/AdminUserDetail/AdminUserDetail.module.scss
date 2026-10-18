@@ -1,0 +1,173 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 0 48px;
+}
+
+.backLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.hero {
+  padding: 32px;
+  border-radius: 8px;
+  background: $bg-white;
+  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+}
+
+.role {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: $text-secondary;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.email {
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: $text-secondary;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.profileLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+
+  @include media($lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include media($sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid $border-light;
+  border-radius: 8px;
+  background: $bg-page;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: $text-secondary;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.bio {
+  margin: 20px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: $text-primary;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 8px;
+  background: $bg-white;
+  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid $border-light;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-secondary;
+}
+
+.table td {
+  color: $text-primary;
+}
+
+.emptyCell {
+  padding: 24px 10px;
+  color: $text-secondary;
+  text-align: center;
+}
+
+.chapterLink {
+  color: $accent;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.status,
+.error {
+  padding: 40px 20px;
+}
+
+.error {
+  color: $danger;
+}

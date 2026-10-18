@@ -1,3 +1,4 @@
+export type * from "./admin.dto";
 export type * from "./auth.dto";
 export type * from "./chapters.dto";
 export type * from "./profile.dto";

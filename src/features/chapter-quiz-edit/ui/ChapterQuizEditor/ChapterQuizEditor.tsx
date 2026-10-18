@@ -9,6 +9,7 @@ import {
   createEmptyQuestion,
   createEmptyQuizValues,
   mapAdminQuizToFormValues,
+  normalizeQuestionOptions,
   quizEditorSchema,
   type QuizEditorFormValues,
 } from "../../model/schema";
@@ -32,7 +33,7 @@ export const ChapterQuizEditor = ({
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const { register, handleSubmit, reset, setValue, watch, control, formState } =
+  const { register, handleSubmit, reset, setValue, getValues, watch, control, formState } =
     useForm<QuizEditorFormValues>({
       resolver: zodResolver(quizEditorSchema),
       defaultValues: createEmptyQuizValues(),
@@ -87,11 +88,21 @@ export const ChapterQuizEditor = ({
     };
   }, [chapterId, hasQuiz, reset]);
 
-  const handleCorrectOption = (questionIndex: number, optionIndex: number) => {
-    const currentOptions = questions[questionIndex]?.options ?? [];
+  const updateQuestionOptions = (
+    questionIndex: number,
+    nextOptions: QuizEditorFormValues["questions"][number]["options"],
+  ) => {
+    setValue(`questions.${questionIndex}.options`, normalizeQuestionOptions(nextOptions), {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+  };
 
-    setValue(
-      `questions.${questionIndex}.options`,
+  const handleCorrectOption = (questionIndex: number, optionIndex: number) => {
+    const currentOptions = getValues(`questions.${questionIndex}.options`);
+
+    updateQuestionOptions(
+      questionIndex,
       currentOptions.map((option, index) => ({
         ...option,
         isCorrect: index === optionIndex,
@@ -106,7 +117,7 @@ export const ChapterQuizEditor = ({
       await quizService.putAdmin(chapterId, {
         questions: values.questions.map((question) => ({
           text: question.text,
-          options: question.options,
+          options: normalizeQuestionOptions(question.options),
         })),
       });
       showSuccessToast("Тест сохранён");
@@ -158,6 +169,7 @@ export const ChapterQuizEditor = ({
       <div className={styles.questionsList}>
         {fields.map((field, questionIndex) => {
           const options = questions[questionIndex]?.options ?? [];
+          const correctOptionIndex = options.findIndex((option) => option.isCorrect);
 
           return (
             <section key={field.id} className={styles.questionCard}>
@@ -186,16 +198,17 @@ export const ChapterQuizEditor = ({
               <div className={styles.optionsBlock}>
                 <p className={styles.optionsTitle}>Варианты ответа (отметь правильный)</p>
 
-                {options.map((option, optionIndex) => (
+                {options.map((_, optionIndex) => (
                   <div key={`option-${questionIndex}-${optionIndex}`} className={styles.optionRow}>
                     <label className={styles.correctLabel}>
                       <input
                         type="radio"
                         name={`correct-option-${questionIndex}`}
-                        checked={option.isCorrect}
+                        value={optionIndex}
+                        checked={correctOptionIndex === optionIndex}
                         onChange={() => handleCorrectOption(questionIndex, optionIndex)}
                       />
-                      <span>Верный</span>
+                      <span>Сделать правильным</span>
                     </label>
 
                     <Input
@@ -206,6 +219,11 @@ export const ChapterQuizEditor = ({
                         formState.errors.questions?.[questionIndex]?.options?.[optionIndex]?.text
                           ?.message
                       }
+                    />
+
+                    <input
+                      type="hidden"
+                      {...register(`questions.${questionIndex}.options.${optionIndex}.isCorrect`)}
                     />
 
                     {options.length > 2 && (
@@ -219,11 +237,7 @@ export const ChapterQuizEditor = ({
                             .filter((_, index) => index !== optionIndex)
                             .map((item) => ({ ...item }));
 
-                          if (!nextOptions.some((item) => item.isCorrect) && nextOptions[0]) {
-                            nextOptions[0] = { ...nextOptions[0], isCorrect: true };
-                          }
-
-                          setValue(`questions.${questionIndex}.options`, nextOptions);
+                          updateQuestionOptions(questionIndex, nextOptions);
                         }}
                       >
                         Удалить
@@ -244,7 +258,7 @@ export const ChapterQuizEditor = ({
                     variant="secondary"
                     size="sm"
                     onClick={() => {
-                      setValue(`questions.${questionIndex}.options`, [
+                      updateQuestionOptions(questionIndex, [
                         ...options,
                         { text: "", isCorrect: false },
                       ]);

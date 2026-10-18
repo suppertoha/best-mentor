@@ -4,18 +4,17 @@ import {
   type DragEndEvent,
 } from "@dnd-kit/core";
 import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { Link } from "react-router-dom";
 import ArrowBottom from "@/shared/assets/icons/arrow-bottom.svg?react";
 import PencilIcon from "@/shared/assets/icons/pencil.svg?react";
 import TrashIcon from "@/shared/assets/icons/trash.svg?react";
-import { getChapterPath } from "@/shared/config";
 import { Button } from "@/shared/ui";
 import { useDndSensors, useSortableItem, type SortableHandleProps } from "../../lib/useSortableItem";
-import { sortBySortOrder } from "@/shared/lib";
+import { getChapterLockState, getSectionProgress, sortBySortOrder } from "@/shared/lib";
 import type { Chapter, Section } from "../../model/types";
 import { DragHandle } from "./DragHandle";
 import { SortableChapterRow } from "./SortableChapterRow";
 import { ChapterStatusBadges } from "./ChapterStatusBadges";
+import { ChapterTitleCell } from "./ChapterTitleCell";
 import styles from "./SectionItem.module.scss";
 
 interface SectionItemProps {
@@ -47,6 +46,8 @@ const SectionItemView = ({
 }: SectionItemViewProps) => {
   const chapters = sortBySortOrder(section.chapters);
   const chapterSensors = useDndSensors();
+  const { completed: completedChapters, total: totalChapters } = getSectionProgress(chapters);
+  const showProgress = !showAdminActions && totalChapters > 0;
 
   const handleChapterDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -72,6 +73,17 @@ const SectionItemView = ({
             />
           )}
           <p className={styles.title}>{section.title}</p>
+          {showProgress && (
+            <span
+              className={
+                completedChapters === totalChapters
+                  ? styles.progressBadgeCompleted
+                  : styles.progressBadge
+              }
+            >
+              {completedChapters} / {totalChapters} пройдено
+            </span>
+          )}
         </div>
 
         <div
@@ -128,10 +140,13 @@ const SectionItemView = ({
                   strategy={verticalListSortingStrategy}
                 >
                   <ul className={styles.chapters}>
-                    {chapters.map((chapter) => (
+                    {chapters.map((chapter, index) => (
                       <SortableChapterRow
                         key={chapter.id}
                         chapter={chapter}
+                        chapters={chapters}
+                        chapterIndex={index}
+                        bypassLocks
                         onEdit={onEditChapter}
                         onDelete={onDeleteChapter}
                       />
@@ -141,16 +156,25 @@ const SectionItemView = ({
               </DndContext>
             ) : (
               <ul className={styles.chapters}>
-                {chapters.map((chapter) => (
-                  <li key={chapter.id} className={styles.chapterRow}>
-                    <div className={styles.chapterMain}>
-                      <Link to={getChapterPath(chapter.slug)} className={styles.chapterTitle}>
-                        {chapter.title}
-                      </Link>
-                      <ChapterStatusBadges chapter={chapter} />
-                    </div>
-                  </li>
-                ))}
+                {chapters.map((chapter, index) => {
+                  const { isUnlocked, blockingChapter } = getChapterLockState(chapters, index);
+                  const lockHint = blockingChapter
+                    ? `Сначала пройдите главу «${blockingChapter.title}»`
+                    : undefined;
+
+                  return (
+                    <li key={chapter.id} className={styles.chapterRow}>
+                      <div className={styles.chapterMain}>
+                        <ChapterTitleCell
+                          chapter={chapter}
+                          isUnlocked={isUnlocked}
+                          lockHint={lockHint}
+                        />
+                        <ChapterStatusBadges chapter={chapter} isUnlocked={isUnlocked} />
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             )}
           </>

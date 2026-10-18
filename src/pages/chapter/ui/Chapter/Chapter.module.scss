@@ -75,5 +75,47 @@
 }
 
 .error {
-  color: #c62828;
+  color: $danger;
+}
+
+.locked {
+  background: $bg-white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+  padding: 40px 32px;
+
+  @include media($sm) {
+    padding: 32px 20px;
+  }
+}
+
+.lockedTitle {
+  margin: 0 0 16px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $text-primary;
+
+  @include media($sm) {
+    font-size: 24px;
+  }
+}
+
+.lockedText {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $text-secondary;
+}
+
+.lockedLink {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: $accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -75,6 +75,27 @@
   min-width: 0;
 }
 
+.progressBadge,
+.progressBadgeCompleted {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.progressBadge {
+  background: $accent-subtle;
+  color: $accent;
+}
+
+.progressBadgeCompleted {
+  background: $success-bg;
+  color: $success;
+}
+
 .block {
   margin-top: 24px;
   display: flex;
@@ -131,12 +152,12 @@
 }
 
 .deleteBtn {
-  border: 1px solid #f5c2c7;
-  background: #fff5f5;
-  color: #c62828;
+  border: 1px solid $danger-border;
+  background: $danger-bg;
+  color: $danger;
 
   &:hover {
-    background: #ffe3e3;
+    background: $danger-bg-hover;
   }
 }
 .chapterRow {
@@ -173,6 +194,20 @@
   &:hover {
     background: $border-light;
   }
+}
+
+.chapterTitleLocked {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: $bg-page;
+  font-size: 15px;
+  font-weight: 500;
+  color: $text-secondary;
+  cursor: not-allowed;
+  opacity: 0.75;
 }
 
 .chapterActions {
@@ -214,12 +249,12 @@
 }
 
 .chapterDeleteBtn {
-  border: 1px solid #f5c2c7;
-  background: #fff5f5;
-  color: #c62828;
+  border: 1px solid $danger-border;
+  background: $danger-bg;
+  color: $danger;
 
   &:hover {
-    background: #ffe3e3;
+    background: $danger-bg-hover;
   }
 }
 

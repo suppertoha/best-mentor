@@ -28,12 +28,35 @@ export const quizEditorSchema = z.object({
 
 export type QuizEditorFormValues = z.infer<typeof quizEditorSchema>;
 
+type QuizOptionInput = {
+  text: string;
+  isCorrect: boolean;
+};
+
+export const normalizeQuestionOptions = (
+  options: QuizOptionInput[],
+): QuizEditorFormValues["questions"][number]["options"] => {
+  if (options.length === 0) {
+    return [
+      { text: "", isCorrect: true },
+      { text: "", isCorrect: false },
+    ];
+  }
+
+  const correctIndex = options.findIndex((option) => option.isCorrect);
+
+  return options.map((option, index) => ({
+    text: option.text,
+    isCorrect: index === (correctIndex === -1 ? 0 : correctIndex),
+  }));
+};
+
 export const createEmptyQuestion = () => ({
   text: "",
-  options: [
+  options: normalizeQuestionOptions([
     { text: "", isCorrect: true },
     { text: "", isCorrect: false },
-  ],
+  ]),
 });
 
 export const createEmptyQuizValues = (): QuizEditorFormValues => ({
@@ -50,10 +73,7 @@ export const mapAdminQuizToFormValues = (
   return {
     questions: questions.map((question) => ({
       text: question.text,
-      options: question.options.map((option) => ({
-        text: option.text,
-        isCorrect: option.isCorrect,
-      })),
+      options: normalizeQuestionOptions(question.options),
     })),
   };
 };

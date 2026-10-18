@@ -8,6 +8,7 @@ import { NotFound } from "@/pages/not-found";
 import { Chapter } from "@/pages/chapter";
 import { ChapterQuizEdit } from "@/pages/chapter-quiz-edit";
 import { Profile } from "@/pages/profile";
+import { Admin, AdminUserDetail } from "@/pages/admin";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AuthRoute } from "./AuthRoute";
 
@@ -50,6 +51,14 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.profile.slice(1),
             element: <Profile />,
+          },
+          {
+            path: ROUTES.admin.slice(1),
+            element: <Admin />,
+          },
+          {
+            path: ROUTES.adminUser.slice(1),
+            element: <AdminUserDetail />,
           },
         ],
       },

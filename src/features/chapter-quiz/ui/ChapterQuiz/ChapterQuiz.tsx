@@ -65,6 +65,11 @@ export const ChapterQuiz = ({
           return;
         }
 
+        if (isAxiosError(err) && err.response?.status === 404) {
+          setQuestions([]);
+          return;
+        }
+
         setLoadError("Не удалось загрузить тест");
       } finally {
         if (!controller.signal.aborted) {
@@ -120,6 +125,12 @@ export const ChapterQuiz = ({
   if (questions.length === 0) {
     return (
       <section className={styles.root}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Проверь себя</h2>
+          {isCompleted && (
+            <span className={styles.completedBadge}>Глава пройдена</span>
+          )}
+        </div>
         <p className={styles.empty}>Тест для этой главы ещё не настроен.</p>
       </section>
     );

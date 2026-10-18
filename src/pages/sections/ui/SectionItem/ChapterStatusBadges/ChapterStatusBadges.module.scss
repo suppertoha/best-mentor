@@ -5,7 +5,8 @@
 }
 
 .quizBadge,
-.completedBadge {
+.completedBadge,
+.lockedBadge {
   padding: 2px 8px;
   border-radius: 999px;
   font-size: 11px;
@@ -15,11 +16,16 @@
 }
 
 .quizBadge {
-  background: rgba(108, 99, 255, 0.12);
+  background: $accent-subtle-strong;
   color: $accent;
 }
 
 .completedBadge {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: $success-bg;
+  color: $success;
+}
+
+.lockedBadge {
+  background: $bg-muted;
+  color: $text-secondary;
 }
