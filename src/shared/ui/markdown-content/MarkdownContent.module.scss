@@ -1,4 +1,4 @@
-.root {
+.markdown {
   font-size: 16px;
   line-height: 1.7;
   color: $text-secondary;
@@ -121,7 +121,7 @@
   }
 }
 
-.codeBlock {
+.code-block {
   position: relative;
   margin: 0 0 1em;
 
@@ -147,7 +147,7 @@
   }
 }
 
-.copyBtn {
+.copy-btn {
   position: absolute;
   top: 8px;
   right: 8px;

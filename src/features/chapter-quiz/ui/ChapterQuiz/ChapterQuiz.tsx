@@ -7,7 +7,10 @@ import type { QuizQuestionStudent } from "@/shared/api";
 import { showSuccessToast } from "@/shared/lib/toast";
 import { Button } from "@/shared/ui";
 import { createQuizFormSchema, type QuizFormValues } from "../../model/schema";
+import { bem } from "@/shared/lib/bem";
 import styles from "./ChapterQuiz.module.scss";
+
+const b = bem(styles, "chapter-quiz");
 
 interface ChapterQuizProps {
   chapterSlug: string;
@@ -115,53 +118,53 @@ export const ChapterQuiz = ({
   };
 
   if (isLoading) {
-    return <p className={styles.status}>Загрузка теста...</p>;
+    return <p className={b.el("status")}>Загрузка теста...</p>;
   }
 
   if (loadError) {
-    return <p className={styles.error}>{loadError}</p>;
+    return <p className={b.el("error")}>{loadError}</p>;
   }
 
   if (questions.length === 0) {
     return (
-      <section className={styles.root}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Проверь себя</h2>
+      <section className={b.block()}>
+        <div className={b.el("header")}>
+          <h2 className={b.el("title")}>Проверь себя</h2>
           {isCompleted && (
-            <span className={styles.completedBadge}>Глава пройдена</span>
+            <span className={b.el("completed-badge")}>Глава пройдена</span>
           )}
         </div>
-        <p className={styles.empty}>Тест для этой главы ещё не настроен.</p>
+        <p className={b.el("empty")}>Тест для этой главы ещё не настроен.</p>
       </section>
     );
   }
 
   return (
-    <section className={styles.root}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>Проверь себя</h2>
+    <section className={b.block()}>
+      <div className={b.el("header")}>
+        <h2 className={b.el("title")}>Проверь себя</h2>
         {isCompleted && (
-          <span className={styles.completedBadge}>Глава пройдена</span>
+          <span className={b.el("completed-badge")}>Глава пройдена</span>
         )}
       </div>
 
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={b.el("form")} onSubmit={handleSubmit(onSubmit)}>
         {questions.map((question, index) => {
           const fieldError = errors.answers?.[String(question.id)];
 
           return (
-            <fieldset key={question.id} className={styles.question}>
-              <legend className={styles.questionTitle}>
+            <fieldset key={question.id} className={b.el("question")}>
+              <legend className={b.el("question-title")}>
                 {index + 1}. {question.text}
               </legend>
 
-              <div className={styles.options}>
+              <div className={b.el("options")}>
                 {question.options.map((option) => (
-                  <label key={option.id} className={styles.option}>
+                  <label key={option.id} className={b.el("option")}>
                     <input
                       type="radio"
                       value={option.id}
-                      className={styles.radio}
+                      className={b.el("radio")}
                       {...register(`answers.${question.id}`)}
                     />
                     <span>{option.text}</span>
@@ -170,7 +173,7 @@ export const ChapterQuiz = ({
               </div>
 
               {fieldError && (
-                <p className={styles.fieldError} role="alert">
+                <p className={b.el("field-error")} role="alert">
                   {fieldError.message}
                 </p>
               )}
@@ -179,13 +182,13 @@ export const ChapterQuiz = ({
         })}
 
         {errors.answers?.message && (
-          <p className={styles.submitError} role="alert">
+          <p className={b.el("submit-error")} role="alert">
             {String(errors.answers.message)}
           </p>
         )}
 
         {submitError && (
-          <p className={styles.submitError} role="alert">
+          <p className={b.el("submit-error")} role="alert">
             {submitError}
           </p>
         )}

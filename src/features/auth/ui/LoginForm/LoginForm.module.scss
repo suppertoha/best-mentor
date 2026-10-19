@@ -1,4 +1,4 @@
-.form {
+.auth-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -6,43 +6,7 @@
   max-width: 360px;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.label {
-  font-size: 14px;
-  font-weight: 500;
-  color: $text-primary;
-}
-
-.input {
-  padding: 10px 12px;
-  border: 1px solid $border-light;
-  border-radius: 8px;
-  font-size: 16px;
-  color: $text-primary;
-  background: $bg-white;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: $text-muted;
-  }
-
-  &:focus {
-    outline: none;
-    border-color: $accent;
-  }
-}
-.error {
-  margin: 0;
-  font-size: 14px;
-  color: $danger;
-}
-
-.link {
+.footer {
   margin: 0;
   font-size: 14px;
   color: $text-secondary;

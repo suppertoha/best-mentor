@@ -3,7 +3,10 @@ import MDEditor from "@uiw/react-md-editor";
 import { chaptersService } from "@/shared/api";
 import { showSuccessToast } from "@/shared/lib/toast";
 import { Button } from "@/shared/ui";
+import { bem } from "@/shared/lib/bem";
 import styles from "./ChapterContentEditor.module.scss";
+
+const b = bem(styles, "chapter-content-editor");
 
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
@@ -39,8 +42,8 @@ export const ChapterContentEditor = ({
   };
 
   return (
-    <div className={styles.root}>
-      <div className={styles.toolbar}>
+    <div className={b.block()}>
+      <div className={b.el("toolbar")}>
         <Button
           type="button"
           variant="secondary"
@@ -62,7 +65,7 @@ export const ChapterContentEditor = ({
         </Button>
       </div>
 
-      <div className={styles.editor} data-color-mode="light">
+      <div className={b.el("editor")} data-color-mode="light">
         <MDEditor
           value={draft}
           onChange={(value) => setDraft(value ?? "")}

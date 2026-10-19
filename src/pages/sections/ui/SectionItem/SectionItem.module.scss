@@ -1,4 +1,4 @@
-.root {
+.section-item {
   interpolate-size: allow-keywords;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
@@ -37,7 +37,7 @@
   }
 }
 
-.headMain {
+.head-main {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -45,11 +45,11 @@
   flex: 1;
 }
 
-.sectionDragHandle {
+.drag-handle {
   flex-shrink: 0;
 }
 
-.headActions {
+.head-actions {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -61,10 +61,10 @@
   flex-shrink: 0;
   transition: transform 0.3s;
   color: $accent;
+}
 
-  .root[open] & {
-    transform: rotate(-180deg);
-  }
+.section-item[open] .arrow {
+  transform: rotate(-180deg);
 }
 
 .title {
@@ -75,8 +75,7 @@
   min-width: 0;
 }
 
-.progressBadge,
-.progressBadgeCompleted {
+.progress-badge {
   flex-shrink: 0;
   padding: 4px 10px;
   border-radius: 999px;
@@ -84,19 +83,23 @@
   font-weight: 600;
   line-height: 1.3;
   white-space: nowrap;
-}
-
-.progressBadge {
   background: $accent-subtle;
   color: $accent;
 }
 
-.progressBadgeCompleted {
+.progress-badge--completed {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
   background: $success-bg;
   color: $success;
 }
 
-.block {
+.body {
   margin-top: 24px;
   display: flex;
   flex-direction: column;
@@ -104,7 +107,7 @@
   padding: 0 24px 16px;
 }
 
-.text {
+.description {
   font-size: 16px;
   line-height: 1.5;
   margin: 0;
@@ -120,8 +123,8 @@
   list-style: none;
 }
 
-.editBtn,
-.deleteBtn {
+.edit-btn,
+.delete-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +143,7 @@
   }
 }
 
-.editBtn {
+.edit-btn {
   border: 1px solid $border-light;
   background: $bg-white;
   color: $text-primary;
@@ -151,7 +154,7 @@
   }
 }
 
-.deleteBtn {
+.delete-btn {
   border: 1px solid $danger-border;
   background: $danger-bg;
   color: $danger;
@@ -160,13 +163,14 @@
     background: $danger-bg-hover;
   }
 }
-.chapterRow {
+
+.chapter-row {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.chapterMain {
+.chapter-main {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -174,11 +178,11 @@
   flex-wrap: wrap;
 }
 
-.chapterDragHandle {
+.chapter-drag-handle {
   flex-shrink: 0;
 }
 
-.chapterTitle {
+.chapter-title {
   display: block;
   flex: 1;
   min-width: 0;
@@ -196,7 +200,7 @@
   }
 }
 
-.chapterTitleLocked {
+.chapter-title--locked {
   display: block;
   flex: 1;
   min-width: 0;
@@ -210,15 +214,15 @@
   opacity: 0.75;
 }
 
-.chapterActions {
+.chapter-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   padding-left: 40px;
 }
 
-.chapterEditBtn,
-.chapterDeleteBtn {
+.chapter-edit-btn,
+.chapter-delete-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +241,7 @@
   }
 }
 
-.chapterEditBtn {
+.chapter-edit-btn {
   border: 1px solid $border-light;
   background: $bg-white;
   color: $text-primary;
@@ -248,7 +252,7 @@
   }
 }
 
-.chapterDeleteBtn {
+.chapter-delete-btn {
   border: 1px solid $danger-border;
   background: $danger-bg;
   color: $danger;
@@ -258,6 +262,6 @@
   }
 }
 
-.sortableItem {
+.sortable-item {
   list-style: none;
 }

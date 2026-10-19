@@ -1,4 +1,4 @@
-.root {
+.button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29,11 +29,6 @@
   &:disabled {
     opacity: 0.6;
   }
-
-  .loader {
-    border-color: rgba(255, 255, 255, 0.35);
-    border-top-color: $bg-white;
-  }
 }
 
 .sm.primary {
@@ -59,11 +54,6 @@
   &:disabled {
     opacity: 0.6;
   }
-
-  .loader {
-    border-color: rgba(106, 11, 255, 0.25);
-    border-top-color: $accent;
-  }
 }
 
 .link {
@@ -81,11 +71,6 @@
   &:disabled {
     color: $text-muted;
   }
-
-  .loader {
-    border-color: rgba(106, 11, 255, 0.25);
-    border-top-color: $accent;
-  }
 }
 
 .ghost {
@@ -95,7 +80,7 @@
   border-radius: inherit;
 }
 
-.fullWidth {
+.full {
   width: 100%;
 }
 
@@ -105,10 +90,16 @@
   border: 2px solid rgba(255, 255, 255, 0.35);
   border-top-color: $bg-white;
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
+  animation: button-spin 0.7s linear infinite;
 }
 
-@keyframes spin {
+.loader--secondary,
+.loader--link {
+  border-color: rgba(106, 11, 255, 0.25);
+  border-top-color: $accent;
+}
+
+@keyframes button-spin {
   to {
     transform: rotate(360deg);
   }

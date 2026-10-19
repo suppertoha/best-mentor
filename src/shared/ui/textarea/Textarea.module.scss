@@ -1,4 +1,4 @@
-.field {
+.textarea {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -10,7 +10,7 @@
   color: $text-primary;
 }
 
-.textarea {
+.field {
   min-height: 96px;
   padding: 10px 12px;
   border: 1px solid $border-light;
@@ -33,7 +33,7 @@
   }
 }
 
-.textareaError {
+.field--error {
   border-color: $danger;
 }
 

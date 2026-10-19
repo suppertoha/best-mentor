@@ -6,7 +6,10 @@ import { isAdmin } from "@/entities/user";
 import { chaptersService } from "@/shared/api";
 import type { ChapterDetail } from "@/shared/api";
 import { getChapterPath, ROUTES } from "@/shared/config";
+import { bem } from "@/shared/lib/bem";
 import styles from "./ChapterQuizEdit.module.scss";
+
+const b = bem(styles, "chapter-quiz-edit-page");
 
 const ChapterQuizEditor = lazy(() =>
   import("@/features/chapter-quiz-edit/ui/ChapterQuizEditor").then((module) => ({
@@ -74,11 +77,11 @@ export const ChapterQuizEdit = () => {
   }
 
   if (isLoading) {
-    return <p className={styles.status}>Загрузка...</p>;
+    return <p className={b.el("status")}>Загрузка...</p>;
   }
 
   if (error) {
-    return <p className={styles.error}>{error}</p>;
+    return <p className={b.el("error")}>{error}</p>;
   }
 
   if (!chapter) {
@@ -90,19 +93,19 @@ export const ChapterQuizEdit = () => {
   }
 
   return (
-    <article className={styles.page}>
-      <Link to={getChapterPath(chapter.slug)} className={styles.backLink}>
+    <article className={b.block()}>
+      <Link to={getChapterPath(chapter.slug)} className={b.el("back-link")}>
         ← К главе
       </Link>
 
-      <div className={styles.hero}>
-        <p className={styles.section}>{chapter.section.title}</p>
-        <h1 className={styles.title}>
+      <div className={b.el("hero")}>
+        <p className={b.el("section")}>{chapter.section.title}</p>
+        <h1 className={b.el("title")}>
           {chapter.hasQuiz ? "Редактирование теста" : "Создание теста"}
         </h1>
-        <p className={styles.subtitle}>{chapter.title}</p>
+        <p className={b.el("subtitle")}>{chapter.title}</p>
 
-        <Suspense fallback={<p className={styles.status}>Загрузка редактора теста...</p>}>
+        <Suspense fallback={<p className={b.el("status")}>Загрузка редактора теста...</p>}>
           <ChapterQuizEditor
             chapterId={chapter.id}
             hasQuiz={chapter.hasQuiz}

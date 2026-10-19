@@ -1,4 +1,4 @@
-.page {
+.chapter-page {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -12,13 +12,13 @@
   gap: 16px;
 }
 
-.adminActions {
+.admin-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.backLink {
+.back-link {
   font-size: 14px;
   font-weight: 500;
   color: $accent;
@@ -65,7 +65,7 @@
   margin-bottom: 0;
 }
 
-.quizSection {
+.quiz-section {
   margin-top: 48px;
 }
 
@@ -89,7 +89,7 @@
   }
 }
 
-.lockedTitle {
+.locked-title {
   margin: 0 0 16px;
   font-size: 32px;
   font-weight: 600;
@@ -101,14 +101,14 @@
   }
 }
 
-.lockedText {
+.locked-text {
   margin: 0 0 24px;
   font-size: 16px;
   line-height: 1.5;
   color: $text-secondary;
 }
 
-.lockedLink {
+.locked-link {
   display: inline-block;
   font-size: 15px;
   font-weight: 500;

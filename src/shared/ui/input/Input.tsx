@@ -1,29 +1,36 @@
 import { forwardRef } from "react";
 import clsx from "clsx";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Input.module.scss";
 import type { InputProps } from "./types";
+
+const b = bem(styles, "input");
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ id, label, error, className, ...rest }, ref) => {
     return (
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor={id}>
+      <div className={b.block()}>
+        <label className={b.el("label")} htmlFor={id}>
           {label}
         </label>
         <input
           ref={ref}
           id={id}
-          className={clsx(styles.input, error && styles.inputError, className)}
+          className={clsx(
+            b.el("field"),
+            error && b.el("field--error"),
+            className,
+          )}
           {...rest}
         />
         {error && (
-          <p className={styles.error} role="alert">
+          <p className={b.el("error")} role="alert">
             {error}
           </p>
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";

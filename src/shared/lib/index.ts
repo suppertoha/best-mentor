@@ -1,3 +1,4 @@
+export { bem } from "./bem";
 export { sortBySortOrder } from "./sortBySortOrder";
 export { getChapterLockState, canProceedToNextChapter, isChapterUnlocked } from "./isChapterUnlocked";
 export { getNextSortOrder } from "./getNextSortOrder";

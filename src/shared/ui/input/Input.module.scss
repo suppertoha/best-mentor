@@ -1,4 +1,4 @@
-.field {
+.input {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -10,7 +10,7 @@
   color: $text-primary;
 }
 
-.input {
+.field {
   padding: 10px 12px;
   border: 1px solid $border-light;
   border-radius: 8px;
@@ -18,7 +18,7 @@
   color: $text-primary;
   background: $bg-white;
   transition: border-color 0.2s;
-	line-height: 1.4;
+  line-height: 1.4;
 
   &::placeholder {
     color: $text-muted;
@@ -30,7 +30,7 @@
   }
 }
 
-.inputError {
+.field--error {
   border-color: $danger;
 }
 

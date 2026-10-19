@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import type { AdminChapterStatsItemDto } from "@/shared/api";
 import { getChapterPath } from "@/shared/config";
 import { formatAdminPercent } from "../../lib/formatAdmin";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Admin.module.scss";
+
+const b = bem(styles, "admin-page");
 
 type AdminChapterStatsTableProps = {
   items: AdminChapterStatsItemDto[];
@@ -13,8 +16,8 @@ export const AdminChapterStatsTable = ({
   items,
   emptyMessage = "Пока нет данных по главам",
 }: AdminChapterStatsTableProps) => (
-  <div className={styles.tableWrap}>
-    <table className={styles.table}>
+  <div className={b.el("table-wrap")}>
+    <table className={b.el("table")}>
       <thead>
         <tr>
           <th>Раздел</th>
@@ -27,7 +30,7 @@ export const AdminChapterStatsTable = ({
       <tbody>
         {items.length === 0 ? (
           <tr>
-            <td colSpan={5} className={styles.emptyCell}>
+            <td colSpan={5} className={b.el("empty-cell")}>
               {emptyMessage}
             </td>
           </tr>
@@ -36,7 +39,7 @@ export const AdminChapterStatsTable = ({
             <tr key={item.chapterId}>
               <td>{item.sectionTitle}</td>
               <td>
-                <Link to={getChapterPath(item.chapterSlug)} className={styles.chapterLink}>
+                <Link to={getChapterPath(item.chapterSlug)} className={b.el("chapter-link")}>
                   {item.chapterTitle}
                 </Link>
               </td>

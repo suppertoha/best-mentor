@@ -12,7 +12,10 @@ import { Button, MarkdownContent } from "@/shared/ui";
 import { getChapterNeighbors } from "../../lib/getChapterNeighbors";
 import type { ChapterDetail } from "../../model/types";
 import { ChapterNav } from "../ChapterNav";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Chapter.module.scss";
+
+const b = bem(styles, "chapter-page");
 
 const ChapterContentEditor = lazy(() =>
   import("@/features/chapter-edit/ui/ChapterContentEditor").then((module) => ({
@@ -199,42 +202,42 @@ export const Chapter = () => {
   }
 
   if (isLoading || (!admin && chapter && !isSectionProgressReady)) {
-    return <p className={styles.status}>Загрузка...</p>;
+    return <p className={b.el("status")}>Загрузка...</p>;
   }
-  if (error) return <p className={styles.error}>{error}</p>;
+  if (error) return <p className={b.el("error")}>{error}</p>;
   if (!chapter) return null;
 
   if (!admin && sectionChaptersError) {
     return (
-      <article className={styles.page}>
-        <div className={styles.top}>
-          <Link to={ROUTES.sections} className={styles.backLink}>
+      <article className={b.block()}>
+        <div className={b.el("top")}>
+          <Link to={ROUTES.sections} className={b.el("back-link")}>
             ← К разделам
           </Link>
         </div>
-        <p className={styles.error}>{sectionChaptersError}</p>
+        <p className={b.el("error")}>{sectionChaptersError}</p>
       </article>
     );
   }
 
   if (!admin && !lockState.isUnlocked && lockState.blockingChapter) {
     return (
-      <article className={styles.page}>
-        <div className={styles.top}>
-          <Link to={ROUTES.sections} className={styles.backLink}>
+      <article className={b.block()}>
+        <div className={b.el("top")}>
+          <Link to={ROUTES.sections} className={b.el("back-link")}>
             ← К разделам
           </Link>
         </div>
 
-        <div className={styles.locked}>
-          <p className={styles.section}>{chapter.section.title}</p>
-          <h1 className={styles.lockedTitle}>Глава заблокирована</h1>
-          <p className={styles.lockedText}>
+        <div className={b.el("locked")}>
+          <p className={b.el("section")}>{chapter.section.title}</p>
+          <h1 className={b.el("locked-title")}>Глава заблокирована</h1>
+          <p className={b.el("locked-text")}>
             Сначала пройдите главу «{lockState.blockingChapter.title}».
           </p>
           <Link
             to={getChapterPath(lockState.blockingChapter.slug)}
-            className={styles.lockedLink}
+            className={b.el("locked-link")}
           >
             Перейти к главе «{lockState.blockingChapter.title}»
           </Link>
@@ -246,14 +249,14 @@ export const Chapter = () => {
   const canGoNext = canProceedToNextChapter(chapter, admin);
 
   return (
-    <article className={styles.page}>
-      <div className={styles.top}>
-        <Link to={ROUTES.sections} className={styles.backLink}>
+    <article className={b.block()}>
+      <div className={b.el("top")}>
+        <Link to={ROUTES.sections} className={b.el("back-link")}>
           ← К разделам
         </Link>
 
         {admin && !isEditing && (
-          <div className={styles.adminActions}>
+          <div className={b.el("admin-actions")}>
             <Button
               type="button"
               size="sm"
@@ -269,12 +272,12 @@ export const Chapter = () => {
         )}
       </div>
 
-      <div className={styles.hero}>
-        <p className={styles.section}>{chapter.section.title}</p>
-        <h1 className={styles.title}>{chapter.title}</h1>
+      <div className={b.el("hero")}>
+        <p className={b.el("section")}>{chapter.section.title}</p>
+        <h1 className={b.el("title")}>{chapter.title}</h1>
 
         {admin && isEditing ? (
-          <Suspense fallback={<p className={styles.status}>Загрузка редактора...</p>}>
+          <Suspense fallback={<p className={b.el("status")}>Загрузка редактора...</p>}>
             <ChapterContentEditor
               chapterId={chapter.id}
               initialContent={chapter.content}
@@ -284,10 +287,10 @@ export const Chapter = () => {
           </Suspense>
         ) : (
           <>
-            <MarkdownContent content={chapter.content} className={styles.content} />
+            <MarkdownContent content={chapter.content} className={b.el("content")} />
 
             {chapter.hasQuiz && (
-              <div className={styles.quizSection}>
+              <div className={b.el("quiz-section")}>
                 <ChapterQuiz
                   chapterSlug={chapter.slug}
                   isCompleted={chapter.isCompleted}

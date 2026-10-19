@@ -1,4 +1,4 @@
-.root {
+.chapter-nav {
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid $border-light;
@@ -22,12 +22,12 @@
   }
 }
 
-.linkNext {
+.link-next {
   justify-self: end;
   text-align: right;
 }
 
-.linkDisabled {
+.link-disabled {
   font-size: 14px;
   font-weight: 500;
   color: $text-secondary;
@@ -47,7 +47,7 @@
     gap: 12px;
   }
 
-  .linkNext {
+  .link-next {
     justify-self: start;
     text-align: left;
   }

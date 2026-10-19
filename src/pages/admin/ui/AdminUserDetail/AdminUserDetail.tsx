@@ -8,7 +8,10 @@ import type { AdminUserDetailDto } from "@/shared/api";
 import { getChapterPath, ROUTES } from "@/shared/config";
 import { getAdminPath } from "../../lib/adminTabs";
 import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from "../../lib/formatAdmin";
+import { bem } from "@/shared/lib/bem";
 import styles from "./AdminUserDetail.module.scss";
+
+const b = bem(styles, "admin-user-detail");
 
 export const AdminUserDetail = () => {
   const { id } = useParams();
@@ -77,15 +80,15 @@ export const AdminUserDetail = () => {
   }
 
   if (accessDenied) {
-    return <p className={styles.error}>Нет доступа к админ-панели</p>;
+    return <p className={b.el("error")}>Нет доступа к админ-панели</p>;
   }
 
   if (isLoading) {
-    return <p className={styles.status}>Загрузка...</p>;
+    return <p className={b.el("status")}>Загрузка...</p>;
   }
 
   if (error) {
-    return <p className={styles.error}>{error}</p>;
+    return <p className={b.el("error")}>{error}</p>;
   }
 
   if (!student) {
@@ -93,26 +96,26 @@ export const AdminUserDetail = () => {
   }
 
   return (
-    <div className={styles.page}>
-      <Link to={getAdminPath("students")} className={styles.backLink}>
+    <div className={b.block()}>
+      <Link to={getAdminPath("students")} className={b.el("back-link")}>
         ← К списку студентов
       </Link>
 
-      <section className={styles.hero}>
-        <p className={styles.role}>{student.role === "ADMIN" ? "Админ" : "Студент"}</p>
-        <h1 className={styles.title}>
+      <section className={b.el("hero")}>
+        <p className={b.el("role")}>{student.role === "ADMIN" ? "Админ" : "Студент"}</p>
+        <h1 className={b.el("title")}>
           {getAdminUserLabel(student.firstName, student.lastName, student.email)}
         </h1>
-        <p className={styles.email}>{student.email}</p>
+        <p className={b.el("email")}>{student.email}</p>
 
         {(student.githubUrl || student.telegramUsername || student.websiteUrl) && (
-          <div className={styles.links}>
+          <div className={b.el("links")}>
             {student.githubUrl && (
               <a
                 href={student.githubUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={styles.profileLink}
+                className={b.el("profile-link")}
               >
                 GitHub
               </a>
@@ -122,7 +125,7 @@ export const AdminUserDetail = () => {
                 href={`https://t.me/${student.telegramUsername.replace(/^@/, "")}`}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={styles.profileLink}
+                className={b.el("profile-link")}
               >
                 Telegram
               </a>
@@ -132,7 +135,7 @@ export const AdminUserDetail = () => {
                 href={student.websiteUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={styles.profileLink}
+                className={b.el("profile-link")}
               >
                 Сайт
               </a>
@@ -140,34 +143,34 @@ export const AdminUserDetail = () => {
           </div>
         )}
 
-        <div className={styles.stats}>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Прогресс</span>
-            <span className={styles.statValue}>{formatAdminPercent(student.completionPercent)}</span>
+        <div className={b.el("stats")}>
+          <div className={b.el("stat")}>
+            <span className={b.el("stat-label")}>Прогресс</span>
+            <span className={b.el("stat-value")}>{formatAdminPercent(student.completionPercent)}</span>
           </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Главы</span>
-            <span className={styles.statValue}>
+          <div className={b.el("stat")}>
+            <span className={b.el("stat-label")}>Главы</span>
+            <span className={b.el("stat-value")}>
               {student.completedChapters} / {student.totalQuizChapters}
             </span>
           </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Регистрация</span>
-            <span className={styles.statValue}>{formatAdminDate(student.createdAt)}</span>
+          <div className={b.el("stat")}>
+            <span className={b.el("stat-label")}>Регистрация</span>
+            <span className={b.el("stat-value")}>{formatAdminDate(student.createdAt)}</span>
           </div>
-          <div className={styles.stat}>
-            <span className={styles.statLabel}>Последняя активность</span>
-            <span className={styles.statValue}>{formatAdminDate(student.lastActivityAt)}</span>
+          <div className={b.el("stat")}>
+            <span className={b.el("stat-label")}>Последняя активность</span>
+            <span className={b.el("stat-value")}>{formatAdminDate(student.lastActivityAt)}</span>
           </div>
         </div>
 
-        {student.bio && <p className={styles.bio}>{student.bio}</p>}
+        {student.bio && <p className={b.el("bio")}>{student.bio}</p>}
       </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Прогресс по разделам</h2>
-        <div className={styles.tableWrap}>
-          <table className={styles.table}>
+      <section className={b.el("section")}>
+        <h2 className={b.el("section-title")}>Прогресс по разделам</h2>
+        <div className={b.el("table-wrap")}>
+          <table className={b.el("table")}>
             <thead>
               <tr>
                 <th>Раздел</th>
@@ -178,7 +181,7 @@ export const AdminUserDetail = () => {
             <tbody>
               {student.sectionProgress.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className={styles.emptyCell}>
+                  <td colSpan={3} className={b.el("empty-cell")}>
                     Прогресс пока не начат
                   </td>
                 </tr>
@@ -198,10 +201,10 @@ export const AdminUserDetail = () => {
         </div>
       </section>
 
-      <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Недавние прохождения</h2>
-        <div className={styles.tableWrap}>
-          <table className={styles.table}>
+      <section className={b.el("section")}>
+        <h2 className={b.el("section-title")}>Недавние прохождения</h2>
+        <div className={b.el("table-wrap")}>
+          <table className={b.el("table")}>
             <thead>
               <tr>
                 <th>Раздел</th>
@@ -212,7 +215,7 @@ export const AdminUserDetail = () => {
             <tbody>
               {student.recentCompletions.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className={styles.emptyCell}>
+                  <td colSpan={3} className={b.el("empty-cell")}>
                     Пока нет завершённых глав
                   </td>
                 </tr>
@@ -221,7 +224,7 @@ export const AdminUserDetail = () => {
                   <tr key={`${item.chapterId}-${item.completedAt}`}>
                     <td>{item.sectionTitle}</td>
                     <td>
-                      <Link to={getChapterPath(item.chapterSlug)} className={styles.chapterLink}>
+                      <Link to={getChapterPath(item.chapterSlug)} className={b.el("chapter-link")}>
                         {item.chapterTitle}
                       </Link>
                     </td>

@@ -1,12 +1,10 @@
-.root {
+.chapter-status-badges {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
 
-.quizBadge,
-.completedBadge,
-.lockedBadge {
+.badge {
   padding: 2px 8px;
   border-radius: 999px;
   font-size: 11px;
@@ -15,17 +13,17 @@
   white-space: nowrap;
 }
 
-.quizBadge {
+.badge--quiz {
   background: $accent-subtle-strong;
   color: $accent;
 }
 
-.completedBadge {
+.badge--completed {
   background: $success-bg;
   color: $success;
 }
 
-.lockedBadge {
+.badge--locked {
   background: $bg-muted;
   color: $text-secondary;
 }

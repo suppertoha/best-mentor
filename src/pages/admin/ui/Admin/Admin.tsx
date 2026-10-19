@@ -23,7 +23,10 @@ import {
 import { formatAdminPercent } from "../../lib/formatAdmin";
 import { AdminChapterStatsTable } from "./AdminChapterStatsTable";
 import { AdminStudentsTable } from "./AdminStudentsTable";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Admin.module.scss";
+
+const b = bem(styles, "admin-page");
 
 const USERS_LIMIT = 10;
 
@@ -210,15 +213,15 @@ export const Admin = () => {
   }
 
   if (accessDenied) {
-    return <p className={styles.error}>Нет доступа к админ-панели</p>;
+    return <p className={b.el("error")}>Нет доступа к админ-панели</p>;
   }
 
   if (isOverviewLoading && !overview) {
-    return <p className={styles.status}>Загрузка...</p>;
+    return <p className={b.el("status")}>Загрузка...</p>;
   }
 
   if (error && !overview) {
-    return <p className={styles.error}>{error}</p>;
+    return <p className={b.el("error")}>{error}</p>;
   }
 
   if (!overview) {
@@ -226,16 +229,16 @@ export const Admin = () => {
   }
 
   return (
-    <div className={styles.page}>
-      <div className={styles.top}>
+    <div className={b.block()}>
+      <div className={b.el("top")}>
         <div>
-          <Link to={ROUTES.sections} className={styles.backLink}>
+          <Link to={ROUTES.sections} className={b.el("back-link")}>
             ← К разделам
           </Link>
-          <h1 className={styles.title}>Админ-панель</h1>
-          <p className={styles.subtitle}>Статистика платформы и прогресс студентов</p>
+          <h1 className={b.el("title")}>Админ-панель</h1>
+          <p className={b.el("subtitle")}>Статистика платформы и прогресс студентов</p>
         </div>
-        <div className={styles.topActions}>
+        <div className={b.el("top-actions")}>
           <Button
             variant="secondary"
             size="sm"
@@ -249,67 +252,67 @@ export const Admin = () => {
         </div>
       </div>
 
-      <div className={styles.tabs} role="tablist" aria-label="Разделы админ-панели">
+      <div className={b.el("tabs")} role="tablist" aria-label="Разделы админ-панели">
         {ADMIN_TABS.map((tab) => (
           <button
             key={tab.id}
             type="button"
             role="tab"
             aria-selected={activeTab === tab.id}
-            className={activeTab === tab.id ? styles.tabActive : styles.tab}
+            className={activeTab === tab.id ? b.el("tab--active") : b.el("tab")}
             onClick={() => setActiveTab(tab.id)}
           >
             {tab.label}
             {tab.id === "students" && overview.totalStudents > 0 && (
-              <span className={styles.tabCount}>{overview.totalStudents}</span>
+              <span className={b.el("tab-count")}>{overview.totalStudents}</span>
             )}
             {tab.id === "chapters" && chapterStats.length > 0 && (
-              <span className={styles.tabCount}>{chapterStats.length}</span>
+              <span className={b.el("tab-count")}>{chapterStats.length}</span>
             )}
           </button>
         ))}
       </div>
 
       {activeTab === "overview" && (
-        <div className={styles.tabPanel} role="tabpanel">
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Общая сводка</h2>
-            <div className={styles.cards}>
-              <article className={styles.card}>
-                <p className={styles.cardLabel}>Студентов</p>
-                <p className={styles.cardValue}>{overview.totalStudents}</p>
-                <p className={styles.cardHint}>
+        <div className={b.el("tab-panel")} role="tabpanel">
+          <section className={b.el("section")}>
+            <h2 className={b.el("section-title")}>Общая сводка</h2>
+            <div className={b.el("cards")}>
+              <article className={b.el("card")}>
+                <p className={b.el("card-label")}>Студентов</p>
+                <p className={b.el("card-value")}>{overview.totalStudents}</p>
+                <p className={b.el("card-hint")}>
                   активных {overview.activeStudents} · неактивных {overview.inactiveStudents}
                 </p>
               </article>
-              <article className={styles.card}>
-                <p className={styles.cardLabel}>Средний прогресс</p>
-                <p className={styles.cardValue}>
+              <article className={b.el("card")}>
+                <p className={b.el("card-label")}>Средний прогресс</p>
+                <p className={b.el("card-value")}>
                   {formatAdminPercent(overview.averageCompletionPercent)}
                 </p>
-                <p className={styles.cardHint}>глав с тестом: {overview.totalQuizChapters}</p>
+                <p className={b.el("card-hint")}>глав с тестом: {overview.totalQuizChapters}</p>
               </article>
-              <article className={styles.card}>
-                <p className={styles.cardLabel}>Завершений тестов</p>
-                <p className={styles.cardValue}>{overview.totalCompletions}</p>
-                <p className={styles.cardHint}>
+              <article className={b.el("card")}>
+                <p className={b.el("card-label")}>Завершений тестов</p>
+                <p className={b.el("card-value")}>{overview.totalCompletions}</p>
+                <p className={b.el("card-hint")}>
                   за 7 дн. {overview.completionsLast7Days} · за 30 дн.{" "}
                   {overview.completionsLast30Days}
                 </p>
               </article>
-              <article className={styles.card}>
-                <p className={styles.cardLabel}>Регистрации</p>
-                <p className={styles.cardValue}>{overview.signupsLast30Days}</p>
-                <p className={styles.cardHint}>
+              <article className={b.el("card")}>
+                <p className={b.el("card-label")}>Регистрации</p>
+                <p className={b.el("card-value")}>{overview.signupsLast30Days}</p>
+                <p className={b.el("card-hint")}>
                   за 30 дн. · за 7 дн. {overview.signupsLast7Days}
                 </p>
               </article>
             </div>
           </section>
 
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>Проблемные главы</h2>
+          <section className={b.el("section")}>
+            <div className={b.el("section-header")}>
+              <h2 className={b.el("section-title")}>Проблемные главы</h2>
               {chapterStats.length > ADMIN_TOP_CHAPTERS_LIMIT && (
                 <Button
                   variant="link"
@@ -321,7 +324,7 @@ export const Admin = () => {
                 </Button>
               )}
             </div>
-            <p className={styles.sectionDescription}>
+            <p className={b.el("section-description")}>
               Топ-{ADMIN_TOP_CHAPTERS_LIMIT} глав с самым низким процентом прохождения
             </p>
             <AdminChapterStatsTable items={topChapters} />
@@ -330,13 +333,13 @@ export const Admin = () => {
       )}
 
       {activeTab === "chapters" && (
-        <div className={styles.tabPanel} role="tabpanel">
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>Статистика по главам</h2>
-              <p className={styles.sectionMeta}>Всего: {chapterStats.length}</p>
+        <div className={b.el("tab-panel")} role="tabpanel">
+          <section className={b.el("section")}>
+            <div className={b.el("section-header")}>
+              <h2 className={b.el("section-title")}>Статистика по главам</h2>
+              <p className={b.el("section-meta")}>Всего: {chapterStats.length}</p>
             </div>
-            <p className={styles.sectionDescription}>
+            <p className={b.el("section-description")}>
               Отсортировано по возрастанию процента прохождения
             </p>
             <AdminChapterStatsTable items={chapterStats} />
@@ -345,20 +348,20 @@ export const Admin = () => {
       )}
 
       {activeTab === "students" && (
-        <div className={styles.tabPanel} role="tabpanel">
-          <section className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <h2 className={styles.sectionTitle}>Студенты</h2>
-              <p className={styles.sectionMeta}>Всего: {usersTotal}</p>
+        <div className={b.el("tab-panel")} role="tabpanel">
+          <section className={b.el("section")}>
+            <div className={b.el("section-header")}>
+              <h2 className={b.el("section-title")}>Студенты</h2>
+              <p className={b.el("section-meta")}>Всего: {usersTotal}</p>
             </div>
-            <p className={styles.sectionDescription}>
+            <p className={b.el("section-description")}>
               Нажми на заголовок колонки, чтобы отсортировать
             </p>
 
-            {error && <p className={styles.inlineError}>{error}</p>}
+            {error && <p className={b.el("inline-error")}>{error}</p>}
 
             {isUsersLoading && users.length === 0 ? (
-              <p className={styles.status}>Загрузка студентов...</p>
+              <p className={b.el("status")}>Загрузка студентов...</p>
             ) : (
               <AdminStudentsTable
                 users={users}

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { getChapterPath } from "@/shared/config";
 import type { Chapter as ChapterListItem } from "@/shared/api";
+import { bem } from "@/shared/lib/bem";
 import styles from "./ChapterNav.module.scss";
+
+const b = bem(styles, "chapter-nav");
 
 interface ChapterNavProps {
   prev: ChapterListItem | null;
@@ -26,10 +29,10 @@ export const ChapterNav = ({
   }
 
   return (
-    <nav className={styles.root} aria-label="Навигация по главам">
-      <div className={styles.row}>
+    <nav className={b.block()} aria-label="Навигация по главам">
+      <div className={b.el("row")}>
         {prev ? (
-          <Link to={getChapterPath(prev.slug)} className={styles.link}>
+          <Link to={getChapterPath(prev.slug)} className={b.el("link")}>
             ← {formatChapterLabel(prev)}
           </Link>
         ) : (
@@ -37,18 +40,18 @@ export const ChapterNav = ({
         )}
 
         {total > 0 && currentIndex >= 0 && (
-          <span className={styles.counter}>
+          <span className={b.el("counter")}>
             {currentIndex + 1} / {total}
           </span>
         )}
 
         {next ? (
           canGoNext ? (
-            <Link to={getChapterPath(next.slug)} className={`${styles.link} ${styles.linkNext}`}>
+            <Link to={getChapterPath(next.slug)} className={`${b.el("link")} ${b.el("link-next")}`}>
               {formatChapterLabel(next)} →
             </Link>
           ) : (
-            <span className={`${styles.linkDisabled} ${styles.linkNext}`} aria-disabled="true">
+            <span className={`${b.el("link-disabled")} ${b.el("link-next")}`} aria-disabled="true">
               {formatChapterLabel(next)} →
             </span>
           )

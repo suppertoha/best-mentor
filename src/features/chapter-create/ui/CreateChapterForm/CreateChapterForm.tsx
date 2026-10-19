@@ -15,7 +15,10 @@ import {
   createChapterSchema,
   type CreateChapterFormValues,
 } from "../../model/schema";
+import { bem } from "@/shared/lib/bem";
 import styles from "./CreateChapterForm.module.scss";
+
+const b = bem(styles, "create-chapter-form");
 
 const fields = [
   {
@@ -94,9 +97,9 @@ export const CreateChapterForm = ({
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={styles.hint}>
+      <p className={b.el("hint")}>
         Содержание редактируется на странице главы. Если slug пустой — сгенерируется из названия
       </p>
       <Button

@@ -17,6 +17,12 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     number | null
   >(null);
   const [editingChapter, setEditingChapter] = useState<Chapter | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<
+    | { type: "section"; item: Section }
+    | { type: "chapter"; item: Chapter }
+    | null
+  >(null);
+  const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 
   const invalidateSectionsList = () => {
     void queryClient.invalidateQueries({ queryKey: sectionsListQueryKey });
@@ -58,31 +64,55 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     return sortBySortOrder(section?.chapters ?? []);
   }, [creatingChapterSectionId, sortedSections]);
 
-  const handleDeleteSection = async (section: Section) => {
-    const confirmed = window.confirm(`Удалить раздел «${section.title}»?`);
-    if (!confirmed) return;
+  const requestDeleteSection = (section: Section) => {
+    setPendingDelete({ type: "section", item: section });
+  };
 
-    try {
-      await sectionsService.delete(section.id);
-      showSuccessToast("Раздел удалён");
-      invalidateSectionsList();
-    } catch {
-      // handled by API interceptor
+  const requestDeleteChapter = (chapter: Chapter) => {
+    setPendingDelete({ type: "chapter", item: chapter });
+  };
+
+  const cancelDelete = () => {
+    if (!isDeleteLoading) {
+      setPendingDelete(null);
     }
   };
 
-  const handleDeleteChapter = async (chapter: Chapter) => {
-    const confirmed = window.confirm(`Удалить главу «${chapter.title}»?`);
-    if (!confirmed) return;
+  const confirmDelete = async () => {
+    if (!pendingDelete) return;
+
+    setIsDeleteLoading(true);
 
     try {
-      await chaptersService.delete(chapter.id);
-      showSuccessToast("Глава удалена");
+      if (pendingDelete.type === "section") {
+        await sectionsService.delete(pendingDelete.item.id);
+        showSuccessToast("Раздел удалён");
+      } else {
+        await chaptersService.delete(pendingDelete.item.id);
+        showSuccessToast("Глава удалена");
+      }
+
       invalidateSectionsList();
+      setPendingDelete(null);
     } catch {
       // handled by API interceptor
+    } finally {
+      setIsDeleteLoading(false);
     }
   };
+
+  const deleteConfirmDialog = pendingDelete
+    ? {
+        title:
+          pendingDelete.type === "section"
+            ? "Удалить раздел?"
+            : "Удалить главу?",
+        message:
+          pendingDelete.type === "section"
+            ? `Раздел «${pendingDelete.item.title}» и все его главы будут удалены.`
+            : `Глава «${pendingDelete.item.title}» будет удалена без возможности восстановления.`,
+      }
+    : null;
 
   const handleSectionsReorder = async (reorderedSections: Section[]) => {
     const previousSections =
@@ -170,8 +200,12 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     handleSectionUpdated,
     handleSectionCreated,
     handleChapterUpdated,
-    handleDeleteSection,
-    handleDeleteChapter,
+    requestDeleteSection,
+    requestDeleteChapter,
+    deleteConfirmDialog,
+    confirmDelete,
+    cancelDelete,
+    isDeleteLoading,
     handleChaptersReorder,
     handleSectionDragEnd,
     setEditingSection,

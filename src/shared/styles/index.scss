@@ -39,6 +39,7 @@ body {
 	min-height: 100vh;
 }
 
+/* @deprecated: use .base-layout__container in BaseLayout */
 .container {
 	@include container;
 }

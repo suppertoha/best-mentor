@@ -11,7 +11,10 @@ import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { Button } from "@/shared/ui";
 import type { EditableSection, UpdateSectionDto } from "../../model/types";
+import { bem } from "@/shared/lib/bem";
 import styles from "./EditSectionForm.module.scss";
+
+const b = bem(styles, "edit-section-form");
 
 interface EditSectionFormProps {
   section: EditableSection;
@@ -86,7 +89,7 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
       <Button
         type="submit"

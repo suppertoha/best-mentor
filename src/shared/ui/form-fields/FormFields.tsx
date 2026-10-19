@@ -7,6 +7,10 @@ import {
 import type { HTMLInputTypeAttribute } from "react";
 import { Input } from "@/shared/ui/input";
 import { Textarea } from "@/shared/ui/textarea";
+import { bem } from "@/shared/lib/bem";
+import styles from "./FormFields.module.scss";
+
+const b = bem(styles, "form-field");
 
 export type FormFieldConfig<T extends FieldValues> = {
   name: Path<T>;
@@ -15,6 +19,7 @@ export type FormFieldConfig<T extends FieldValues> = {
   kind: "input" | "textarea";
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
+  hint?: string;
   autoComplete?: string;
   rows?: number;
 };
@@ -29,28 +34,31 @@ export const FormFields = <T extends FieldValues>({
   control,
 }: FormFieldsProps<T>) => (
   <>
-    {fields.map(({ name, kind, type, rows, ...inputProps }) => (
+    {fields.map(({ name, kind, type, rows, hint, ...inputProps }) => (
       <Controller
         key={String(name)}
         name={name}
         control={control}
-        render={({ field, fieldState }) =>
-          kind === "textarea" ? (
-            <Textarea
-              {...field}
-              {...inputProps}
-              rows={rows}
-              error={fieldState.error?.message}
-            />
-          ) : (
-            <Input
-              {...field}
-              {...inputProps}
-              type={type ?? "text"}
-              error={fieldState.error?.message}
-            />
-          )
-        }
+        render={({ field, fieldState }) => (
+          <div className={b.block()}>
+            {kind === "textarea" ? (
+              <Textarea
+                {...field}
+                {...inputProps}
+                rows={rows}
+                error={fieldState.error?.message}
+              />
+            ) : (
+              <Input
+                {...field}
+                {...inputProps}
+                type={type ?? "text"}
+                error={fieldState.error?.message}
+              />
+            )}
+            {hint && !fieldState.error && <p className={b.el("hint")}>{hint}</p>}
+          </div>
+        )}
       />
     ))}
   </>

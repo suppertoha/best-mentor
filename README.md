@@ -1,75 +1,60 @@
-# React + TypeScript + Vite
+# Best Mentor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Учебная платформа: разделы и главы с markdown-контентом, квизы, прогресс и админ-панель.
 
-Currently, two official plugins are available:
+## Стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React 19, TypeScript, Vite, Redux Toolkit, TanStack Query, React Router, SCSS
+- **Backend:** [fe-academy](https://github.com/dev-kos/fe-academy) — NestJS, Prisma, PostgreSQL, JWT
 
-## React Compiler
+## Локальный запуск
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### API и база
 
-## Expanding the ESLint configuration
+1. PostgreSQL (локально или Docker).
+2. В `fe-academy`: скопировать `.env.example` → `.env`, поднять `npm run start:dev` (порт **3000**).
+3. Миграции и сид выполняются при старте (`start:prod` / скрипты проекта).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Фронт
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd best-mentor
+cp .env.example .env   # VITE_API_URL для прода; локально достаточно proxy в vite.config
+npm install
+npm run dev            # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+В dev запросы идут на `/api` → proxy на `localhost:3000`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Контент (опционально)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run seed:all
+npm run seed:quizzes:all
 ```
+
+Нужны `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` в `.env` (см. `.env.example`).
+
+## Деплой
+
+| Часть | Куда |
+|--------|------|
+| Фронт | [Vercel](https://vercel.com) — репозиторий `best-mentor`, build `npm run build`, output `dist` |
+| API | Render / Railway и т.п. — репозиторий `fe-academy` |
+| БД | Neon / Supabase (Postgres) |
+
+**Vercel:** переменная `VITE_API_URL` = публичный URL API (без `/api`).
+
+**API:** в `.env` задать `CORS_ORIGIN` — URL фронта через запятую, например  
+`https://your-app.vercel.app,http://localhost:5173`.
+
+В репозитории есть `vercel.json` для SPA-роутинга.
+
+## Демо
+
+<!-- Добавь ссылку после выкладки -->
+<!-- Live: https://... -->
+
+## Лицензия
+
+Учебный проект.

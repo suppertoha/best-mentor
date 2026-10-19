@@ -1,4 +1,4 @@
-.page {
+.admin-page {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -12,11 +12,11 @@
   gap: 16px;
 }
 
-.topActions {
+.top-actions {
   flex-shrink: 0;
 }
 
-.backLink {
+.back-link {
   display: inline-block;
   margin-bottom: 12px;
   font-size: 14px;
@@ -49,7 +49,7 @@
 }
 
 .tab,
-.tabActive {
+.tab--active {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -69,13 +69,13 @@
   }
 }
 
-.tabActive {
+.tab--active {
   border-color: $accent;
   background: $accent-subtle;
   color: $accent;
 }
 
-.tabCount {
+.tab-count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -88,12 +88,12 @@
   font-weight: 600;
 }
 
-.tabActive .tabCount {
+.tab--active .tab-count {
   background: $accent-subtle-strong;
   color: $accent;
 }
 
-.tabPanel {
+.tab-panel {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -109,27 +109,27 @@
   box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
 }
 
-.sectionHeader {
+.section-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
 }
 
-.sectionTitle {
+.section-title {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: $text-primary;
 }
 
-.sectionMeta {
+.section-meta {
   margin: 0;
   font-size: 14px;
   color: $text-secondary;
 }
 
-.sectionDescription {
+.section-description {
   margin: -4px 0 0;
   font-size: 14px;
   color: $text-secondary;
@@ -156,26 +156,26 @@
   background: $bg-page;
 }
 
-.cardLabel {
+.card-label {
   margin: 0 0 8px;
   font-size: 13px;
   color: $text-secondary;
 }
 
-.cardValue {
+.card-value {
   margin: 0 0 8px;
   font-size: 28px;
   font-weight: 600;
   color: $text-primary;
 }
 
-.cardHint {
+.card-hint {
   margin: 0;
   font-size: 13px;
   color: $text-secondary;
 }
 
-.tableWrap {
+.table-wrap {
   overflow-x: auto;
 }
 
@@ -199,7 +199,7 @@
   color: $text-secondary;
 }
 
-.sortableHeader {
+.sortable-header {
   display: inline-flex;
   align-items: center;
   gap: 2px;
@@ -220,13 +220,13 @@
   color: $text-primary;
 }
 
-.emptyCell {
+.empty-cell {
   padding: 24px 10px;
   color: $text-secondary;
   text-align: center;
 }
 
-.userLink {
+.user-link {
   color: $accent;
   font-weight: 500;
   text-decoration: none;
@@ -236,7 +236,7 @@
   }
 }
 
-.chapterLink {
+.chapter-link {
   color: $accent;
   font-weight: 500;
   text-decoration: none;
@@ -253,18 +253,18 @@
   gap: 12px;
 }
 
-.paginationMeta {
+.pagination-meta {
   font-size: 14px;
   color: $text-secondary;
 }
 
 .status,
 .error,
-.inlineError {
+.inline-error {
   padding: 40px 20px;
 }
 
-.inlineError {
+.inline-error {
   padding: 0;
   color: $danger;
 }

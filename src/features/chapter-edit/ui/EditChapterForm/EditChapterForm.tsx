@@ -11,7 +11,10 @@ import { showSuccessToast } from "@/shared/lib/toast";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { Button } from "@/shared/ui";
 import type { EditableChapter, UpdateChapterDto } from "../../model/types";
+import { bem } from "@/shared/lib/bem";
 import styles from "./EditChapterForm.module.scss";
+
+const b = bem(styles, "edit-chapter-form");
 
 interface EditChapterFormProps {
   chapter: EditableChapter;
@@ -70,9 +73,9 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={styles.hint}>Содержание редактируется на странице главы</p>
+      <p className={b.el("hint")}>Содержание редактируется на странице главы</p>
       <Button
         type="submit"
         fullWidth

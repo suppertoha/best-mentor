@@ -1,4 +1,4 @@
-.page {
+.not-found-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,8 +10,8 @@
 }
 
 .icon {
-	width: 120px;
-	height: auto;
+  width: 120px;
+  height: auto;
 }
 
 .title {
@@ -27,7 +27,7 @@
   color: $text-secondary;
 }
 
-.backBtn {
+.back-link {
   display: inline-block;
   margin-top: 8px;
   padding: 12px 24px;

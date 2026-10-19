@@ -7,12 +7,15 @@ import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable"
 import { useAppSelector } from "@/app/store/hooks";
 import { isAdmin } from "@/entities/user";
 import { sortBySortOrder } from "@/shared/lib";
-import { Button } from "@/shared/ui";
+import { Button, ConfirmDialog } from "@/shared/ui";
 import { useSectionsQuery } from "../../model/useSectionsQuery";
 import { SectionItem } from "../SectionItem";
 import { SectionsAdminModals } from "../SectionsAdminModals";
 import { useSectionsAdmin } from "../../model/useSectionsAdmin";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Sections.module.scss";
+
+const b = bem(styles, "sections-page");
 
 export const Sections = () => {
   const user = useAppSelector((state) => state.user.user);
@@ -21,17 +24,15 @@ export const Sections = () => {
 
   const sortedSections = useMemo(() => sortBySortOrder(sections), [sections]);
 
-	const sectionsAdmin = useSectionsAdmin(sortedSections)
+  const sectionsAdmin = useSectionsAdmin(sortedSections);
 
-
-
-  if (isLoading) return <p className={styles.status}>Загрузка...</p>;
-  if (error) return <p className={styles.error}>{error.message}</p>;
+  if (isLoading) return <p className={b.el("status")}>Загрузка...</p>;
+  if (error) return <p className={b.el("error")}>{error.message}</p>;
 
   return (
-    <div className={styles.page}>
-      <div className={styles.top}>
-        <h2 className={styles.heading}>Разделы</h2>
+    <div className={b.block()}>
+      <div className={b.el("top")}>
+        <h1 className={b.el("heading")}>Разделы</h1>
         {admin && (
           <Button
             type="button"
@@ -53,7 +54,7 @@ export const Sections = () => {
             items={sortedSections.map((section) => section.id)}
             strategy={verticalListSortingStrategy}
           >
-            <ul className={styles.list}>
+            <ul className={b.el("list")}>
               {sortedSections.map((section) => (
                 <SectionItem
                   key={section.id}
@@ -61,10 +62,10 @@ export const Sections = () => {
                   sortable
                   showAdminActions
                   onEdit={sectionsAdmin.setEditingSection}
-                  onDelete={sectionsAdmin.handleDeleteSection}
+                  onDelete={sectionsAdmin.requestDeleteSection}
                   onAddChapter={(section)=>sectionsAdmin.setCreatingChapterSectionId(section.id)}
                   onEditChapter={sectionsAdmin.setEditingChapter}
-                  onDeleteChapter={sectionsAdmin.handleDeleteChapter}
+                  onDeleteChapter={sectionsAdmin.requestDeleteChapter}
                   onChaptersReorder={sectionsAdmin.handleChaptersReorder}
                 />
               ))}
@@ -72,13 +73,24 @@ export const Sections = () => {
           </SortableContext>
         </DndContext>
       ) : (
-        <ul className={styles.list}>
+        <ul className={b.el("list")}>
           {sortedSections.map((section) => (
             <li key={section.id}>
               <SectionItem section={section} />
             </li>
           ))}
         </ul>
+      )}
+
+      {sectionsAdmin.deleteConfirmDialog && (
+        <ConfirmDialog
+          isOpen
+          title={sectionsAdmin.deleteConfirmDialog.title}
+          message={sectionsAdmin.deleteConfirmDialog.message}
+          onConfirm={() => void sectionsAdmin.confirmDelete()}
+          onClose={sectionsAdmin.cancelDelete}
+          isLoading={sectionsAdmin.isDeleteLoading}
+        />
       )}
 
       {admin && (

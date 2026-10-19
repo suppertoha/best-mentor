@@ -11,7 +11,10 @@ import {
   createSectionSchema,
   type CreateSectionFormValues,
 } from "../../model/schema";
+import { bem } from "@/shared/lib/bem";
 import styles from "./CreateSectionForm.module.scss";
+
+const b = bem(styles, "create-section-form");
 
 const fields = [
   {
@@ -77,9 +80,9 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={styles.hint}>Если slug пустой — сгенерируется из названия</p>
+      <p className={b.el("hint")}>Если slug пустой — сгенерируется из названия</p>
       <Button
         type="submit"
         fullWidth

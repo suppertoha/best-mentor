@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import { useState, type ReactNode } from "react";
+import { bem } from "@/shared/lib/bem";
 import styles from "./MarkdownContent.module.scss";
+
+const b = bem(styles, "markdown");
 
 const getTextContent = (node: ReactNode): string => {
   if (typeof node === "string") {
@@ -43,12 +46,12 @@ export const CodeBlock = ({ children }: CodeBlockProps) => {
 
   return (
     <div
-      className={clsx(styles.codeBlock, "wmde-markdown")}
+      className={clsx(b.el("code-block"), "wmde-markdown")}
       data-color-mode="dark"
     >
       <button
         type="button"
-        className={styles.copyBtn}
+        className={b.el("copy-btn")}
         onClick={handleCopy}
         aria-label="Скопировать код"
       >

@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
+import { bem } from "@/shared/lib/bem";
 import { Header } from "@/widgets/header";
 import styles from "./BaseLayout.module.scss";
 
+const b = bem(styles, "base-layout");
+
 export const BaseLayout = () => (
-  <div className={styles.layout}>
+  <div className={b.block()}>
     <Header />
-    <main className={styles.content}>
-      <div className="container">
+    <main className={b.el("content")}>
+      <div className={b.el("container")}>
         <Outlet />
       </div>
     </main>

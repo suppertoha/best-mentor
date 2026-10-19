@@ -1,4 +1,4 @@
-.form {
+.edit-chapter-form {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -10,11 +10,6 @@
   color: $text-muted;
 }
 
-.status {
-  margin: 0;
-  font-size: 14px;
-  color: $text-secondary;
-}
 .error {
   margin: 0;
   font-size: 14px;

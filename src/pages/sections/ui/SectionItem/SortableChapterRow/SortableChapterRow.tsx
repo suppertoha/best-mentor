@@ -1,6 +1,7 @@
 import PencilIcon from "@/shared/assets/icons/pencil.svg?react";
 import TrashIcon from "@/shared/assets/icons/trash.svg?react";
 import { getChapterLockState } from "@/shared/lib";
+import { bem } from "@/shared/lib/bem";
 import { Button } from "@/shared/ui";
 import { useSortableItem } from "../../../lib/useSortableItem";
 import type { Chapter } from "../../../model/types";
@@ -8,6 +9,8 @@ import { DragHandle } from "../DragHandle";
 import { ChapterStatusBadges } from "../ChapterStatusBadges";
 import { ChapterTitleCell } from "../ChapterTitleCell";
 import styles from "../SectionItem.module.scss";
+
+const si = bem(styles, "section-item");
 
 interface SortableChapterRowProps {
   chapter: Chapter;
@@ -30,10 +33,10 @@ export const SortableChapterRow = ({
   const { isUnlocked } = getChapterLockState(chapters, chapterIndex, bypassLocks);
 
   return (
-    <li ref={ref} style={style} className={styles.chapterRow}>
-      <div className={styles.chapterMain}>
+    <li ref={ref} style={style} className={si.el("chapter-row")}>
+      <div className={si.el("chapter-main")}>
         <DragHandle
-          className={styles.chapterDragHandle}
+          className={si.el("chapter-drag-handle")}
           onClick={(event) => event.stopPropagation()}
           {...handleProps}
         />
@@ -44,10 +47,10 @@ export const SortableChapterRow = ({
         />
         <ChapterStatusBadges chapter={chapter} isUnlocked={isUnlocked} />
       </div>
-      <div className={styles.chapterActions}>
+      <div className={si.el("chapter-actions")}>
         <Button
           variant="ghost"
-          className={styles.chapterEditBtn}
+          className={si.el("chapter-edit-btn")}
           type="button"
           aria-label={`Редактировать главу «${chapter.title}»`}
           onClick={() => onEdit?.(chapter)}
@@ -56,7 +59,7 @@ export const SortableChapterRow = ({
         </Button>
         <Button
           variant="ghost"
-          className={styles.chapterDeleteBtn}
+          className={si.el("chapter-delete-btn")}
           type="button"
           aria-label={`Удалить главу «${chapter.title}»`}
           onClick={() => onDelete?.(chapter)}

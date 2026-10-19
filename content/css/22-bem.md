@@ -38,12 +38,22 @@ BEM (Block, Element, Modifier) — методология именования C
 В best-mentor компоненты живут в своих папках (FSD). BEM-классы в scss module или глобальном css согласованы с именем компонента: `LoginForm`, `card__title`.
 
 ```css
-/* LoginForm.module.scss */
-.form { }
-.form__field { }
-.form__submit { }
-.form--loading { }
+/* Button.module.scss (CSS Modules) — короткие local-имена */
+.button { }
+.loader { }
+.primary { }
+.sm { }
 ```
+
+В DOM после сборки Vite подставляет читаемый scope: `Button_primary__a1b2c` (файл + local + hash).
+
+```tsx
+import { bem } from "@/shared/lib/bem";
+const b = bem(styles, "button");
+<button className={clsx(b.block(), b.mod("primary"))} />
+```
+
+Подробнее в репозитории: `docs/BEM.md`.
 
 ## Когда не нужен чистый BEM
 

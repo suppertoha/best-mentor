@@ -1,22 +1,25 @@
+import { bem } from "@/shared/lib/bem";
 import type { Chapter } from "../../../model/types";
 import styles from "./ChapterStatusBadges.module.scss";
 
+const b = bem(styles, "chapter-status-badges");
+
 interface ChapterStatusBadgesProps {
   chapter: Chapter;
-  isUnlocked?: boolean;
+  isUnlocked: boolean;
 }
 
 export const ChapterStatusBadges = ({
   chapter,
-  isUnlocked = true,
+  isUnlocked,
 }: ChapterStatusBadgesProps) => (
-  <div className={styles.root}>
-    {!isUnlocked && !chapter.isCompleted && (
-      <span className={styles.lockedBadge}>Заблокировано</span>
+  <div className={b.block()}>
+    {!isUnlocked && (
+      <span className={b.el("badge--locked")}>Заблокировано</span>
     )}
-    {isUnlocked && chapter.hasQuiz && !chapter.isCompleted && (
-      <span className={styles.quizBadge}>Тест</span>
+    {chapter.hasQuiz && isUnlocked && (
+      <span className={b.el("badge--quiz")}>Тест</span>
     )}
-    {chapter.isCompleted && <span className={styles.completedBadge}>Пройдено</span>}
+    {chapter.isCompleted && <span className={b.el("badge--completed")}>Пройдено</span>}
   </div>
 );

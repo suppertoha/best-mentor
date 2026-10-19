@@ -4,7 +4,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { quizService } from "@/shared/api";
 import { showSuccessToast } from "@/shared/lib/toast";
-import { Button, Input } from "@/shared/ui";
+import { Button, ConfirmDialog, Input } from "@/shared/ui";
 import {
   createEmptyQuestion,
   createEmptyQuizValues,
@@ -13,7 +13,10 @@ import {
   quizEditorSchema,
   type QuizEditorFormValues,
 } from "../../model/schema";
+import { bem } from "@/shared/lib/bem";
 import styles from "./ChapterQuizEditor.module.scss";
+
+const b = bem(styles, "chapter-quiz-editor");
 
 interface ChapterQuizEditorProps {
   chapterId: number;
@@ -32,6 +35,7 @@ export const ChapterQuizEditor = ({
   const [loadError, setLoadError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
   const { register, handleSubmit, reset, setValue, getValues, watch, control, formState } =
     useForm<QuizEditorFormValues>({
@@ -129,25 +133,22 @@ export const ChapterQuizEditor = ({
     }
   };
 
-  const handleDelete = async () => {
+  const handleDeleteClick = () => {
     if (!hasQuiz) {
       onCancel();
       return;
     }
 
-    const confirmed = window.confirm(
-      "Удалить тест? Прогресс студентов по этой главе будет сброшен.",
-    );
+    setIsDeleteDialogOpen(true);
+  };
 
-    if (!confirmed) {
-      return;
-    }
-
+  const handleDeleteConfirm = async () => {
     setIsDeleting(true);
 
     try {
       await quizService.deleteAdmin(chapterId);
       showSuccessToast("Тест удалён");
+      setIsDeleteDialogOpen(false);
       onSaved(false);
     } catch {
       // handled by API interceptor
@@ -157,24 +158,24 @@ export const ChapterQuizEditor = ({
   };
 
   if (isLoading) {
-    return <p className={styles.status}>Загрузка теста...</p>;
+    return <p className={b.el("status")}>Загрузка теста...</p>;
   }
 
   if (loadError) {
-    return <p className={styles.error}>{loadError}</p>;
+    return <p className={b.el("error")}>{loadError}</p>;
   }
 
   return (
-    <form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.questionsList}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
+      <div className={b.el("questions-list")}>
         {fields.map((field, questionIndex) => {
           const options = questions[questionIndex]?.options ?? [];
           const correctOptionIndex = options.findIndex((option) => option.isCorrect);
 
           return (
-            <section key={field.id} className={styles.questionCard}>
-              <div className={styles.questionHeader}>
-                <h2 className={styles.questionTitle}>Вопрос {questionIndex + 1}</h2>
+            <section key={field.id} className={b.el("question-card")}>
+              <div className={b.el("question-header")}>
+                <h2 className={b.el("question-title")}>Вопрос {questionIndex + 1}</h2>
 
                 {fields.length > 1 && (
                   <Button
@@ -195,12 +196,12 @@ export const ChapterQuizEditor = ({
                 error={formState.errors.questions?.[questionIndex]?.text?.message}
               />
 
-              <div className={styles.optionsBlock}>
-                <p className={styles.optionsTitle}>Варианты ответа (отметь правильный)</p>
+              <div className={b.el("options-block")}>
+                <p className={b.el("options-title")}>Варианты ответа (отметь правильный)</p>
 
                 {options.map((_, optionIndex) => (
-                  <div key={`option-${questionIndex}-${optionIndex}`} className={styles.optionRow}>
-                    <label className={styles.correctLabel}>
+                  <div key={`option-${questionIndex}-${optionIndex}`} className={b.el("option-row")}>
+                    <label className={b.el("correct-label")}>
                       <input
                         type="radio"
                         name={`correct-option-${questionIndex}`}
@@ -231,7 +232,7 @@ export const ChapterQuizEditor = ({
                         type="button"
                         variant="ghost"
                         size="sm"
-                        className={styles.removeOptionBtn}
+                        className={b.el("remove-option-btn")}
                         onClick={() => {
                           const nextOptions = options
                             .filter((_, index) => index !== optionIndex)
@@ -247,7 +248,7 @@ export const ChapterQuizEditor = ({
                 ))}
 
                 {formState.errors.questions?.[questionIndex]?.options?.message && (
-                  <p className={styles.error} role="alert">
+                  <p className={b.el("error")} role="alert">
                     {formState.errors.questions[questionIndex]?.options?.message}
                   </p>
                 )}
@@ -274,7 +275,7 @@ export const ChapterQuizEditor = ({
       </div>
 
       {formState.errors.questions?.message && (
-        <p className={styles.error} role="alert">
+        <p className={b.el("error")} role="alert">
           {formState.errors.questions.message}
         </p>
       )}
@@ -287,12 +288,12 @@ export const ChapterQuizEditor = ({
         + Вопрос
       </Button>
 
-      <div className={styles.actions}>
+      <div className={b.el("actions")}>
         {hasQuiz && (
           <Button
             type="button"
             variant="ghost"
-            onClick={handleDelete}
+            onClick={handleDeleteClick}
             isLoading={isDeleting}
             loadingText="Удаление..."
           >
@@ -300,7 +301,7 @@ export const ChapterQuizEditor = ({
           </Button>
         )}
 
-        <div className={styles.actionsRight}>
+        <div className={b.el("actions-right")}>
           <Button type="button" variant="secondary" onClick={onCancel}>
             Отмена
           </Button>
@@ -309,6 +310,16 @@ export const ChapterQuizEditor = ({
           </Button>
         </div>
       </div>
+      <ConfirmDialog
+        isOpen={isDeleteDialogOpen}
+        title="Удалить тест?"
+        message="Прогресс студентов по этой главе будет сброшен."
+        onConfirm={() => void handleDeleteConfirm()}
+        onClose={() => {
+          if (!isDeleting) setIsDeleteDialogOpen(false);
+        }}
+        isLoading={isDeleting}
+      />
     </form>
   );
 };

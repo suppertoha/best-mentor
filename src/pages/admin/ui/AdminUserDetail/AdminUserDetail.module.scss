@@ -1,11 +1,11 @@
-.page {
+.admin-user-detail {
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 0 0 48px;
 }
 
-.backLink {
+.back-link {
   font-size: 14px;
   font-weight: 500;
   color: $accent;
@@ -49,7 +49,7 @@
   margin-bottom: 24px;
 }
 
-.profileLink {
+.profile-link {
   font-size: 14px;
   font-weight: 500;
   color: $accent;
@@ -84,12 +84,12 @@
   background: $bg-page;
 }
 
-.statLabel {
+.stat-label {
   font-size: 13px;
   color: $text-secondary;
 }
 
-.statValue {
+.stat-value {
   font-size: 16px;
   font-weight: 600;
   color: $text-primary;
@@ -112,14 +112,14 @@
   box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
 }
 
-.sectionTitle {
+.section-title {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: $text-primary;
 }
 
-.tableWrap {
+.table-wrap {
   overflow-x: auto;
 }
 
@@ -147,13 +147,13 @@
   color: $text-primary;
 }
 
-.emptyCell {
+.empty-cell {
   padding: 24px 10px;
   color: $text-secondary;
   text-align: center;
 }
 
-.chapterLink {
+.chapter-link {
   color: $accent;
   font-weight: 500;
   text-decoration: none;

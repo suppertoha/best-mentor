@@ -9,7 +9,10 @@ import { loginWithToken } from "@/app/hooks";
 import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
 import { Button } from "@/shared/ui";
 import { registerSchema, type RegisterFormValues } from "../../model/schema";
+import { bem } from "@/shared/lib/bem";
 import styles from "../LoginForm/LoginForm.module.scss";
+
+const b = bem(styles, "auth-form");
 
 const fields = [
   {
@@ -63,7 +66,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
       <Button
         type="submit"
@@ -74,7 +77,7 @@ export const RegisterForm = () => {
       >
         Зарегистрироваться
       </Button>
-      <p className={styles.link}>
+      <p className={b.el("footer")}>
         Уже есть аккаунт? <Link to={ROUTES.login}>Войти</Link>
       </p>
     </form>

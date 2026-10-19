@@ -1,7 +1,10 @@
 import { type ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { bem } from "@/shared/lib/bem";
 import { Button } from "../button";
 import styles from "./Modal.module.scss";
+
+const b = bem(styles, "modal");
 
 interface ModalProps {
   isOpen: boolean;
@@ -29,19 +32,19 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className={styles.overlay} onClick={onClose} role="presentation">
+    <div className={b.el("overlay")} onClick={onClose} role="presentation">
       <div
-        className={styles.panel}
+        className={b.el("panel")}
         onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label={title}
       >
-        <div className={styles.header}>
-          {title ? <h2 className={styles.title}>{title}</h2> : <span />}
+        <div className={b.el("header")}>
+          {title ? <h2 className={b.el("title")}>{title}</h2> : <span />}
           <Button
             variant="ghost"
-            className={styles.closeBtn}
+            className={b.el("close")}
             type="button"
             onClick={onClose}
             aria-label="Закрыть"
@@ -49,7 +52,7 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
             ×
           </Button>
         </div>
-        <div className={styles.body}>{children}</div>
+        <div className={b.el("body")}>{children}</div>
       </div>
     </div>,
     document.body,

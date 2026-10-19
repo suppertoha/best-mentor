@@ -3,7 +3,10 @@ import type { AdminUserStatsItemDto, AdminUsersSortBy, AdminUsersSortOrder } fro
 import { getAdminUserPath } from "@/shared/config";
 import { Button } from "@/shared/ui";
 import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from "../../lib/formatAdmin";
+import { bem } from "@/shared/lib/bem";
 import styles from "./Admin.module.scss";
+
+const b = bem(styles, "admin-page");
 
 type AdminStudentsTableProps = {
   users: AdminUserStatsItemDto[];
@@ -46,8 +49,8 @@ export const AdminStudentsTable = ({
   onPageChange,
 }: AdminStudentsTableProps) => (
   <>
-    <div className={styles.tableWrap}>
-      <table className={styles.table}>
+    <div className={b.el("table-wrap")}>
+      <table className={b.el("table")}>
         <thead>
           <tr>
             <th>Студент</th>
@@ -56,7 +59,7 @@ export const AdminStudentsTable = ({
               <th key={column.key}>
                 <button
                   type="button"
-                  className={styles.sortableHeader}
+                  className={b.el("sortable-header")}
                   onClick={() => onSort(column.key)}
                   aria-sort={
                     sortBy === column.key
@@ -76,7 +79,7 @@ export const AdminStudentsTable = ({
         <tbody>
           {users.length === 0 ? (
             <tr>
-              <td colSpan={6} className={styles.emptyCell}>
+              <td colSpan={6} className={b.el("empty-cell")}>
                 Студентов пока нет
               </td>
             </tr>
@@ -84,7 +87,7 @@ export const AdminStudentsTable = ({
             users.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <Link to={getAdminUserPath(item.id)} className={styles.userLink}>
+                  <Link to={getAdminUserPath(item.id)} className={b.el("user-link")}>
                     {getAdminUserLabel(item.firstName, item.lastName, item.email)}
                   </Link>
                 </td>
@@ -103,7 +106,7 @@ export const AdminStudentsTable = ({
     </div>
 
     {usersTotalPages > 1 && (
-      <div className={styles.pagination}>
+      <div className={b.el("pagination")}>
         <Button
           variant="secondary"
           size="sm"
@@ -113,7 +116,7 @@ export const AdminStudentsTable = ({
         >
           Назад
         </Button>
-        <span className={styles.paginationMeta}>
+        <span className={b.el("pagination-meta")}>
           Страница {usersPage} из {usersTotalPages}
         </span>
         <Button

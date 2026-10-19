@@ -1,16 +1,16 @@
-.root {
+.chapter-quiz-editor {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.questionsList {
+.questions-list {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.questionCard {
+.question-card {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -20,41 +20,41 @@
   background: $bg-page;
 }
 
-.questionHeader {
+.question-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.questionTitle {
+.question-title {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
   color: $text-primary;
 }
 
-.optionsBlock {
+.options-block {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.optionsTitle {
+.options-title {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
   color: $text-secondary;
 }
 
-.optionRow {
+.option-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 12px;
   align-items: end;
 }
 
-.correctLabel {
+.correct-label {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -68,7 +68,7 @@
   }
 }
 
-.removeOptionBtn {
+.remove-option-btn {
   margin-bottom: 6px;
 }
 
@@ -82,7 +82,7 @@
   border-top: 1px solid $border-light;
 }
 
-.actionsRight {
+.actions-right {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -101,25 +101,25 @@
 }
 
 @include media($sm) {
-  .questionCard {
+  .question-card {
     padding: 16px;
   }
 
-  .optionRow {
+  .option-row {
     grid-template-columns: 1fr;
     align-items: stretch;
   }
 
-  .correctLabel {
+  .correct-label {
     padding-bottom: 0;
   }
 
-  .removeOptionBtn {
+  .remove-option-btn {
     margin-bottom: 0;
     justify-self: start;
   }
 
-  .actionsRight {
+  .actions-right {
     width: 100%;
     margin-left: 0;
   }

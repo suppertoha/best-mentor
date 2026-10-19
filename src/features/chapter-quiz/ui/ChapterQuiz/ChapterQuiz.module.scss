@@ -1,4 +1,4 @@
-.root {
+.chapter-quiz {
   margin-top: 0;
   padding-top: 0;
   border-top: 1px solid $border-light;
@@ -20,7 +20,7 @@
   color: $text-primary;
 }
 
-.completedBadge {
+.completed-badge {
   padding: 4px 10px;
   border-radius: 999px;
   background: $success-bg;
@@ -44,7 +44,7 @@
   gap: 12px;
 }
 
-.questionTitle {
+.question-title {
   font-size: 16px;
   font-weight: 600;
   color: $text-primary;
@@ -82,15 +82,15 @@
   accent-color: $accent;
 }
 
-.fieldError,
-.submitError,
+.field-error,
+.submit-error,
 .error {
   margin: 0;
   font-size: 14px;
   color: $danger;
 }
 
-.submitError {
+.submit-error {
   padding: 12px 14px;
   border-radius: 8px;
   background: $danger-bg;
