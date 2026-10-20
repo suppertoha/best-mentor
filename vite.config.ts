@@ -4,6 +4,17 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
+/** BEM local (block__elem / block--mod) → short segment for DevTools: Header_inner, Button_primary */
+const displayLocalName = (localName: string) => {
+  if (localName.includes('__')) {
+    return localName.slice(localName.indexOf('__') + 2)
+  }
+  if (localName.includes('--')) {
+    return localName.slice(localName.indexOf('--') + 2)
+  }
+  return localName
+}
+
 const createScopedName = (localName: string, filePath: string) => {
   const componentName = path
     .basename(filePath)
@@ -14,7 +25,7 @@ const createScopedName = (localName: string, filePath: string) => {
     .digest('base64url')
     .slice(0, 5)
 
-  return `${componentName}_${localName}__${hash}`
+  return `${componentName}_${displayLocalName(localName)}__${hash}`
 }
 
 export default defineConfig({

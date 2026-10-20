@@ -1,20 +1,20 @@
-import { useEffect, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { buildSectionSlug } from "@/features/section-create/lib/buildSectionSlug";
+import { useEffect, useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { buildSectionSlug } from '@/features/section-create/lib/buildSectionSlug';
 import {
   editSectionSchema,
   type EditSectionFormValues,
-} from "@/features/section-create/model/schema";
-import { sectionsService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
-import { Button } from "@/shared/ui";
-import type { EditableSection, UpdateSectionDto } from "../../model/types";
-import { bem } from "@/shared/lib/bem";
-import styles from "./EditSectionForm.module.scss";
+} from '@/features/section-create/model/schema';
+import { sectionsService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { FormFields, type FormFieldConfig } from '@/shared/ui/form-fields';
+import { Button } from '@/shared/ui';
+import type { EditableSection, UpdateSectionDto } from '../../model/types';
+import { bem } from '@/shared/lib/bem';
+import styles from './EditSectionForm.module.scss';
 
-const b = bem(styles, "edit-section-form");
+const b = bem(styles, 'edit-section-form');
 
 interface EditSectionFormProps {
   section: EditableSection;
@@ -26,27 +26,27 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
     () =>
       [
         {
-          name: "title",
+          name: 'title',
           id: `edit-section-title-${section.id}`,
-          label: "Название",
-          kind: "input",
-          type: "text",
+          label: 'Название',
+          kind: 'input',
+          type: 'text',
         },
         {
-          name: "description",
+          name: 'description',
           id: `edit-section-description-${section.id}`,
-          label: "Описание",
-          kind: "textarea",
+          label: 'Описание',
+          kind: 'textarea',
         },
         {
-          name: "slug",
+          name: 'slug',
           id: `edit-section-slug-${section.id}`,
-          label: "Slug",
-          kind: "input",
-          type: "text",
+          label: 'Slug',
+          kind: 'input',
+          type: 'text',
         },
       ] satisfies ReadonlyArray<FormFieldConfig<EditSectionFormValues>>,
-    [section.id]
+    [section.id],
   );
 
   const { control, handleSubmit, reset } = useForm<EditSectionFormValues>({
@@ -79,7 +79,7 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
 
     try {
       await sectionsService.update(section.id, payload);
-      showSuccessToast("Раздел обновлён");
+      showSuccessToast('Раздел обновлён');
       onSuccess();
     } catch {
       // handled by API interceptor
@@ -91,13 +91,7 @@ export const EditSectionForm = ({ section, onSuccess }: EditSectionFormProps) =>
   return (
     <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <Button
-        type="submit"
-        fullWidth
-        isLoading={isLoading}
-        showLoader
-        loadingText="Сохранение..."
-      >
+      <Button type="submit" fullWidth isLoading={isLoading} showLoader loadingText="Сохранение...">
         Сохранить
       </Button>
     </form>

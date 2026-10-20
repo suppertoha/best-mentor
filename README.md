@@ -26,6 +26,18 @@ npm run dev            # http://localhost:5173
 
 В dev запросы идут на `/api` → proxy на `localhost:3000`.
 
+### Качество кода
+
+```bash
+npm run format        # Prettier: TS/TSX/SCSS
+npm run format:check  # проверка без записи
+npm run lint          # ESLint (TS/TSX)
+npm run lint:styles   # Stylelint (SCSS)
+npm run lint:all      # ESLint + Stylelint
+```
+
+В Cursor/VS Code: расширения из `.vscode/extensions.json`, format on save для SCSS и TS.
+
 ### Контент (опционально)
 
 ```bash
@@ -37,11 +49,11 @@ npm run seed:quizzes:all
 
 ## Деплой
 
-| Часть | Куда |
-|--------|------|
+| Часть | Куда                                                                                           |
+| ----- | ---------------------------------------------------------------------------------------------- |
 | Фронт | [Vercel](https://vercel.com) — репозиторий `best-mentor`, build `npm run build`, output `dist` |
-| API | Render / Railway и т.п. — репозиторий `fe-academy` |
-| БД | Neon / Supabase (Postgres) |
+| API   | Render / Railway и т.п. — репозиторий `fe-academy`                                             |
+| БД    | Neon / Supabase (Postgres)                                                                     |
 
 **Vercel:** переменная `VITE_API_URL` = публичный URL API (без `/api`).
 

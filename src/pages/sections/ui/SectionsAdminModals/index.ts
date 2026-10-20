@@ -1,1 +1,1 @@
-export { SectionsAdminModals } from "./SectionsAdminModals";
+export { SectionsAdminModals } from './SectionsAdminModals';

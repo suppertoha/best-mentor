@@ -1,14 +1,14 @@
-import clsx from "clsx";
-import ReactMarkdown from "react-markdown";
-import rehypePrism from "rehype-prism-plus";
-import remarkGfm from "remark-gfm";
-import { bem } from "@/shared/lib/bem";
-import { CodeBlock } from "./CodeBlock";
-import styles from "./MarkdownContent.module.scss";
+import clsx from 'clsx';
+import ReactMarkdown from 'react-markdown';
+import rehypePrism from 'rehype-prism-plus';
+import remarkGfm from 'remark-gfm';
+import { bem } from '@/shared/lib/bem';
+import { CodeBlock } from './CodeBlock';
+import styles from './MarkdownContent.module.scss';
 
-import "@uiw/react-markdown-preview/markdown.css";
+import '@uiw/react-markdown-preview/markdown.css';
 
-const b = bem(styles, "markdown");
+const b = bem(styles, 'markdown');
 
 interface MarkdownContentProps {
   content: string;

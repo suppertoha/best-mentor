@@ -5,8 +5,8 @@ export const buildChapterSlug = (title: string, slug: string): string => {
   const fromTitle = title
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "");
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 
   return fromTitle || `chapter-${Date.now()}`;
 };

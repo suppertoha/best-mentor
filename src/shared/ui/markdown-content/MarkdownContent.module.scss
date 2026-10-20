@@ -119,50 +119,50 @@
     height: auto;
     border-radius: 8px;
   }
-}
 
-.code-block {
-  position: relative;
-  margin: 0 0 1em;
+  &__code-block {
+    position: relative;
+    margin: 0 0 1em;
 
-  pre {
-    margin: 0;
-    padding: 40px 16px 16px;
-    overflow-x: auto;
-    border-radius: 8px;
-    background: $code-bg;
-    white-space: pre;
-    word-break: normal;
-
-    code {
-      display: block;
-      padding: 0;
-      background: transparent;
-      color: $code-text;
-      font-size: 0.875rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    pre {
+      margin: 0;
+      padding: 40px 16px 16px;
+      overflow-x: auto;
+      border-radius: 8px;
+      background: $code-bg;
       white-space: pre;
       word-break: normal;
+
+      code {
+        display: block;
+        padding: 0;
+        background: transparent;
+        color: $code-text;
+        font-size: 0.875rem;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        white-space: pre;
+        word-break: normal;
+      }
     }
   }
-}
 
-.copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 1;
-  padding: 4px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  color: $bg-page;
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s;
+  &__copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    padding: 4px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    color: $bg-page;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.18);
+    &:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
   }
 }

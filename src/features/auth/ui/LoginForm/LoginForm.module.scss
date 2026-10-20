@@ -4,20 +4,20 @@
   gap: 16px;
   width: 100%;
   max-width: 360px;
-}
 
-.footer {
-  margin: 0;
-  font-size: 14px;
-  color: $text-secondary;
-  text-align: center;
+  &__footer {
+    margin: 0;
+    font-size: 14px;
+    color: $text-secondary;
+    text-align: center;
 
-  a {
-    color: $accent;
-    text-decoration: none;
+    a {
+      color: $accent;
+      text-decoration: none;
 
-    &:hover {
-      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

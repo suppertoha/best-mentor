@@ -1,24 +1,24 @@
+import { DndContext, closestCenter, type DragEndEvent } from '@dnd-kit/core';
+import { SortableContext, arrayMove, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import ArrowBottom from '@/shared/assets/icons/arrow-bottom.svg?react';
+import PencilIcon from '@/shared/assets/icons/pencil.svg?react';
+import TrashIcon from '@/shared/assets/icons/trash.svg?react';
+import { getChapterLockState, getSectionProgress, sortBySortOrder } from '@/shared/lib';
+import { bem } from '@/shared/lib/bem';
+import { Button } from '@/shared/ui';
 import {
-  DndContext,
-  closestCenter,
-  type DragEndEvent,
-} from "@dnd-kit/core";
-import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import ArrowBottom from "@/shared/assets/icons/arrow-bottom.svg?react";
-import PencilIcon from "@/shared/assets/icons/pencil.svg?react";
-import TrashIcon from "@/shared/assets/icons/trash.svg?react";
-import { getChapterLockState, getSectionProgress, sortBySortOrder } from "@/shared/lib";
-import { bem } from "@/shared/lib/bem";
-import { Button } from "@/shared/ui";
-import { useDndSensors, useSortableItem, type SortableHandleProps } from "../../lib/useSortableItem";
-import type { Chapter, Section } from "../../model/types";
-import { DragHandle } from "./DragHandle";
-import { SortableChapterRow } from "./SortableChapterRow";
-import { ChapterStatusBadges } from "./ChapterStatusBadges";
-import { ChapterTitleCell } from "./ChapterTitleCell";
-import styles from "./SectionItem.module.scss";
+  useDndSensors,
+  useSortableItem,
+  type SortableHandleProps,
+} from '../../lib/useSortableItem';
+import type { Chapter, Section } from '../../model/types';
+import { DragHandle } from './DragHandle';
+import { SortableChapterRow } from './SortableChapterRow';
+import { ChapterStatusBadges } from './ChapterStatusBadges';
+import { ChapterTitleCell } from './ChapterTitleCell';
+import styles from './SectionItem.module.scss';
 
-const si = bem(styles, "section-item");
+const si = bem(styles, 'section-item');
 
 interface SectionItemProps {
   section: Section;
@@ -65,23 +65,23 @@ const SectionItemView = ({
 
   return (
     <details className={si.block()}>
-      <summary className={si.el("head")}>
-        <div className={si.el("head-main")}>
+      <summary className={si.el('head')}>
+        <div className={si.el('head-main')}>
           {dragHandleProps && (
             <DragHandle
-              className={si.el("drag-handle")}
+              className={si.el('drag-handle')}
               onClick={(event) => event.stopPropagation()}
               onPointerDown={(event) => event.stopPropagation()}
               {...dragHandleProps}
             />
           )}
-          <p className={si.el("title")}>{section.title}</p>
+          <p className={si.el('title')}>{section.title}</p>
           {showProgress && (
             <span
               className={
                 completedChapters === totalChapters
-                  ? si.el("progress-badge--completed")
-                  : si.el("progress-badge")
+                  ? si.el('progress-badge--completed')
+                  : si.el('progress-badge')
               }
             >
               {completedChapters} / {totalChapters} пройдено
@@ -90,7 +90,7 @@ const SectionItemView = ({
         </div>
 
         <div
-          className={si.el("head-actions")}
+          className={si.el('head-actions')}
           onClick={(event) => event.stopPropagation()}
           onKeyDown={(event) => event.stopPropagation()}
         >
@@ -98,7 +98,7 @@ const SectionItemView = ({
             <>
               <Button
                 variant="ghost"
-                className={si.el("edit-btn")}
+                className={si.el('edit-btn')}
                 type="button"
                 aria-label="Редактировать раздел"
                 onClick={() => onEdit?.(section)}
@@ -107,28 +107,24 @@ const SectionItemView = ({
               </Button>
               <Button
                 variant="ghost"
-                className={si.el("delete-btn")}
+                className={si.el('delete-btn')}
                 type="button"
                 aria-label="Удалить раздел"
                 onClick={() => onDelete?.(section)}
               >
                 <TrashIcon />
               </Button>
-              <Button
-                variant="secondary"
-                type="button"
-                onClick={() => onAddChapter?.(section)}
-              >
+              <Button variant="secondary" type="button" onClick={() => onAddChapter?.(section)}>
                 Добавить главу
               </Button>
             </>
           )}
-          <ArrowBottom className={si.el("arrow")} />
+          <ArrowBottom className={si.el('arrow')} />
         </div>
       </summary>
 
-      <div className={si.el("body")}>
-        <p className={si.el("description")}>{section.description}</p>
+      <div className={si.el('body')}>
+        <p className={si.el('description')}>{section.description}</p>
 
         {chapters.length > 0 && (
           <>
@@ -142,7 +138,7 @@ const SectionItemView = ({
                   items={chapters.map((chapter) => chapter.id)}
                   strategy={verticalListSortingStrategy}
                 >
-                  <ul className={si.el("chapters")}>
+                  <ul className={si.el('chapters')}>
                     {chapters.map((chapter, index) => (
                       <SortableChapterRow
                         key={chapter.id}
@@ -158,7 +154,7 @@ const SectionItemView = ({
                 </SortableContext>
               </DndContext>
             ) : (
-              <ul className={si.el("chapters")}>
+              <ul className={si.el('chapters')}>
                 {chapters.map((chapter, index) => {
                   const { isUnlocked, blockingChapter } = getChapterLockState(chapters, index);
                   const lockHint = blockingChapter
@@ -166,8 +162,8 @@ const SectionItemView = ({
                     : undefined;
 
                   return (
-                    <li key={chapter.id} className={si.el("chapter-row")}>
-                      <div className={si.el("chapter-main")}>
+                    <li key={chapter.id} className={si.el('chapter-row')}>
+                      <div className={si.el('chapter-main')}>
                         <ChapterTitleCell
                           chapter={chapter}
                           isUnlocked={isUnlocked}
@@ -191,7 +187,7 @@ const SortableSectionItem = (props: SectionItemProps) => {
   const { ref, style, handleProps } = useSortableItem(props.section.id);
 
   return (
-    <li ref={ref} style={style} className={si.el("sortable-item")}>
+    <li ref={ref} style={style} className={si.el('sortable-item')}>
       <SectionItemView {...props} dragHandleProps={handleProps} />
     </li>
   );

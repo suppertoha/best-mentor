@@ -39,9 +39,6 @@ export interface ChapterNavigationGate {
   isCompleted: boolean;
 }
 
-export function canProceedToNextChapter(
-  chapter: ChapterNavigationGate,
-  isAdmin: boolean,
-): boolean {
+export function canProceedToNextChapter(chapter: ChapterNavigationGate, isAdmin: boolean): boolean {
   return isAdmin || chapter.isCompleted || !chapter.hasQuiz;
 }

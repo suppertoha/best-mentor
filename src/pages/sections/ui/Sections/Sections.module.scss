@@ -3,36 +3,31 @@
   flex-direction: column;
   gap: 24px;
   padding: 0 0 40px;
-}
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
 
-.heading {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 500;
-  color: $text-primary;
-}
+  &__heading {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 500;
+    color: $text-primary;
+  }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-.status,
-.error {
-  padding: 40px 20px;
-}
-
-.error {
-  color: $danger;
+  &__error {
+    color: $danger;
+  }
 }

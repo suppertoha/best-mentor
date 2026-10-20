@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { isAxiosError } from "axios";
-import { Link, Navigate, useParams } from "react-router-dom";
-import { useAppSelector } from "@/app/store/hooks";
-import { isAdmin } from "@/entities/user";
-import { adminService } from "@/shared/api";
-import type { AdminUserDetailDto } from "@/shared/api";
-import { getChapterPath, ROUTES } from "@/shared/config";
-import { getAdminPath } from "../../lib/adminTabs";
-import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from "../../lib/formatAdmin";
-import { bem } from "@/shared/lib/bem";
-import styles from "./AdminUserDetail.module.scss";
+import { useEffect, useState } from 'react';
+import { isAxiosError } from 'axios';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { useAppSelector } from '@/app/store/hooks';
+import { isAdmin } from '@/entities/user';
+import { adminService } from '@/shared/api';
+import type { AdminUserDetailDto } from '@/shared/api';
+import { getChapterPath, ROUTES } from '@/shared/config';
+import { getAdminPath } from '../../lib/adminTabs';
+import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from '../../lib/formatAdmin';
+import { bem } from '@/shared/lib/bem';
+import styles from './AdminUserDetail.module.scss';
 
-const b = bem(styles, "admin-user-detail");
+const b = bem(styles, 'admin-user-detail');
 
 export const AdminUserDetail = () => {
   const { id } = useParams();
@@ -42,7 +42,7 @@ export const AdminUserDetail = () => {
         const data = await adminService.getUserById(userId, controller.signal);
         setStudent(data);
       } catch (err) {
-        if (isAxiosError(err) && err.code === "ERR_CANCELED") {
+        if (isAxiosError(err) && err.code === 'ERR_CANCELED') {
           return;
         }
 
@@ -56,7 +56,7 @@ export const AdminUserDetail = () => {
           return;
         }
 
-        setError("Не удалось загрузить данные студента");
+        setError('Не удалось загрузить данные студента');
       } finally {
         if (!controller.signal.aborted) {
           setIsLoading(false);
@@ -80,15 +80,15 @@ export const AdminUserDetail = () => {
   }
 
   if (accessDenied) {
-    return <p className={b.el("error")}>Нет доступа к админ-панели</p>;
+    return <p className={b.el('error')}>Нет доступа к админ-панели</p>;
   }
 
   if (isLoading) {
-    return <p className={b.el("status")}>Загрузка...</p>;
+    return <p className={b.el('status')}>Загрузка...</p>;
   }
 
   if (error) {
-    return <p className={b.el("error")}>{error}</p>;
+    return <p className={b.el('error')}>{error}</p>;
   }
 
   if (!student) {
@@ -97,35 +97,35 @@ export const AdminUserDetail = () => {
 
   return (
     <div className={b.block()}>
-      <Link to={getAdminPath("students")} className={b.el("back-link")}>
+      <Link to={getAdminPath('students')} className={b.el('back-link')}>
         ← К списку студентов
       </Link>
 
-      <section className={b.el("hero")}>
-        <p className={b.el("role")}>{student.role === "ADMIN" ? "Админ" : "Студент"}</p>
-        <h1 className={b.el("title")}>
+      <section className={b.el('hero')}>
+        <p className={b.el('role')}>{student.role === 'ADMIN' ? 'Админ' : 'Студент'}</p>
+        <h1 className={b.el('title')}>
           {getAdminUserLabel(student.firstName, student.lastName, student.email)}
         </h1>
-        <p className={b.el("email")}>{student.email}</p>
+        <p className={b.el('email')}>{student.email}</p>
 
         {(student.githubUrl || student.telegramUsername || student.websiteUrl) && (
-          <div className={b.el("links")}>
+          <div className={b.el('links')}>
             {student.githubUrl && (
               <a
                 href={student.githubUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={b.el("profile-link")}
+                className={b.el('profile-link')}
               >
                 GitHub
               </a>
             )}
             {student.telegramUsername && (
               <a
-                href={`https://t.me/${student.telegramUsername.replace(/^@/, "")}`}
+                href={`https://t.me/${student.telegramUsername.replace(/^@/, '')}`}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={b.el("profile-link")}
+                className={b.el('profile-link')}
               >
                 Telegram
               </a>
@@ -135,7 +135,7 @@ export const AdminUserDetail = () => {
                 href={student.websiteUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className={b.el("profile-link")}
+                className={b.el('profile-link')}
               >
                 Сайт
               </a>
@@ -143,34 +143,36 @@ export const AdminUserDetail = () => {
           </div>
         )}
 
-        <div className={b.el("stats")}>
-          <div className={b.el("stat")}>
-            <span className={b.el("stat-label")}>Прогресс</span>
-            <span className={b.el("stat-value")}>{formatAdminPercent(student.completionPercent)}</span>
+        <div className={b.el('stats')}>
+          <div className={b.el('stat')}>
+            <span className={b.el('stat-label')}>Прогресс</span>
+            <span className={b.el('stat-value')}>
+              {formatAdminPercent(student.completionPercent)}
+            </span>
           </div>
-          <div className={b.el("stat")}>
-            <span className={b.el("stat-label")}>Главы</span>
-            <span className={b.el("stat-value")}>
+          <div className={b.el('stat')}>
+            <span className={b.el('stat-label')}>Главы</span>
+            <span className={b.el('stat-value')}>
               {student.completedChapters} / {student.totalQuizChapters}
             </span>
           </div>
-          <div className={b.el("stat")}>
-            <span className={b.el("stat-label")}>Регистрация</span>
-            <span className={b.el("stat-value")}>{formatAdminDate(student.createdAt)}</span>
+          <div className={b.el('stat')}>
+            <span className={b.el('stat-label')}>Регистрация</span>
+            <span className={b.el('stat-value')}>{formatAdminDate(student.createdAt)}</span>
           </div>
-          <div className={b.el("stat")}>
-            <span className={b.el("stat-label")}>Последняя активность</span>
-            <span className={b.el("stat-value")}>{formatAdminDate(student.lastActivityAt)}</span>
+          <div className={b.el('stat')}>
+            <span className={b.el('stat-label')}>Последняя активность</span>
+            <span className={b.el('stat-value')}>{formatAdminDate(student.lastActivityAt)}</span>
           </div>
         </div>
 
-        {student.bio && <p className={b.el("bio")}>{student.bio}</p>}
+        {student.bio && <p className={b.el('bio')}>{student.bio}</p>}
       </section>
 
-      <section className={b.el("section")}>
-        <h2 className={b.el("section-title")}>Прогресс по разделам</h2>
-        <div className={b.el("table-wrap")}>
-          <table className={b.el("table")}>
+      <section className={b.el('section')}>
+        <h2 className={b.el('section-title')}>Прогресс по разделам</h2>
+        <div className={b.el('table-wrap')}>
+          <table className={b.el('table')}>
             <thead>
               <tr>
                 <th>Раздел</th>
@@ -181,7 +183,7 @@ export const AdminUserDetail = () => {
             <tbody>
               {student.sectionProgress.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className={b.el("empty-cell")}>
+                  <td colSpan={3} className={b.el('empty-cell')}>
                     Прогресс пока не начат
                   </td>
                 </tr>
@@ -201,10 +203,10 @@ export const AdminUserDetail = () => {
         </div>
       </section>
 
-      <section className={b.el("section")}>
-        <h2 className={b.el("section-title")}>Недавние прохождения</h2>
-        <div className={b.el("table-wrap")}>
-          <table className={b.el("table")}>
+      <section className={b.el('section')}>
+        <h2 className={b.el('section-title')}>Недавние прохождения</h2>
+        <div className={b.el('table-wrap')}>
+          <table className={b.el('table')}>
             <thead>
               <tr>
                 <th>Раздел</th>
@@ -215,7 +217,7 @@ export const AdminUserDetail = () => {
             <tbody>
               {student.recentCompletions.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className={b.el("empty-cell")}>
+                  <td colSpan={3} className={b.el('empty-cell')}>
                     Пока нет завершённых глав
                   </td>
                 </tr>
@@ -224,7 +226,7 @@ export const AdminUserDetail = () => {
                   <tr key={`${item.chapterId}-${item.completedAt}`}>
                     <td>{item.sectionTitle}</td>
                     <td>
-                      <Link to={getChapterPath(item.chapterSlug)} className={b.el("chapter-link")}>
+                      <Link to={getChapterPath(item.chapterSlug)} className={b.el('chapter-link')}>
                         {item.chapterTitle}
                       </Link>
                     </td>

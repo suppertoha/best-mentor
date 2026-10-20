@@ -1,44 +1,41 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { sectionsService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
-import { Button } from "@/shared/ui";
-import { buildSectionSlug } from "../../lib/buildSectionSlug";
-import type { CreateSectionDto } from "../../model/types";
-import {
-  createSectionSchema,
-  type CreateSectionFormValues,
-} from "../../model/schema";
-import { bem } from "@/shared/lib/bem";
-import styles from "./CreateSectionForm.module.scss";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { sectionsService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { FormFields, type FormFieldConfig } from '@/shared/ui/form-fields';
+import { Button } from '@/shared/ui';
+import { buildSectionSlug } from '../../lib/buildSectionSlug';
+import type { CreateSectionDto } from '../../model/types';
+import { createSectionSchema, type CreateSectionFormValues } from '../../model/schema';
+import { bem } from '@/shared/lib/bem';
+import styles from './CreateSectionForm.module.scss';
 
-const b = bem(styles, "create-section-form");
+const b = bem(styles, 'create-section-form');
 
 const fields = [
   {
-    name: "title",
-    id: "section-title",
-    label: "Название",
-    kind: "input",
-    type: "text",
-    placeholder: "HTML",
+    name: 'title',
+    id: 'section-title',
+    label: 'Название',
+    kind: 'input',
+    type: 'text',
+    placeholder: 'HTML',
   },
   {
-    name: "description",
-    id: "section-description",
-    label: "Описание",
-    kind: "textarea",
-    placeholder: "Основы разметки веб-страниц",
+    name: 'description',
+    id: 'section-description',
+    label: 'Описание',
+    kind: 'textarea',
+    placeholder: 'Основы разметки веб-страниц',
   },
   {
-    name: "slug",
-    id: "section-slug",
-    label: "Slug (необязательно)",
-    kind: "input",
-    type: "text",
-    placeholder: "html",
+    name: 'slug',
+    id: 'section-slug',
+    label: 'Slug (необязательно)',
+    kind: 'input',
+    type: 'text',
+    placeholder: 'html',
   },
 ] satisfies ReadonlyArray<FormFieldConfig<CreateSectionFormValues>>;
 
@@ -50,9 +47,9 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
   const { control, handleSubmit, reset } = useForm<CreateSectionFormValues>({
     resolver: zodResolver(createSectionSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      slug: "",
+      title: '',
+      description: '',
+      slug: '',
     },
   });
 
@@ -69,7 +66,7 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
 
     try {
       await sectionsService.create(payload);
-      showSuccessToast("Раздел создан");
+      showSuccessToast('Раздел создан');
       reset();
       onSuccess();
     } catch {
@@ -82,14 +79,8 @@ export const CreateSectionForm = ({ onSuccess }: CreateSectionFormProps) => {
   return (
     <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={b.el("hint")}>Если slug пустой — сгенерируется из названия</p>
-      <Button
-        type="submit"
-        fullWidth
-        isLoading={isLoading}
-        showLoader
-        loadingText="Сохранение..."
-      >
+      <p className={b.el('hint')}>Если slug пустой — сгенерируется из названия</p>
+      <Button type="submit" fullWidth isLoading={isLoading} showLoader loadingText="Сохранение...">
         Создать раздел
       </Button>
     </form>

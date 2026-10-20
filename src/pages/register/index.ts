@@ -1,1 +1,1 @@
-export { Register } from "./ui";
+export { Register } from './ui';

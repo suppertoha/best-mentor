@@ -5,7 +5,7 @@ export const bem = (styles: CssModule, block: string) => {
 
   return {
     block: () => key(block),
-    el: (element: string) => key(element),
-    mod: (modifier: string) => key(modifier),
+    el: (element: string) => key(`${block}__${element}`),
+    mod: (modifier: string) => key(`${block}--${modifier}`),
   };
 };

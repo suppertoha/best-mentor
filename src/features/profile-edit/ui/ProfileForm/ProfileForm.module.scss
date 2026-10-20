@@ -3,15 +3,15 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
-}
 
-.email {
-  margin: 0;
-  font-size: 14px;
-  color: $text-secondary;
-}
+  &__email {
+    margin: 0;
+    font-size: 14px;
+    color: $text-secondary;
+  }
 
-.status {
-  margin: 0;
-  color: $text-secondary;
+  &__status {
+    margin: 0;
+    color: $text-secondary;
+  }
 }

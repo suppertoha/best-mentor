@@ -1,1 +1,1 @@
-export { EditSectionForm } from "./ui/EditSectionForm";
+export { EditSectionForm } from './ui/EditSectionForm';

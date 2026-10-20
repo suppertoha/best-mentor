@@ -3,119 +3,114 @@
   flex-direction: column;
   gap: 16px;
   padding: 0 0 40px;
-}
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.admin-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.back-link {
-  font-size: 14px;
-  font-weight: 500;
-  color: $accent;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
-}
 
-.hero {
-  background: $bg-white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
-  padding: 40px 32px;
-
-  @include media($sm) {
-    padding: 32px 20px;
+  &__admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
-}
 
-.section {
-  margin: 0 0 12px;
-  font-size: 13px;
-  font-weight: 400;
-  color: $text-secondary;
-}
+  &__back-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: $accent;
+    text-decoration: none;
 
-.title {
-  margin: 0 0 32px;
-  font-size: 38px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: $text-primary;
-
-  @include media($sm) {
-    font-size: 28px;
-    margin-bottom: 24px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
-.content {
-  margin-top: 8px;
-  margin-bottom: 0;
-}
+  &__hero {
+    background: $bg-white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+    padding: 40px 32px;
 
-.quiz-section {
-  margin-top: 48px;
-}
-
-.status,
-.error {
-  padding: 40px 20px;
-}
-
-.error {
-  color: $danger;
-}
-
-.locked {
-  background: $bg-white;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
-  padding: 40px 32px;
-
-  @include media($sm) {
-    padding: 32px 20px;
+    @include media($sm) {
+      padding: 32px 20px;
+    }
   }
-}
 
-.locked-title {
-  margin: 0 0 16px;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2;
-  color: $text-primary;
-
-  @include media($sm) {
-    font-size: 24px;
+  &__section {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 400;
+    color: $text-secondary;
   }
-}
 
-.locked-text {
-  margin: 0 0 24px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: $text-secondary;
-}
+  &__title {
+    margin: 0 0 32px;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $text-primary;
 
-.locked-link {
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 500;
-  color: $accent;
-  text-decoration: none;
+    @include media($sm) {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+  }
 
-  &:hover {
-    text-decoration: underline;
+  &__content {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  &__quiz-section {
+    margin-top: 48px;
+  }
+
+  &__error {
+    color: $danger;
+  }
+
+  &__locked {
+    background: $bg-white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+    padding: 40px 32px;
+
+    @include media($sm) {
+      padding: 32px 20px;
+    }
+  }
+
+  &__locked-title {
+    margin: 0 0 16px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $text-primary;
+
+    @include media($sm) {
+      font-size: 24px;
+    }
+  }
+
+  &__locked-text {
+    margin: 0 0 24px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $text-secondary;
+  }
+
+  &__locked-link {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    color: $accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const answerSchema = z
-  .string({ message: "Выберите вариант ответа" })
-  .min(1, "Выберите вариант ответа");
+  .string({ message: 'Выберите вариант ответа' })
+  .min(1, 'Выберите вариант ответа');
 
 export const createQuizFormSchema = (questionIds: number[]) =>
   z
@@ -15,9 +15,9 @@ export const createQuizFormSchema = (questionIds: number[]) =>
 
         if (!values.answers[key]) {
           ctx.addIssue({
-            code: "custom",
-            message: "Выберите вариант ответа",
-            path: ["answers", key],
+            code: 'custom',
+            message: 'Выберите вариант ответа',
+            path: ['answers', key],
           });
         }
       });

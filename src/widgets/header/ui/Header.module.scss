@@ -1,108 +1,110 @@
 .header {
   border-bottom: 1px solid $border-light;
   background: $bg-white;
-}
 
-.inner {
-  @include container;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 
-.logo {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: $text-primary;
-  text-decoration: none;
-  transition: color 0.2s;
+  &__logo {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
+    text-decoration: none;
+    transition: color 0.2s;
 
-  &:hover {
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__admin-link {
+    font-size: 14px;
+    font-weight: 500;
     color: $accent;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.admin-link {
-  font-size: 14px;
-  font-weight: 500;
-  color: $accent;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.role-badge {
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: $bg-page;
-  color: $accent;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.menu {
-  position: relative;
-}
-
-.avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid $border-light;
-  border-radius: 50%;
-  background: $accent;
-  color: $bg-white;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: border-color 0.2s, opacity 0.2s;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
-.dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  min-width: 160px;
-  padding: 8px;
-  border: 1px solid $border-light;
-  border-radius: 12px;
-  background: $bg-white;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.menu-item {
-  padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: $text-primary;
-  font-size: 15px;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.2s;
-
-  &:hover {
+  &__role-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
     background: $bg-page;
+    color: $accent;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  &__menu {
+    position: relative;
+  }
+
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $border-light;
+    border-radius: 50%;
+    background: $accent;
+    color: $bg-white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      opacity 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+    padding: 8px;
+    border: 1px solid $border-light;
+    border-radius: 12px;
+    background: $bg-white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  &__menu-item {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: $text-primary;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $bg-page;
+    }
   }
 }

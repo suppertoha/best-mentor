@@ -1,1 +1,1 @@
-export { Chapter } from "./Chapter";
+export { Chapter } from './Chapter';

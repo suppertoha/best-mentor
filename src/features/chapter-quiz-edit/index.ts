@@ -1,1 +1,1 @@
-export { ChapterQuizEditor } from "./ui/ChapterQuizEditor";
+export { ChapterQuizEditor } from './ui/ChapterQuizEditor';

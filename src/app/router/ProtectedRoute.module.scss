@@ -1,5 +1,7 @@
-.loader {
-  margin: 32px 0;
-  font-size: 16px;
-  color: $text-secondary;
+.protected-route {
+  &__loader {
+    margin: 32px 0;
+    font-size: 16px;
+    color: $text-secondary;
+  }
 }

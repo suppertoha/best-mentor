@@ -1,1 +1,1 @@
-export type { CreateChapterDto } from "@/shared/api";
+export type { CreateChapterDto } from '@/shared/api';

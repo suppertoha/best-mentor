@@ -1,7 +1,7 @@
-import type { AuthUser } from "../model/userSlice";
+import type { AuthUser } from '../model/userSlice';
 
 export const getUserInitials = (user: AuthUser | null | undefined): string => {
-  if (!user) return "?";
+  if (!user) return '?';
 
   const firstName = user.firstName?.trim();
   const lastName = user.lastName?.trim();

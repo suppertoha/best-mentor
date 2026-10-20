@@ -1,15 +1,15 @@
-import { useState } from "react";
-import MDEditor from "@uiw/react-md-editor";
-import { chaptersService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { Button } from "@/shared/ui";
-import { bem } from "@/shared/lib/bem";
-import styles from "./ChapterContentEditor.module.scss";
+import { useState } from 'react';
+import MDEditor from '@uiw/react-md-editor';
+import { chaptersService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { Button } from '@/shared/ui';
+import { bem } from '@/shared/lib/bem';
+import styles from './ChapterContentEditor.module.scss';
 
-const b = bem(styles, "chapter-content-editor");
+const b = bem(styles, 'chapter-content-editor');
 
-import "@uiw/react-md-editor/markdown-editor.css";
-import "@uiw/react-markdown-preview/markdown.css";
+import '@uiw/react-md-editor/markdown-editor.css';
+import '@uiw/react-markdown-preview/markdown.css';
 
 interface ChapterContentEditorProps {
   chapterId: number;
@@ -32,7 +32,7 @@ export const ChapterContentEditor = ({
 
     try {
       await chaptersService.update(chapterId, { content: draft.trim() });
-      showSuccessToast("Содержание сохранено");
+      showSuccessToast('Содержание сохранено');
       onSaved(draft.trim());
     } catch {
       // handled by API interceptor
@@ -43,14 +43,8 @@ export const ChapterContentEditor = ({
 
   return (
     <div className={b.block()}>
-      <div className={b.el("toolbar")}>
-        <Button
-          type="button"
-          variant="secondary"
-          size="sm"
-          onClick={onCancel}
-          disabled={isSaving}
-        >
+      <div className={b.el('toolbar')}>
+        <Button type="button" variant="secondary" size="sm" onClick={onCancel} disabled={isSaving}>
           Отмена
         </Button>
         <Button
@@ -65,10 +59,10 @@ export const ChapterContentEditor = ({
         </Button>
       </div>
 
-      <div className={b.el("editor")} data-color-mode="light">
+      <div className={b.el('editor')} data-color-mode="light">
         <MDEditor
           value={draft}
-          onChange={(value) => setDraft(value ?? "")}
+          onChange={(value) => setDraft(value ?? '')}
           preview="live"
           height={480}
           visibleDragbar={false}

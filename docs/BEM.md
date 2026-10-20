@@ -1,58 +1,64 @@
 # BEM в best-mentor
 
-Стили компонентов — **CSS Modules** + дисциплина **BEM** в структуре компонента и разметке.
+Стили компонентов — **CSS Modules** + **BEM** в SCSS и в `bem()` из React.
 
-## Именование в коде
+## Именование
 
-- **Блок:** `kebab-case`, совпадает с смыслом компонента (`section-item`, `login-form`, `button`). В SCSS — класс `.header`, `.button`.
-- **Элемент:** короткое имя в том же `*.module.scss` (`.dropdown`, `.logo`), в TSX — `b.el('dropdown')`.
-- **Модификатор:** отдельный локальный класс (`.primary`, `.tab--active`, `.field--error`) или `b.mod('primary')`.
+- **Блок:** `kebab-case`, совпадает с аргументом `bem(styles, 'chapter-nav')` и корневым классом `.chapter-nav`.
+- **Элемент:** `block__element` — в SCSS `&__row`, в TSX `b.el('row')`.
+- **Модификатор блока:** `block--modifier` — в SCSS `&--primary` внутри `.button`, в TSX `b.mod('primary')`.
+- **Элемент + модификатор в одном ключе:** `block__link-next` — SCSS `&__link-next`, TSX `b.el('link-next')`.
 
-Уникальность в проде даёт не длинный BEM в HTML, а **scoped name** из Vite (см. ниже).
-
-## Имена в DOM (DevTools)
-
-Шаблон: **`{ИмяФайла}_{local}__{hash}`** — например `Header_dropdown__wUf1y`, `SectionItem_title__a1b2c`.
-
-Настройка: `css.modules.generateScopedName` в `vite.config.ts` (имя файла без `.module.scss` + локальный класс + короткий hash). Это удобно для отладки; в JSX по-прежнему только `bem()` / `styles`, не строки из DOM.
+В DOM после сборки: **`{Файл}_{короткий local}__{hash}`** (`generateScopedName` в `vite.config.ts` убирает дубль имени блока в local). Примеры: `Header_header__…` (корень блока), `Header_inner__…`, `ChapterNav_row__…`, `Button_primary__…`.
 
 ## React
 
 ```tsx
-import clsx from "clsx";
-import { bem } from "@/shared/lib/bem";
-import styles from "./Button.module.scss";
+import clsx from 'clsx';
+import { bem } from '@/shared/lib/bem';
+import styles from './ChapterNav.module.scss';
 
-const b = bem(styles, "button");
+const b = bem(styles, 'chapter-nav');
 
-<button
-  className={clsx(
-    b.block(),
-    b.mod("primary"),
-    size === "sm" && b.mod("sm"),
-    className,
-  )}
-/>;
+<nav className={b.block()}>
+  <div className={b.el('row')}>…</div>
+</nav>;
 ```
 
-`bem`: `block()` → `styles[block]`, `el('logo')` → `styles.logo`, `mod('primary')` → `styles.primary`.
+`bem`: `block()` → `styles[block]`, `el('row')` → `styles['chapter-nav__row']`, `mod('primary')` → `styles['button--primary']`.
 
-## SCSS
+## SCSS (эталон)
 
-- Один **блок** в файле; элементы — **плоские** классы рядом (`.inner`, `.dropdown`), без `block__element` в селекторах.
-- **Не** вкладывать `&__dropdown` внутрь `.header`, если нужен local `dropdown` (иначе в modules будет `header__dropdown`).
-- Составные стили: `.sm.primary` при двух модификаторах на одном узле.
-- Псевдоклассы (`&:hover`) и `@media` — на том же элементе.
+Файл [`ChapterNav.module.scss`](../src/pages/chapter/ui/ChapterNav/ChapterNav.module.scss):
+
+- Один корневой **блок** `.chapter-nav { }`.
+- Элементы только через **`&__…`** внутри блока.
+- Модификаторы блока — **`&--…`** внутри блока (см. `Button.module.scss`).
+- **`@include media($sm)`** — внутри того же `&__…`, где меняются свойства, а не общий блок в конце файла с перечислением классов.
+- Псевдоклассы (`&:hover`) — рядом с media внутри элемента.
 - Токены — `@use "inject" as *`.
 
-Эталон: `src/widgets/header/ui/Header.module.scss` + `Header.tsx`.
+```scss
+.chapter-nav {
+  border-top: 1px solid $border-light;
+
+  &__row {
+    display: grid;
+
+    @include media($sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+```
 
 ## FSD
 
-Один React-компонент → один основной блок в его `*.module.scss`. Вложенные UI-папки (`ChapterTitleCell`) — свой блок и свой модуль (или общий модуль с согласованными short local, как `SectionItem`).
+Один React-компонент → один блок в его `*.module.scss`. Общий модуль (`SectionItem`) — один блок `section-item` для всех связанных TSX.
 
 ## Антипаттерны
 
-- `.root`, `.inner` без связи с блоком в TSX (`b.el('inner')` при классе `.inner` — ок).
-- Глубокая вложенность `.header .dropdown` вместо отдельных локальных классов.
-- Глобальные BEM-классы в JSX (кроме reset); layout — `b.el('container')` в `BaseLayout.module.scss`.
+- Плоские корневые `.row`, `.title` рядом с `.block` без `&__`.
+- `@include media { .row { } .link { } }` в конце файла.
+- `.block .child` вместо `&__child`.
+- Строки scoped-классов из DevTools в JSX.

@@ -1,4 +1,4 @@
-const SECTIONS_PROGRESS_UPDATED = "sections-progress-updated";
+const SECTIONS_PROGRESS_UPDATED = 'sections-progress-updated';
 
 export function notifySectionsProgressUpdated() {
   window.dispatchEvent(new CustomEvent(SECTIONS_PROGRESS_UPDATED));

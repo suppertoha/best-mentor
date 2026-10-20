@@ -66,7 +66,7 @@ export interface AdminRecentCompletionDto {
 export interface AdminUserDetailDto {
   id: number;
   email: string;
-  role: "STUDENT" | "ADMIN";
+  role: 'STUDENT' | 'ADMIN';
   firstName?: string | null;
   lastName?: string | null;
   bio?: string | null;
@@ -85,12 +85,12 @@ export interface AdminUserDetailDto {
 }
 
 export type AdminUsersSortBy =
-  | "createdAt"
-  | "completedChapters"
-  | "lastActivityAt"
-  | "completionPercent";
+  | 'createdAt'
+  | 'completedChapters'
+  | 'lastActivityAt'
+  | 'completionPercent';
 
-export type AdminUsersSortOrder = "asc" | "desc";
+export type AdminUsersSortOrder = 'asc' | 'desc';
 
 export interface GetAdminUsersParams {
   page?: number;

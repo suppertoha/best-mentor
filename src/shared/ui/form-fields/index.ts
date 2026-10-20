@@ -1,1 +1,1 @@
-export { FormFields, type FormFieldConfig } from "./FormFields";
+export { FormFields, type FormFieldConfig } from './FormFields';

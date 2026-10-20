@@ -1,1 +1,1 @@
-export { getApiErrorMessage } from "./getApiErrorMessage";
+export { getApiErrorMessage } from './getApiErrorMessage';

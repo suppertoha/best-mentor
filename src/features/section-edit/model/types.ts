@@ -1,1 +1,1 @@
-export type { EditableSection, UpdateSectionDto } from "@/shared/api";
+export type { EditableSection, UpdateSectionDto } from '@/shared/api';

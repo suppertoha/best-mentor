@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
-import type { AdminUserStatsItemDto, AdminUsersSortBy, AdminUsersSortOrder } from "@/shared/api";
-import { getAdminUserPath } from "@/shared/config";
-import { Button } from "@/shared/ui";
-import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from "../../lib/formatAdmin";
-import { bem } from "@/shared/lib/bem";
-import styles from "./Admin.module.scss";
+import { Link } from 'react-router-dom';
+import type { AdminUserStatsItemDto, AdminUsersSortBy, AdminUsersSortOrder } from '@/shared/api';
+import { getAdminUserPath } from '@/shared/config';
+import { Button } from '@/shared/ui';
+import { formatAdminDate, formatAdminPercent, getAdminUserLabel } from '../../lib/formatAdmin';
+import { bem } from '@/shared/lib/bem';
+import styles from './Admin.module.scss';
 
-const b = bem(styles, "admin-page");
+const b = bem(styles, 'admin-page');
 
 type AdminStudentsTableProps = {
   users: AdminUserStatsItemDto[];
@@ -20,10 +20,10 @@ type AdminStudentsTableProps = {
 };
 
 const SORTABLE_COLUMNS: { key: AdminUsersSortBy; label: string }[] = [
-  { key: "completionPercent", label: "Прогресс" },
-  { key: "completedChapters", label: "Главы" },
-  { key: "createdAt", label: "Регистрация" },
-  { key: "lastActivityAt", label: "Активность" },
+  { key: 'completionPercent', label: 'Прогресс' },
+  { key: 'completedChapters', label: 'Главы' },
+  { key: 'createdAt', label: 'Регистрация' },
+  { key: 'lastActivityAt', label: 'Активность' },
 ];
 
 const getSortIndicator = (
@@ -35,7 +35,7 @@ const getSortIndicator = (
     return null;
   }
 
-  return sortOrder === "asc" ? " ↑" : " ↓";
+  return sortOrder === 'asc' ? ' ↑' : ' ↓';
 };
 
 export const AdminStudentsTable = ({
@@ -49,8 +49,8 @@ export const AdminStudentsTable = ({
   onPageChange,
 }: AdminStudentsTableProps) => (
   <>
-    <div className={b.el("table-wrap")}>
-      <table className={b.el("table")}>
+    <div className={b.el('table-wrap')}>
+      <table className={b.el('table')}>
         <thead>
           <tr>
             <th>Студент</th>
@@ -59,14 +59,14 @@ export const AdminStudentsTable = ({
               <th key={column.key}>
                 <button
                   type="button"
-                  className={b.el("sortable-header")}
+                  className={b.el('sortable-header')}
                   onClick={() => onSort(column.key)}
                   aria-sort={
                     sortBy === column.key
-                      ? sortOrder === "asc"
-                        ? "ascending"
-                        : "descending"
-                      : "none"
+                      ? sortOrder === 'asc'
+                        ? 'ascending'
+                        : 'descending'
+                      : 'none'
                   }
                 >
                   {column.label}
@@ -79,7 +79,7 @@ export const AdminStudentsTable = ({
         <tbody>
           {users.length === 0 ? (
             <tr>
-              <td colSpan={6} className={b.el("empty-cell")}>
+              <td colSpan={6} className={b.el('empty-cell')}>
                 Студентов пока нет
               </td>
             </tr>
@@ -87,7 +87,7 @@ export const AdminStudentsTable = ({
             users.map((item) => (
               <tr key={item.id}>
                 <td>
-                  <Link to={getAdminUserPath(item.id)} className={b.el("user-link")}>
+                  <Link to={getAdminUserPath(item.id)} className={b.el('user-link')}>
                     {getAdminUserLabel(item.firstName, item.lastName, item.email)}
                   </Link>
                 </td>
@@ -106,7 +106,7 @@ export const AdminStudentsTable = ({
     </div>
 
     {usersTotalPages > 1 && (
-      <div className={b.el("pagination")}>
+      <div className={b.el('pagination')}>
         <Button
           variant="secondary"
           size="sm"
@@ -116,7 +116,7 @@ export const AdminStudentsTable = ({
         >
           Назад
         </Button>
-        <span className={b.el("pagination-meta")}>
+        <span className={b.el('pagination-meta')}>
           Страница {usersPage} из {usersTotalPages}
         </span>
         <Button

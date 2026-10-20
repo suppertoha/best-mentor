@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import type { AppDispatch } from "@/app/store/store";
-import { useAppDispatch } from "@/app/store/hooks";
-import { clearToken, setToken, setUser } from "@/entities/user";
-import { profileService } from "@/shared/api";
-import { TOKEN_STORAGE_KEY } from "@/shared/config/token";
+import { useEffect } from 'react';
+import type { AppDispatch } from '@/app/store/store';
+import { useAppDispatch } from '@/app/store/hooks';
+import { clearToken, setToken, setUser } from '@/entities/user';
+import { profileService } from '@/shared/api';
+import { TOKEN_STORAGE_KEY } from '@/shared/config/token';
 
 export async function loginWithToken(dispatch: AppDispatch, accessToken: string) {
   const user = await profileService.getProfile(accessToken);

@@ -1,1 +1,1 @@
-export { ChapterContentEditor } from "./ChapterContentEditor";
+export { ChapterContentEditor } from './ChapterContentEditor';

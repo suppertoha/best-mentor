@@ -1,1 +1,1 @@
-export type { Chapter, Section } from "@/shared/api";
+export type { Chapter, Section } from '@/shared/api';

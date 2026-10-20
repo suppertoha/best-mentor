@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { isAxiosError } from "axios";
-import { useFieldArray, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { quizService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { Button, ConfirmDialog, Input } from "@/shared/ui";
+import { useEffect, useState } from 'react';
+import { isAxiosError } from 'axios';
+import { useFieldArray, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { quizService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { Button, ConfirmDialog, Input } from '@/shared/ui';
 import {
   createEmptyQuestion,
   createEmptyQuizValues,
@@ -12,11 +12,11 @@ import {
   normalizeQuestionOptions,
   quizEditorSchema,
   type QuizEditorFormValues,
-} from "../../model/schema";
-import { bem } from "@/shared/lib/bem";
-import styles from "./ChapterQuizEditor.module.scss";
+} from '../../model/schema';
+import { bem } from '@/shared/lib/bem';
+import styles from './ChapterQuizEditor.module.scss';
 
-const b = bem(styles, "chapter-quiz-editor");
+const b = bem(styles, 'chapter-quiz-editor');
 
 interface ChapterQuizEditorProps {
   chapterId: number;
@@ -45,10 +45,10 @@ export const ChapterQuizEditor = ({
 
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "questions",
+    name: 'questions',
   });
 
-  const questions = watch("questions");
+  const questions = watch('questions');
 
   useEffect(() => {
     if (!hasQuiz) {
@@ -68,7 +68,7 @@ export const ChapterQuizEditor = ({
         const data = await quizService.getAdmin(chapterId, controller.signal);
         reset(mapAdminQuizToFormValues(data.questions));
       } catch (err) {
-        if (isAxiosError(err) && err.code === "ERR_CANCELED") {
+        if (isAxiosError(err) && err.code === 'ERR_CANCELED') {
           return;
         }
 
@@ -77,7 +77,7 @@ export const ChapterQuizEditor = ({
           return;
         }
 
-        setLoadError("Не удалось загрузить тест");
+        setLoadError('Не удалось загрузить тест');
       } finally {
         if (!controller.signal.aborted) {
           setIsLoading(false);
@@ -94,7 +94,7 @@ export const ChapterQuizEditor = ({
 
   const updateQuestionOptions = (
     questionIndex: number,
-    nextOptions: QuizEditorFormValues["questions"][number]["options"],
+    nextOptions: QuizEditorFormValues['questions'][number]['options'],
   ) => {
     setValue(`questions.${questionIndex}.options`, normalizeQuestionOptions(nextOptions), {
       shouldDirty: true,
@@ -124,7 +124,7 @@ export const ChapterQuizEditor = ({
           options: normalizeQuestionOptions(question.options),
         })),
       });
-      showSuccessToast("Тест сохранён");
+      showSuccessToast('Тест сохранён');
       onSaved(true);
     } catch {
       // handled by API interceptor
@@ -147,7 +147,7 @@ export const ChapterQuizEditor = ({
 
     try {
       await quizService.deleteAdmin(chapterId);
-      showSuccessToast("Тест удалён");
+      showSuccessToast('Тест удалён');
       setIsDeleteDialogOpen(false);
       onSaved(false);
     } catch {
@@ -158,24 +158,24 @@ export const ChapterQuizEditor = ({
   };
 
   if (isLoading) {
-    return <p className={b.el("status")}>Загрузка теста...</p>;
+    return <p className={b.el('status')}>Загрузка теста...</p>;
   }
 
   if (loadError) {
-    return <p className={b.el("error")}>{loadError}</p>;
+    return <p className={b.el('error')}>{loadError}</p>;
   }
 
   return (
     <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
-      <div className={b.el("questions-list")}>
+      <div className={b.el('questions-list')}>
         {fields.map((field, questionIndex) => {
           const options = questions[questionIndex]?.options ?? [];
           const correctOptionIndex = options.findIndex((option) => option.isCorrect);
 
           return (
-            <section key={field.id} className={b.el("question-card")}>
-              <div className={b.el("question-header")}>
-                <h2 className={b.el("question-title")}>Вопрос {questionIndex + 1}</h2>
+            <section key={field.id} className={b.el('question-card')}>
+              <div className={b.el('question-header')}>
+                <h2 className={b.el('question-title')}>Вопрос {questionIndex + 1}</h2>
 
                 {fields.length > 1 && (
                   <Button
@@ -196,12 +196,15 @@ export const ChapterQuizEditor = ({
                 error={formState.errors.questions?.[questionIndex]?.text?.message}
               />
 
-              <div className={b.el("options-block")}>
-                <p className={b.el("options-title")}>Варианты ответа (отметь правильный)</p>
+              <div className={b.el('options-block')}>
+                <p className={b.el('options-title')}>Варианты ответа (отметь правильный)</p>
 
                 {options.map((_, optionIndex) => (
-                  <div key={`option-${questionIndex}-${optionIndex}`} className={b.el("option-row")}>
-                    <label className={b.el("correct-label")}>
+                  <div
+                    key={`option-${questionIndex}-${optionIndex}`}
+                    className={b.el('option-row')}
+                  >
+                    <label className={b.el('correct-label')}>
                       <input
                         type="radio"
                         name={`correct-option-${questionIndex}`}
@@ -232,7 +235,7 @@ export const ChapterQuizEditor = ({
                         type="button"
                         variant="ghost"
                         size="sm"
-                        className={b.el("remove-option-btn")}
+                        className={b.el('remove-option-btn')}
                         onClick={() => {
                           const nextOptions = options
                             .filter((_, index) => index !== optionIndex)
@@ -248,7 +251,7 @@ export const ChapterQuizEditor = ({
                 ))}
 
                 {formState.errors.questions?.[questionIndex]?.options?.message && (
-                  <p className={b.el("error")} role="alert">
+                  <p className={b.el('error')} role="alert">
                     {formState.errors.questions[questionIndex]?.options?.message}
                   </p>
                 )}
@@ -261,7 +264,7 @@ export const ChapterQuizEditor = ({
                     onClick={() => {
                       updateQuestionOptions(questionIndex, [
                         ...options,
-                        { text: "", isCorrect: false },
+                        { text: '', isCorrect: false },
                       ]);
                     }}
                   >
@@ -275,20 +278,16 @@ export const ChapterQuizEditor = ({
       </div>
 
       {formState.errors.questions?.message && (
-        <p className={b.el("error")} role="alert">
+        <p className={b.el('error')} role="alert">
           {formState.errors.questions.message}
         </p>
       )}
 
-      <Button
-        type="button"
-        variant="secondary"
-        onClick={() => append(createEmptyQuestion())}
-      >
+      <Button type="button" variant="secondary" onClick={() => append(createEmptyQuestion())}>
         + Вопрос
       </Button>
 
-      <div className={b.el("actions")}>
+      <div className={b.el('actions')}>
         {hasQuiz && (
           <Button
             type="button"
@@ -301,7 +300,7 @@ export const ChapterQuizEditor = ({
           </Button>
         )}
 
-        <div className={b.el("actions-right")}>
+        <div className={b.el('actions-right')}>
           <Button type="button" variant="secondary" onClick={onCancel}>
             Отмена
           </Button>

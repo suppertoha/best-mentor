@@ -6,97 +6,99 @@
   font-family: $mainFont;
   border: none;
   cursor: pointer;
-  transition: background 0.2s, opacity 0.2s;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
 
   &:disabled {
     cursor: not-allowed;
   }
-}
 
-.primary {
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: $bg-white;
-  background: $accent;
-  border-radius: 12px;
+  &--primary {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $bg-white;
+    background: $accent;
+    border-radius: 12px;
 
-  &:hover:not(:disabled) {
-    background: $accent-dark;
+    &:hover:not(:disabled) {
+      background: $accent-dark;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+    }
   }
 
-  &:disabled {
-    opacity: 0.6;
-  }
-}
+  &--secondary {
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $accent;
+    background: $bg-white;
+    border: 1px solid $accent;
+    border-radius: 8px;
+    white-space: nowrap;
 
-.sm.primary {
-  padding: 10px 16px;
-  font-size: 14px;
-}
+    &:hover:not(:disabled) {
+      background: $bg-page;
+    }
 
-.secondary {
-  padding: 8px 14px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: $accent;
-  background: $bg-white;
-  border: 1px solid $accent;
-  border-radius: 8px;
-  white-space: nowrap;
-
-  &:hover:not(:disabled) {
-    background: $bg-page;
+    &:disabled {
+      opacity: 0.6;
+    }
   }
 
-  &:disabled {
-    opacity: 0.6;
+  &--link {
+    padding: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: $accent;
+    background: transparent;
+
+    &:hover:not(:disabled) {
+      text-decoration: underline;
+    }
+
+    &:disabled {
+      color: $text-muted;
+    }
   }
-}
 
-.link {
-  padding: 0;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: $accent;
-  background: transparent;
-
-  &:hover:not(:disabled) {
-    text-decoration: underline;
+  &--ghost {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    border-radius: inherit;
   }
 
-  &:disabled {
-    color: $text-muted;
+  &--full {
+    width: 100%;
   }
-}
 
-.ghost {
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  border-radius: inherit;
-}
+  &__loader {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: $bg-white;
+    border-radius: 50%;
+    animation: button-spin 0.7s linear infinite;
+  }
 
-.full {
-  width: 100%;
-}
+  &__loader--secondary,
+  &__loader--link {
+    border-color: rgba(106, 11, 255, 0.25);
+    border-top-color: $accent;
+  }
 
-.loader {
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  border-top-color: $bg-white;
-  border-radius: 50%;
-  animation: button-spin 0.7s linear infinite;
-}
-
-.loader--secondary,
-.loader--link {
-  border-color: rgba(106, 11, 255, 0.25);
-  border-top-color: $accent;
+  &--sm.button--primary {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
 }
 
 @keyframes button-spin {

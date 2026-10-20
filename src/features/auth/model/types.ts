@@ -1,1 +1,1 @@
-export type * from "@/shared/api/dto/auth.dto";
+export type * from '@/shared/api/dto/auth.dto';

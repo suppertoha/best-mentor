@@ -1,20 +1,20 @@
-import { useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { buildChapterSlug } from "@/features/chapter-create/lib/buildChapterSlug";
+import { useMemo, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { buildChapterSlug } from '@/features/chapter-create/lib/buildChapterSlug';
 import {
   editChapterMetaSchema,
   type EditChapterMetaFormValues,
-} from "@/features/chapter-create/model/schema";
-import { chaptersService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { FormFields, type FormFieldConfig } from "@/shared/ui/form-fields";
-import { Button } from "@/shared/ui";
-import type { EditableChapter, UpdateChapterDto } from "../../model/types";
-import { bem } from "@/shared/lib/bem";
-import styles from "./EditChapterForm.module.scss";
+} from '@/features/chapter-create/model/schema';
+import { chaptersService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { FormFields, type FormFieldConfig } from '@/shared/ui/form-fields';
+import { Button } from '@/shared/ui';
+import type { EditableChapter, UpdateChapterDto } from '../../model/types';
+import { bem } from '@/shared/lib/bem';
+import styles from './EditChapterForm.module.scss';
 
-const b = bem(styles, "edit-chapter-form");
+const b = bem(styles, 'edit-chapter-form');
 
 interface EditChapterFormProps {
   chapter: EditableChapter;
@@ -26,21 +26,21 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
     () =>
       [
         {
-          name: "title",
+          name: 'title',
           id: `edit-chapter-title-${chapter.id}`,
-          label: "Название",
-          kind: "input",
-          type: "text",
+          label: 'Название',
+          kind: 'input',
+          type: 'text',
         },
         {
-          name: "slug",
+          name: 'slug',
           id: `edit-chapter-slug-${chapter.id}`,
-          label: "Slug",
-          kind: "input",
-          type: "text",
+          label: 'Slug',
+          kind: 'input',
+          type: 'text',
         },
       ] satisfies ReadonlyArray<FormFieldConfig<EditChapterMetaFormValues>>,
-    [chapter.id]
+    [chapter.id],
   );
 
   const { control, handleSubmit } = useForm<EditChapterMetaFormValues>({
@@ -63,7 +63,7 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
 
     try {
       await chaptersService.update(chapter.id, payload);
-      showSuccessToast("Глава обновлена");
+      showSuccessToast('Глава обновлена');
       onSuccess();
     } catch {
       // handled by API interceptor
@@ -75,14 +75,8 @@ export const EditChapterForm = ({ chapter, onSuccess }: EditChapterFormProps) =>
   return (
     <form className={b.block()} onSubmit={handleSubmit(onSubmit)}>
       <FormFields fields={fields} control={control} />
-      <p className={b.el("hint")}>Содержание редактируется на странице главы</p>
-      <Button
-        type="submit"
-        fullWidth
-        isLoading={isLoading}
-        showLoader
-        loadingText="Сохранение..."
-      >
+      <p className={b.el('hint')}>Содержание редактируется на странице главы</p>
+      <Button type="submit" fullWidth isLoading={isLoading} showLoader loadingText="Сохранение...">
         Сохранить
       </Button>
     </form>

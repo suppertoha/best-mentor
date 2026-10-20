@@ -1,12 +1,14 @@
-.message {
-  margin: 0 0 20px;
-  color: $text-primary;
-  font-size: 15px;
-  line-height: 1.5;
-}
+.confirm-dialog {
+  &__message {
+    margin: 0 0 20px;
+    color: $text-primary;
+    font-size: 15px;
+    line-height: 1.5;
+  }
 
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
 }

@@ -1,26 +1,22 @@
-import { useState, useMemo } from "react";
-import type { Chapter, Section } from "./types";
-import { useQueryClient } from "@tanstack/react-query";
-import { sectionsListQueryKey } from "@/shared/api/queryKeys";
-import { chaptersService, sectionsService } from "@/shared/api";
-import { showSuccessToast } from "@/shared/lib/toast";
-import { useDndSensors } from "../lib/useSortableItem";
-import { sortBySortOrder } from "@/shared/lib";
-import { type DragEndEvent } from "@dnd-kit/core";
-import { arrayMove } from "@dnd-kit/sortable";
+import { useState, useMemo } from 'react';
+import type { Chapter, Section } from './types';
+import { useQueryClient } from '@tanstack/react-query';
+import { sectionsListQueryKey } from '@/shared/api/queryKeys';
+import { chaptersService, sectionsService } from '@/shared/api';
+import { showSuccessToast } from '@/shared/lib/toast';
+import { useDndSensors } from '../lib/useSortableItem';
+import { sortBySortOrder } from '@/shared/lib';
+import { type DragEndEvent } from '@dnd-kit/core';
+import { arrayMove } from '@dnd-kit/sortable';
 
 export const useSectionsAdmin = (sortedSections: Section[]) => {
   const queryClient = useQueryClient();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [editingSection, setEditingSection] = useState<Section | null>(null);
-  const [creatingChapterSectionId, setCreatingChapterSectionId] = useState<
-    number | null
-  >(null);
+  const [creatingChapterSectionId, setCreatingChapterSectionId] = useState<number | null>(null);
   const [editingChapter, setEditingChapter] = useState<Chapter | null>(null);
   const [pendingDelete, setPendingDelete] = useState<
-    | { type: "section"; item: Section }
-    | { type: "chapter"; item: Chapter }
-    | null
+    { type: 'section'; item: Section } | { type: 'chapter'; item: Chapter } | null
   >(null);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
 
@@ -57,19 +53,17 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
       return [];
     }
 
-    const section = sortedSections.find(
-      (item) => item.id === creatingChapterSectionId,
-    );
+    const section = sortedSections.find((item) => item.id === creatingChapterSectionId);
 
     return sortBySortOrder(section?.chapters ?? []);
   }, [creatingChapterSectionId, sortedSections]);
 
   const requestDeleteSection = (section: Section) => {
-    setPendingDelete({ type: "section", item: section });
+    setPendingDelete({ type: 'section', item: section });
   };
 
   const requestDeleteChapter = (chapter: Chapter) => {
-    setPendingDelete({ type: "chapter", item: chapter });
+    setPendingDelete({ type: 'chapter', item: chapter });
   };
 
   const cancelDelete = () => {
@@ -84,12 +78,12 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     setIsDeleteLoading(true);
 
     try {
-      if (pendingDelete.type === "section") {
+      if (pendingDelete.type === 'section') {
         await sectionsService.delete(pendingDelete.item.id);
-        showSuccessToast("Раздел удалён");
+        showSuccessToast('Раздел удалён');
       } else {
         await chaptersService.delete(pendingDelete.item.id);
-        showSuccessToast("Глава удалена");
+        showSuccessToast('Глава удалена');
       }
 
       invalidateSectionsList();
@@ -103,27 +97,21 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
 
   const deleteConfirmDialog = pendingDelete
     ? {
-        title:
-          pendingDelete.type === "section"
-            ? "Удалить раздел?"
-            : "Удалить главу?",
+        title: pendingDelete.type === 'section' ? 'Удалить раздел?' : 'Удалить главу?',
         message:
-          pendingDelete.type === "section"
+          pendingDelete.type === 'section'
             ? `Раздел «${pendingDelete.item.title}» и все его главы будут удалены.`
             : `Глава «${pendingDelete.item.title}» будет удалена без возможности восстановления.`,
       }
     : null;
 
   const handleSectionsReorder = async (reorderedSections: Section[]) => {
-    const previousSections =
-      queryClient.getQueryData<Section[]>(sectionsListQueryKey);
+    const previousSections = queryClient.getQueryData<Section[]>(sectionsListQueryKey);
 
     queryClient.setQueryData(sectionsListQueryKey, reorderedSections);
 
     try {
-      const data = await sectionsService.reorder(
-        reorderedSections.map((section) => section.id),
-      );
+      const data = await sectionsService.reorder(reorderedSections.map((section) => section.id));
       queryClient.setQueryData(sectionsListQueryKey, data);
     } catch {
       if (previousSections) {
@@ -132,17 +120,11 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     }
   };
 
-  const handleChaptersReorder = async (
-    sectionId: number,
-    reorderedChapters: Chapter[],
-  ) => {
-    const previousSections =
-      queryClient.getQueryData<Section[]>(sectionsListQueryKey);
+  const handleChaptersReorder = async (sectionId: number, reorderedChapters: Chapter[]) => {
+    const previousSections = queryClient.getQueryData<Section[]>(sectionsListQueryKey);
     const optimisticSections =
       previousSections?.map((section) =>
-        section.id === sectionId
-          ? { ...section, chapters: reorderedChapters }
-          : section,
+        section.id === sectionId ? { ...section, chapters: reorderedChapters } : section,
       ) ?? [];
 
     queryClient.setQueryData(sectionsListQueryKey, optimisticSections);
@@ -156,9 +138,7 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
       queryClient.setQueryData(
         sectionsListQueryKey,
         (old: Section[] | undefined) =>
-          old?.map((section) =>
-            section.id === sectionId ? updatedSection : section,
-          ) ?? [],
+          old?.map((section) => (section.id === sectionId ? updatedSection : section)) ?? [],
       );
     } catch {
       if (previousSections) {
@@ -171,12 +151,8 @@ export const useSectionsAdmin = (sortedSections: Section[]) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
 
-    const oldIndex = sortedSections.findIndex(
-      (section) => section.id === active.id,
-    );
-    const newIndex = sortedSections.findIndex(
-      (section) => section.id === over.id,
-    );
+    const oldIndex = sortedSections.findIndex((section) => section.id === active.id);
+    const newIndex = sortedSections.findIndex((section) => section.id === over.id);
     if (oldIndex === -1 || newIndex === -1) return;
 
     void handleSectionsReorder(arrayMove(sortedSections, oldIndex, newIndex));

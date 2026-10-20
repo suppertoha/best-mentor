@@ -1,4 +1,4 @@
-import type { Chapter } from "./chapters.dto";
+import type { Chapter } from './chapters.dto';
 
 export interface Section {
   id: number;
@@ -30,4 +30,4 @@ export interface UpdateSectionDto {
   sortOrder?: number;
 }
 
-export type { ReorderDto } from "./chapters.dto";
+export type { ReorderDto } from './chapters.dto';

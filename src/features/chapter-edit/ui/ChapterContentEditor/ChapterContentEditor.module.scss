@@ -2,26 +2,26 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
 
-.toolbar {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-.editor {
-  border-radius: 8px;
-  overflow: hidden;
-
-  :global(.w-md-editor) {
-    border: 1px solid $border-light;
-    border-radius: 8px;
-    box-shadow: none;
+  &__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
   }
 
-  :global(.w-md-editor-toolbar) {
-    border-bottom: 1px solid $border-light;
-    background: $bg-page;
+  &__editor {
+    border-radius: 8px;
+    overflow: hidden;
+
+    :global(.w-md-editor) {
+      border: 1px solid $border-light;
+      border-radius: 8px;
+      box-shadow: none;
+    }
+
+    :global(.w-md-editor-toolbar) {
+      border-bottom: 1px solid $border-light;
+      background: $bg-page;
+    }
   }
 }

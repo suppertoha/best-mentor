@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-}
 
-.hint {
-  margin: 0;
-  font-size: 13px;
-  color: $text-secondary;
+  &__hint {
+    margin: 0;
+    font-size: 13px;
+    color: $text-secondary;
+  }
 }

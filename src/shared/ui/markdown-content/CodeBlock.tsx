@@ -1,28 +1,28 @@
-import clsx from "clsx";
-import { useState, type ReactNode } from "react";
-import { bem } from "@/shared/lib/bem";
-import styles from "./MarkdownContent.module.scss";
+import clsx from 'clsx';
+import { useState, type ReactNode } from 'react';
+import { bem } from '@/shared/lib/bem';
+import styles from './MarkdownContent.module.scss';
 
-const b = bem(styles, "markdown");
+const b = bem(styles, 'markdown');
 
 const getTextContent = (node: ReactNode): string => {
-  if (typeof node === "string") {
+  if (typeof node === 'string') {
     return node;
   }
 
-  if (typeof node === "number") {
+  if (typeof node === 'number') {
     return String(node);
   }
 
   if (Array.isArray(node)) {
-    return node.map(getTextContent).join("");
+    return node.map(getTextContent).join('');
   }
 
-  if (node && typeof node === "object" && "props" in node) {
+  if (node && typeof node === 'object' && 'props' in node) {
     return getTextContent((node as { props: { children?: ReactNode } }).props.children);
   }
 
-  return "";
+  return '';
 };
 
 interface CodeBlockProps {
@@ -45,17 +45,14 @@ export const CodeBlock = ({ children }: CodeBlockProps) => {
   };
 
   return (
-    <div
-      className={clsx(b.el("code-block"), "wmde-markdown")}
-      data-color-mode="dark"
-    >
+    <div className={clsx(b.el('code-block'), 'wmde-markdown')} data-color-mode="dark">
       <button
         type="button"
-        className={b.el("copy-btn")}
+        className={b.el('copy-btn')}
         onClick={handleCopy}
         aria-label="Скопировать код"
       >
-        {copied ? "Скопировано" : "Копировать"}
+        {copied ? 'Скопировано' : 'Копировать'}
       </button>
       <pre>{children}</pre>
     </div>

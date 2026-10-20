@@ -1,9 +1,9 @@
-import { bem } from "@/shared/lib/bem";
-import { Button } from "../button";
-import { Modal } from "../modal";
-import styles from "./ConfirmDialog.module.scss";
+import { bem } from '@/shared/lib/bem';
+import { Button } from '../button';
+import { Modal } from '../modal';
+import styles from './ConfirmDialog.module.scss';
 
-const b = bem(styles, "confirm-dialog");
+const b = bem(styles, 'confirm-dialog');
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -20,15 +20,15 @@ export const ConfirmDialog = ({
   isOpen,
   title,
   message,
-  confirmLabel = "Удалить",
-  cancelLabel = "Отмена",
+  confirmLabel = 'Удалить',
+  cancelLabel = 'Отмена',
   onConfirm,
   onClose,
   isLoading = false,
 }: ConfirmDialogProps) => (
   <Modal isOpen={isOpen} onClose={onClose} title={title}>
-    <p className={b.el("message")}>{message}</p>
-    <div className={b.el("actions")}>
+    <p className={b.el('message')}>{message}</p>
+    <div className={b.el('actions')}>
       <Button type="button" variant="ghost" onClick={onClose} disabled={isLoading}>
         {cancelLabel}
       </Button>

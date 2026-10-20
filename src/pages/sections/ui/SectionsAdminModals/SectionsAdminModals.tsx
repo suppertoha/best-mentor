@@ -1,9 +1,9 @@
-import { CreateChapterForm } from "@/features/chapter-create";
-import { EditChapterForm } from "@/features/chapter-edit";
-import { CreateSectionForm } from "@/features/section-create";
-import { EditSectionForm } from "@/features/section-edit";
-import { Modal } from "@/shared/ui";
-import type { Chapter, Section } from "../../model/types";
+import { CreateChapterForm } from '@/features/chapter-create';
+import { EditChapterForm } from '@/features/chapter-edit';
+import { CreateSectionForm } from '@/features/section-create';
+import { EditSectionForm } from '@/features/section-edit';
+import { Modal } from '@/shared/ui';
+import type { Chapter, Section } from '../../model/types';
 
 interface SectionsAdminModalsProps {
   isCreateSectionOpen: boolean;
@@ -37,11 +37,7 @@ export const SectionsAdminModals = ({
   onChapterUpdated,
 }: SectionsAdminModalsProps) => (
   <>
-    <Modal
-      isOpen={isCreateSectionOpen}
-      onClose={onCloseCreateSection}
-      title="Добавить раздел"
-    >
+    <Modal isOpen={isCreateSectionOpen} onClose={onCloseCreateSection} title="Добавить раздел">
       <CreateSectionForm onSuccess={onSectionCreated} />
     </Modal>
 
@@ -74,11 +70,7 @@ export const SectionsAdminModals = ({
       )}
     </Modal>
 
-    <Modal
-      isOpen={editingChapter !== null}
-      onClose={onCloseEditChapter}
-      title="Название и slug"
-    >
+    <Modal isOpen={editingChapter !== null} onClose={onCloseEditChapter} title="Название и slug">
       {editingChapter && (
         <EditChapterForm
           key={editingChapter.id}

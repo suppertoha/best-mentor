@@ -1,2 +1,2 @@
-export { EditChapterForm } from "./ui/EditChapterForm";
-export { ChapterContentEditor } from "./ui/ChapterContentEditor";
+export { EditChapterForm } from './ui/EditChapterForm';
+export { ChapterContentEditor } from './ui/ChapterContentEditor';

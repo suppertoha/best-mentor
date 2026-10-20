@@ -1,1 +1,1 @@
-export const sectionsListQueryKey = ["sections", "list"] as const;
+export const sectionsListQueryKey = ['sections', 'list'] as const;

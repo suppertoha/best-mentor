@@ -1,30 +1,26 @@
-import { forwardRef } from "react";
-import clsx from "clsx";
-import { bem } from "@/shared/lib/bem";
-import styles from "./Textarea.module.scss";
-import type { TextareaProps } from "./types.ts";
+import { forwardRef } from 'react';
+import clsx from 'clsx';
+import { bem } from '@/shared/lib/bem';
+import styles from './Textarea.module.scss';
+import type { TextareaProps } from './types.ts';
 
-const b = bem(styles, "textarea");
+const b = bem(styles, 'textarea');
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ id, label, error, className, ...rest }, ref) => {
     return (
       <div className={b.block()}>
-        <label className={b.el("label")} htmlFor={id}>
+        <label className={b.el('label')} htmlFor={id}>
           {label}
         </label>
         <textarea
           ref={ref}
           id={id}
-          className={clsx(
-            b.el("field"),
-            error && b.el("field--error"),
-            className,
-          )}
+          className={clsx(b.el('field'), error && b.el('field--error'), className)}
           {...rest}
         />
         {error && (
-          <p className={b.el("error")} role="alert">
+          <p className={b.el('error')} role="alert">
             {error}
           </p>
         )}
@@ -33,4 +29,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   },
 );
 
-Textarea.displayName = "Textarea";
+Textarea.displayName = 'Textarea';

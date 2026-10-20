@@ -1,1 +1,1 @@
-export type { CreateSectionDto } from "@/shared/api";
+export type { CreateSectionDto } from '@/shared/api';

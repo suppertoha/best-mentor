@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import { getChapterPath } from "@/shared/config";
-import { bem } from "@/shared/lib/bem";
-import type { Chapter } from "../../../model/types";
-import styles from "../SectionItem.module.scss";
+import { Link } from 'react-router-dom';
+import { getChapterPath } from '@/shared/config';
+import { bem } from '@/shared/lib/bem';
+import type { Chapter } from '../../../model/types';
+import styles from '../SectionItem.module.scss';
 
-const si = bem(styles, "section-item");
+const si = bem(styles, 'section-item');
 
 interface ChapterTitleCellProps {
   chapter: Chapter;
@@ -23,18 +23,14 @@ export const ChapterTitleCell = ({
 
   if (canNavigate) {
     return (
-      <Link to={getChapterPath(chapter.slug)} className={si.el("chapter-title")}>
+      <Link to={getChapterPath(chapter.slug)} className={si.el('chapter-title')}>
         {chapter.title}
       </Link>
     );
   }
 
   return (
-    <span
-      className={si.el("chapter-title--locked")}
-      aria-disabled="true"
-      title={lockHint}
-    >
+    <span className={si.el('chapter-title--locked')} aria-disabled="true" title={lockHint}>
       {chapter.title}
     </span>
   );

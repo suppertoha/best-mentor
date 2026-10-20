@@ -1,1 +1,1 @@
-export { SortableChapterRow } from "./SortableChapterRow";
+export { SortableChapterRow } from './SortableChapterRow';

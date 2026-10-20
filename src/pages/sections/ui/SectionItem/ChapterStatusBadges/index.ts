@@ -1,1 +1,1 @@
-export { ChapterStatusBadges } from "./ChapterStatusBadges";
+export { ChapterStatusBadges } from './ChapterStatusBadges';

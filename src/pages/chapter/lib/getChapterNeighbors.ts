@@ -1,9 +1,6 @@
-import type { Chapter as ChapterListItem } from "@/shared/api";
+import type { Chapter as ChapterListItem } from '@/shared/api';
 
-export const getChapterNeighbors = (
-  chapters: ChapterListItem[],
-  currentSlug: string,
-) => {
+export const getChapterNeighbors = (chapters: ChapterListItem[], currentSlug: string) => {
   const index = chapters.findIndex((chapter) => chapter.slug === currentSlug);
 
   if (index === -1) {

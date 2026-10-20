@@ -1,1 +1,1 @@
-export { setupApiAuth } from "./setupApiAuth";
+export { setupApiAuth } from './setupApiAuth';

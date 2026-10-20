@@ -1,7 +1,7 @@
-import { PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import type { CSSProperties } from "react";
+import { PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import type { CSSProperties } from 'react';
 
 export const useDndSensors = () =>
   useSensors(
@@ -31,4 +31,4 @@ export const useSortableItem = (id: number) => {
   };
 };
 
-export type SortableHandleProps = ReturnType<typeof useSortableItem>["handleProps"];
+export type SortableHandleProps = ReturnType<typeof useSortableItem>['handleProps'];

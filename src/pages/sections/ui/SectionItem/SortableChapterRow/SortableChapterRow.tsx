@@ -1,16 +1,16 @@
-import PencilIcon from "@/shared/assets/icons/pencil.svg?react";
-import TrashIcon from "@/shared/assets/icons/trash.svg?react";
-import { getChapterLockState } from "@/shared/lib";
-import { bem } from "@/shared/lib/bem";
-import { Button } from "@/shared/ui";
-import { useSortableItem } from "../../../lib/useSortableItem";
-import type { Chapter } from "../../../model/types";
-import { DragHandle } from "../DragHandle";
-import { ChapterStatusBadges } from "../ChapterStatusBadges";
-import { ChapterTitleCell } from "../ChapterTitleCell";
-import styles from "../SectionItem.module.scss";
+import PencilIcon from '@/shared/assets/icons/pencil.svg?react';
+import TrashIcon from '@/shared/assets/icons/trash.svg?react';
+import { getChapterLockState } from '@/shared/lib';
+import { bem } from '@/shared/lib/bem';
+import { Button } from '@/shared/ui';
+import { useSortableItem } from '../../../lib/useSortableItem';
+import type { Chapter } from '../../../model/types';
+import { DragHandle } from '../DragHandle';
+import { ChapterStatusBadges } from '../ChapterStatusBadges';
+import { ChapterTitleCell } from '../ChapterTitleCell';
+import styles from '../SectionItem.module.scss';
 
-const si = bem(styles, "section-item");
+const si = bem(styles, 'section-item');
 
 interface SortableChapterRowProps {
   chapter: Chapter;
@@ -33,24 +33,20 @@ export const SortableChapterRow = ({
   const { isUnlocked } = getChapterLockState(chapters, chapterIndex, bypassLocks);
 
   return (
-    <li ref={ref} style={style} className={si.el("chapter-row")}>
-      <div className={si.el("chapter-main")}>
+    <li ref={ref} style={style} className={si.el('chapter-row')}>
+      <div className={si.el('chapter-main')}>
         <DragHandle
-          className={si.el("chapter-drag-handle")}
+          className={si.el('chapter-drag-handle')}
           onClick={(event) => event.stopPropagation()}
           {...handleProps}
         />
-        <ChapterTitleCell
-          chapter={chapter}
-          isUnlocked={isUnlocked}
-          bypassLocks={bypassLocks}
-        />
+        <ChapterTitleCell chapter={chapter} isUnlocked={isUnlocked} bypassLocks={bypassLocks} />
         <ChapterStatusBadges chapter={chapter} isUnlocked={isUnlocked} />
       </div>
-      <div className={si.el("chapter-actions")}>
+      <div className={si.el('chapter-actions')}>
         <Button
           variant="ghost"
-          className={si.el("chapter-edit-btn")}
+          className={si.el('chapter-edit-btn')}
           type="button"
           aria-label={`Редактировать главу «${chapter.title}»`}
           onClick={() => onEdit?.(chapter)}
@@ -59,7 +55,7 @@ export const SortableChapterRow = ({
         </Button>
         <Button
           variant="ghost"
-          className={si.el("chapter-delete-btn")}
+          className={si.el('chapter-delete-btn')}
           type="button"
           aria-label={`Удалить главу «${chapter.title}»`}
           onClick={() => onDelete?.(chapter)}

@@ -1,1 +1,1 @@
-export { ChapterQuiz } from "./ChapterQuiz";
+export { ChapterQuiz } from './ChapterQuiz';

@@ -1,1 +1,1 @@
-export { ROUTES, getChapterPath, getChapterQuizEditPath, getAdminUserPath } from "./routes";
+export { ROUTES, getChapterPath, getChapterQuizEditPath, getAdminUserPath } from './routes';

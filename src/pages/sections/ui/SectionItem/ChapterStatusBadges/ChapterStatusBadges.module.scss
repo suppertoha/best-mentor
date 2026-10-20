@@ -2,28 +2,28 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-}
 
-.badge {
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.4;
-  white-space: nowrap;
-}
+  &__badge {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
 
-.badge--quiz {
-  background: $accent-subtle-strong;
-  color: $accent;
-}
+  &__badge--quiz {
+    background: $accent-subtle-strong;
+    color: $accent;
+  }
 
-.badge--completed {
-  background: $success-bg;
-  color: $success;
-}
+  &__badge--completed {
+    background: $success-bg;
+    color: $success;
+  }
 
-.badge--locked {
-  background: $bg-muted;
-  color: $text-secondary;
+  &__badge--locked {
+    background: $bg-muted;
+    color: $text-secondary;
+  }
 }

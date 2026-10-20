@@ -1,1 +1,1 @@
-export { ChapterTitleCell } from "./ChapterTitleCell";
+export { ChapterTitleCell } from './ChapterTitleCell';

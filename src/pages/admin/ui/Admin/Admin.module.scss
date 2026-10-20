@@ -3,272 +3,222 @@
   flex-direction: column;
   gap: 32px;
   padding: 0 0 48px;
-}
 
-.top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.top-actions {
-  flex-shrink: 0;
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  color: $accent;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
   }
-}
 
-.title {
-  margin: 0 0 8px;
-  font-size: 32px;
-  font-weight: 600;
-  color: $text-primary;
-}
+  &__top-actions {
+    flex-shrink: 0;
+  }
 
-.subtitle {
-  margin: 0;
-  font-size: 15px;
-  color: $text-secondary;
-}
+  &__back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $accent;
+    text-decoration: none;
 
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
-.tab,
-.tab--active {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border: 1px solid $border-light;
-  border-radius: 8px;
-  background: $bg-white;
-  color: $text-secondary;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  &__title {
+    margin: 0 0 8px;
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
 
-  &:hover {
+  &__subtitle {
+    margin: 0;
+    font-size: 15px;
+    color: $text-secondary;
+  }
+
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__tab--active {
     border-color: $accent;
+    background: $accent-subtle;
     color: $accent;
   }
-}
 
-.tab--active {
-  border-color: $accent;
-  background: $accent-subtle;
-  color: $accent;
-}
-
-.tab-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 22px;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: $bg-page;
-  color: $text-secondary;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.tab--active .tab-count {
-  background: $accent-subtle-strong;
-  color: $accent;
-}
-
-.tab-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 24px;
-  border-radius: 8px;
-  background: $bg-white;
-  box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.section-title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: $text-primary;
-}
-
-.section-meta {
-  margin: 0;
-  font-size: 14px;
-  color: $text-secondary;
-}
-
-.section-description {
-  margin: -4px 0 0;
-  font-size: 14px;
-  color: $text-secondary;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-
-  @include media($lg) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  &__tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    background: $bg-page;
+    color: $text-secondary;
+    font-size: 12px;
+    font-weight: 600;
   }
 
-  @include media($sm) {
-    grid-template-columns: 1fr;
+  &__tab-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
-}
 
-.card {
-  padding: 16px;
-  border: 1px solid $border-light;
-  border-radius: 8px;
-  background: $bg-page;
-}
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 8px;
+    background: $bg-white;
+    box-shadow: 0 4px 10px rgba(106, 99, 118, 0.1);
+  }
 
-.card-label {
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: $text-secondary;
-}
+  &__section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-.card-value {
-  margin: 0 0 8px;
-  font-size: 28px;
-  font-weight: 600;
-  color: $text-primary;
-}
+  &__section-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: $text-primary;
+  }
 
-.card-hint {
-  margin: 0;
-  font-size: 13px;
-  color: $text-secondary;
-}
+  &__section-meta {
+    margin: 0;
+    font-size: 14px;
+    color: $text-secondary;
+  }
 
-.table-wrap {
-  overflow-x: auto;
-}
+  &__section-description {
+    margin: -4px 0 0;
+    font-size: 14px;
+    color: $text-secondary;
+  }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
 
-.table th,
-.table td {
-  padding: 12px 10px;
-  border-bottom: 1px solid $border-light;
-  text-align: left;
-  vertical-align: top;
-}
+    @include media($lg) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-.table th {
-  font-size: 13px;
-  font-weight: 600;
-  color: $text-secondary;
-}
+    @include media($sm) {
+      grid-template-columns: 1fr;
+    }
+  }
 
-.sortable-header {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
+  &__card {
+    padding: 16px;
+    border: 1px solid $border-light;
+    border-radius: 8px;
+    background: $bg-page;
+  }
 
-  &:hover {
+  &__card-label {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  &__card-value {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__card-hint {
+    margin: 0;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  &__table-wrap {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  &__sortable-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__empty-cell {
+    padding: 24px 10px;
+    color: $text-secondary;
+    text-align: center;
+  }
+
+  &__user-link {
     color: $accent;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
-.table td {
-  color: $text-primary;
-}
+  &__chapter-link {
+    color: $accent;
+    font-weight: 500;
+    text-decoration: none;
 
-.empty-cell {
-  padding: 24px 10px;
-  color: $text-secondary;
-  text-align: center;
-}
-
-.user-link {
-  color: $accent;
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
-}
 
-.chapter-link {
-  color: $accent;
-  font-weight: 500;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
   }
-}
 
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-}
+  &__pagination-meta {
+    font-size: 14px;
+    color: $text-secondary;
+  }
 
-.pagination-meta {
-  font-size: 14px;
-  color: $text-secondary;
-}
+  &__inline-error {
+    padding: 0;
+    color: $danger;
+  }
 
-.status,
-.error,
-.inline-error {
-  padding: 40px 20px;
-}
-
-.inline-error {
-  padding: 0;
-  color: $danger;
-}
-
-.error {
-  color: $danger;
+  &__error {
+    color: $danger;
+  }
 }
